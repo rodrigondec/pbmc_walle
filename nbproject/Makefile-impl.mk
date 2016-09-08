@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=walle.X
+PROJECTNAME=walle
 
 # Active Configuration
 DEFAULTCONF=default
