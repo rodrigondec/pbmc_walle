@@ -94,21 +94,63 @@ void delayX(int n)
 }
 
 void main(void) {
-    TRISDbits.TRISD7 = 0;   // RD7 to RD0 set to output for led.
+    TRISDbits.TRISD7 = 0; // RD7 to RD0 set to output for led.
     TRISDbits.TRISD6 = 0;
     TRISDbits.TRISD5 = 0;
     TRISDbits.TRISD4 = 0;
     TRISDbits.TRISD3 = 0;
     TRISDbits.TRISD2 = 0;
     TRISDbits.TRISD1 = 0;
-    TRISDbits.TRISD0 = 0;
+    TRISDbits.TRISD0 = 0; // END LEDS
     
-    led0 = 1;
-    led1 = 1;
-    led2 = 1;
+    TRISB0 = 1; /*input mode on RB0 INTERRUP*/
+    
+    TRISB3 = 0; /*output mode on RB3*/
+    
+    
+    RCONbits.IPEN = 1;    // enable interrupt priority
+    
+    /*global interrupt enable*/
+    INTCONbits.GIE = 1;    //enable all interrupts
+    INTCONbits.INT0IE = 1;    // enable int0 
 
+    INTCON2bits.INTEDG0 = 0;  // falling edge trigger the int0
+    
+    
+    
+    LATB3 = 0; // jogando 1 para RB3
+    
+    
+    led0 = 1; // Acendendo a led 0
+    led1 = 1; // Acendendo a led 1
+
+    led3 = 1; // Acendendo a led 3
+//    led4 = 1; // Acendendo a led 4
+
+    led6 = 1; // Acendendo a led 6
+    led7 = 1; // Acendendo a led 7
+
+    
+    
+    
     while(1){
-        
+//        LATB3 = !LATB3;
         delayX(10);
     }
+}
+
+void interrupt ISR(void){
+    
+    /*IO interrupt*/
+    /*int 0 is aways high priority*/
+    if(INTCONbits.INT0F){
+        INTCONbits.INT0F = 0;
+        LATB3 = !LATB3;
+    }
+}
+
+void interrupt low_priority lowISR(){
+
+    /*low priority interrupt write to timer 0*/
+    
 }
