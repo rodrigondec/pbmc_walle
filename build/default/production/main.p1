@@ -15,6 +15,66 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S138 . . . ]
 "2810
 [v _TRISDbits `VS138 ~T0 @X0 0 e@3989 ]
+"8519
+[v _TRISB0 `Vb ~T0 @X0 0 e@31896 ]
+"8525
+[v _TRISB3 `Vb ~T0 @X0 0 e@31899 ]
+"6091
+[s S317 :1 `uc 1 ]
+[n S317 . NOT_BOR ]
+"6094
+[s S318 :1 `uc 1 :1 `uc 1 ]
+[n S318 . . NOT_POR ]
+"6098
+[s S319 :2 `uc 1 :1 `uc 1 ]
+[n S319 . . NOT_PD ]
+"6102
+[s S320 :3 `uc 1 :1 `uc 1 ]
+[n S320 . . NOT_TO ]
+"6106
+[s S321 :4 `uc 1 :1 `uc 1 ]
+[n S321 . . NOT_RI ]
+"6110
+[s S322 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S322 . nBOR nPOR nPD nTO nRI . SBOREN IPEN ]
+"6120
+[s S323 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S323 . BOR POR PD TO RI ]
+"6090
+[u S316 `S317 1 `S318 1 `S319 1 `S320 1 `S321 1 `S322 1 `S323 1 ]
+[n S316 . . . . . . . . ]
+"6128
+[v _RCONbits `VS316 ~T0 @X0 0 e@4048 ]
+"7081
+[s S357 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S357 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"7091
+[s S358 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S358 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"7101
+[s S359 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S359 . . GIEL GIEH ]
+"7080
+[u S356 `S357 1 `S358 1 `S359 1 ]
+[n S356 . . . . ]
+"7107
+[v _INTCONbits `VS356 ~T0 @X0 0 e@4082 ]
+"7012
+[s S353 :7 `uc 1 :1 `uc 1 ]
+[n S353 . . NOT_RBPU ]
+"7016
+[s S354 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S354 . RBIP . TMR0IP . INTEDG2 INTEDG1 INTEDG0 nRBPU ]
+"7026
+[s S355 :7 `uc 1 :1 `uc 1 ]
+[n S355 . . RBPU ]
+"7011
+[u S352 `S353 1 `S354 1 `S355 1 ]
+[n S352 . . . . ]
+"7031
+[v _INTCON2bits `VS352 ~T0 @X0 0 e@4081 ]
+"7869
+[v _LATB3 `Vb ~T0 @X0 0 e@31827 ]
 "1932
 [s S106 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S106 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
@@ -3381,30 +3441,93 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 104: TRISDbits.TRISD0 = 0;
 "104
 [e = . . _TRISDbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 106: LATDbits.LATD0 = 1;
+[; ;main.c: 106: TRISB0 = 1;
 "106
-[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
-[; ;main.c: 107: LATDbits.LATD1 = 1;
-"107
-[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 108: LATDbits.LATD2 = 1;
+[e = _TRISB0 -> -> 1 `i `b ]
+[; ;main.c: 108: TRISB3 = 0;
 "108
-[e = . . _LATDbits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 110: while(1){
-"110
+[e = _TRISB3 -> -> 0 `i `b ]
+[; ;main.c: 111: RCONbits.IPEN = 1;
+"111
+[e = . . _RCONbits 5 7 -> -> 1 `i `uc ]
+[; ;main.c: 114: INTCONbits.GIE = 1;
+"114
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 115: INTCONbits.INT0IE = 1;
+"115
+[e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
+[; ;main.c: 117: INTCON2bits.INTEDG0 = 0;
+"117
+[e = . . _INTCON2bits 1 6 -> -> 0 `i `uc ]
+[; ;main.c: 121: LATB3 = 0;
+"121
+[e = _LATB3 -> -> 0 `i `b ]
+[; ;main.c: 124: LATDbits.LATD0 = 1;
+"124
+[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 125: LATDbits.LATD1 = 1;
+"125
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 127: LATDbits.LATD3 = 1;
+"127
+[e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 130: LATDbits.LATD6 = 1;
+"130
+[e = . . _LATDbits 0 6 -> -> 1 `i `uc ]
+[; ;main.c: 131: LATDbits.LATD7 = 1;
+"131
+[e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
+[; ;main.c: 136: while(1){
+"136
 [e :U 370 ]
 {
-[; ;main.c: 112: delayX(10);
-"112
+[; ;main.c: 138: delayX(10);
+"138
 [e ( _delayX (1 -> 10 `i ]
-"113
+"139
 }
 [e :U 369 ]
-"110
+"136
 [e $U 370  ]
 [e :U 371 ]
-[; ;main.c: 113: }
-[; ;main.c: 114: }
-"114
+[; ;main.c: 139: }
+[; ;main.c: 140: }
+"140
 [e :UE 368 ]
+}
+[v F3560 `(v ~T0 @X0 1 tf ]
+"142
+[v _ISR `IF3560 ~T0 @X0 1 e ]
+{
+[; ;main.c: 142: void interrupt ISR(void){
+[e :U _ISR ]
+[f ]
+[; ;main.c: 146: if(INTCONbits.INT0F){
+"146
+[e $ ! != -> . . _INTCONbits 1 1 `i -> -> -> 0 `i `Vuc `i 373  ]
+{
+[; ;main.c: 147: INTCONbits.INT0F = 0;
+"147
+[e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
+[; ;main.c: 148: LATB3 = !LATB3;
+"148
+[e = _LATB3 ! _LATB3 ]
+"149
+}
+[e :U 373 ]
+[; ;main.c: 149: }
+[; ;main.c: 150: }
+"150
+[e :UE 372 ]
+}
+[v F3562 `(v ~T0 @X0 1 tf ]
+"152
+[v _lowISR `ILF3562 ~T0 @X0 1 e ]
+{
+[; ;main.c: 152: void interrupt low_priority lowISR(){
+[e :U _lowISR ]
+[f ]
+[; ;main.c: 156: }
+"156
+[e :UE 374 ]
 }

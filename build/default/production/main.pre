@@ -4387,12 +4387,54 @@ TRISDbits.TRISD2 = 0;
 TRISDbits.TRISD1 = 0;
 TRISDbits.TRISD0 = 0;
 
+TRISB0 = 1;
+
+TRISB3 = 0;
+
+
+RCONbits.IPEN = 1;
+
+
+INTCONbits.GIE = 1;
+INTCONbits.INT0IE = 1;
+
+INTCON2bits.INTEDG0 = 0;
+
+
+
+LATB3 = 0;
+
+
 LATDbits.LATD0 = 1;
 LATDbits.LATD1 = 1;
-LATDbits.LATD2 = 1;
+
+LATDbits.LATD3 = 1;
+
+
+LATDbits.LATD6 = 1;
+LATDbits.LATD7 = 1;
+
+
+
 
 while(1){
 
 delayX(10);
 }
+}
+
+void interrupt ISR(void){
+
+
+
+if(INTCONbits.INT0F){
+INTCONbits.INT0F = 0;
+LATB3 = !LATB3;
+}
+}
+
+void interrupt low_priority lowISR(){
+
+
+
 }

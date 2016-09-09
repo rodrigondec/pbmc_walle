@@ -122,7 +122,7 @@
         <property key="opt-xc8-linker-serial" value=""/>
         <property key="program-the-device-with-default-config-words" value="true"/>
       </HI-TECH-LINK>
-      <item path="Interrupts.c" ex="true" overriding="false">
+      <item path="Interrupts.c" ex="false" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -193,6 +193,8 @@
         </HI-TECH-LINK>
         <XC8-config-global>
         </XC8-config-global>
+      </item>
+      <item path="main.c" ex="true" overriding="false">
       </item>
     </conf>
   </confs>

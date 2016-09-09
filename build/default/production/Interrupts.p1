@@ -4,8 +4,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISB0 `Vb ~T0 @X0 0 e@31896 ]
 "8559
 [v _TRISD4 `Vb ~T0 @X0 0 e@31916 ]
-"8551
-[v _TRISD0 `Vb ~T0 @X0 0 e@31912 ]
 "6091
 [s S317 :1 `uc 1 ]
 [n S317 . NOT_BOR ]
@@ -3354,9 +3352,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Interrupts.c: 79: TRISD4 = 0;
 "79
 [e = _TRISD4 -> -> 0 `i `b ]
-[; ;Interrupts.c: 80: TRISD0 = 0;
-"80
-[e = _TRISD0 -> -> 0 `i `b ]
 [; ;Interrupts.c: 103: RCONbits.IPEN = 1;
 "103
 [e = . . _RCONbits 5 7 -> -> 1 `i `uc ]
