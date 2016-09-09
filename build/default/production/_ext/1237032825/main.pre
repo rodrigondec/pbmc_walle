@@ -1,5 +1,5 @@
 
-# 1 "Interrupts.c"
+# 1 "/home/rodrigo/Documents/Prog/walle/main.c"
 
 # 4 "/opt/microchip/xc8/v1.38/include/__size_t.h"
 typedef unsigned size_t;
@@ -4314,7 +4314,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 extern __nonreentrant void _delay3(unsigned char);
 
 
-# 17 "Interrupts.c"
+# 19 "/home/rodrigo/Documents/Prog/walle/main.c"
 #pragma config FOSC = INTIO67
 #pragma config FCMEN = OFF
 #pragma config IESO = OFF
@@ -4370,45 +4370,105 @@ extern __nonreentrant void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 
-# 76
-int main(int argc, char** argv) {
+# 91
+void delayX(int n)
+{
+for(int i = 0; i < n; i++)
+_delay((unsigned long)((1)*(16000000/4000.0)));
+}
 
-TRISB0 = 1;
+int off_duty = 1;
+int velocidade = 0;
+int max_cicle = 20;
+
+int main(int argc, char** argv)
+{
+
+T0CONbits.TMR0ON = 1;
+T0CONbits.T0CS = 0;
+T0CONbits.PSA = 0;
+
+T0CONbits.T0PS0 = 0;
+T0CONbits.T0PS1 = 0;
+T0CONbits.T0PS2 = 0;
+
+T0CONbits.T08BIT = 1;
+T0CONbits.T0SE = 0;
+
+INTCONbits.TMR0IE = 1;
+
+INTCONbits.TMR0IF = 0;
+INTCONbits.GIE = 1;
+
+TRISD7 = 0;
+TRISD6 = 0;
+TRISD5 = 0;
 TRISD4 = 0;
+TRISD3 = 0;
+TRISD2 = 0;
+TRISD1 = 0;
 TRISD0 = 0;
 
-# 103
-RCONbits.IPEN = 1;
+TRISC5 = 1;
 
+TRISC7 = 0;
 
-INTCONbits.GIE = 1;
-INTCONbits.INT0IE = 1;
+TRISB1 = 0;
+TRISB2 = 0;
 
-INTCON2bits.INTEDG0 = 0;
+TRISB3 = 0;
+TRISB4 = 0;
 
-LATD4 = 0;
-LATD0 = 1;
+PORTBbits.RB1 = 1;
+PORTBbits.RB2 = 0;
 
-_delay((unsigned long)((10)*(16000000/4000.0)));
+PORTBbits.RB3 = 0;
+PORTBbits.RB4 = 1;
 
+while(1){
+if(PORTCbits.RC5 == 1){
+velocidade++;
+velocidade = velocidade%3;
+if(velocidade == 0){
+off_duty = 1;
+}
+else if(velocidade == 1){
+off_duty = 7;
+}
+else if(velocidade == 2){
+off_duty = 15;
+}
+delayX(10);
+}
+}
 
 return (0);
 }
 
-
-void interrupt ISR(void){
-
+int count = 0;
 
 
-if(INTCONbits.INT0F){
-INTCONbits.INT0F = 0;
-LATD4 = !LATD4;
+void interrupt tc_int(void){
+
+
+
+if(INTCONbits.TMR0IF && INTCONbits.TMR0IE)
+{
+INTCONbits.TMR0IF = 0;
+
+if(count == off_duty)
+{
+RC7 = 1;
+LATD4 = 1;
+}
+
+if(count == max_cicle)
+{
+RC7 = 0;
+LATD4 = 0;
+}
+
+count = count%max_cicle;
+count++;
 }
 }
-
-void interrupt low_priority lowISR(){
-
-
-
-}
-

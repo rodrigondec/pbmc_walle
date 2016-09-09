@@ -1,20 +1,22 @@
 /* 
- * File:   Interrupts.c
- * Author: Julio
+ * File:   timer0.c
+ * Author: Aluno
  *
- * Created on 8. September 2016, 09:36
+ * Created on 8 de Setembro de 2016, 10:33
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <xc.h>
+#include "p18f45k20.h"
 
+// PIC18F45K20 Configuration Bit Settings
 
-// #pragma config statements should precede project file includes.
-// Use project enums instead of #define for ON and OFF.
+// 'C' source line config statements
 
 // CONFIG1H
-#pragma config FOSC = INTIO67     // Oscillator Selection bits (External RC oscillator, port function on RA6)
+
+#pragma config FOSC = INTIO67   // Oscillator Selection bits (Internal oscillator block, port function on RA6 and RA7)
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor disabled)
 #pragma config IESO = OFF       // Internal/External Oscillator Switchover bit (Oscillator Switchover mode disabled)
 
@@ -29,13 +31,13 @@
 
 // CONFIG3H
 #pragma config CCP2MX = PORTC   // CCP2 MUX bit (CCP2 input/output is multiplexed with RC1)
-#pragma config PBADEN = OFF     // PORTB A/D Enable bit (PORTB<4:0> pins are configured as digital I/O on Reset)
+#pragma config PBADEN = OFF      // PORTB A/D Enable bit (PORTB<4:0> pins are configured as analog input channels on Reset)
 #pragma config LPT1OSC = OFF    // Low-Power Timer1 Oscillator Enable bit (Timer1 configured for higher power operation)
-#pragma config HFOFST = OFF     // HFINTOSC Fast Start-up (The system clock is held off until the HFINTOSC is stable.)
-#pragma config MCLRE = OFF      // MCLR Pin Enable bit (RE3 input pin enabled; MCLR disabled)
+#pragma config HFOFST = OFF      // HFINTOSC Fast Start-up (HFINTOSC starts clocking the CPU without waiting for the oscillator to stablize.)
+#pragma config MCLRE = OFF       // MCLR Pin Enable bit (MCLR pin enabled; RE3 input pin disabled)
 
 // CONFIG4L
-#pragma config STVREN = OFF     // Stack Full/Underflow Reset Enable bit (Stack full/underflow will not cause Reset)
+#pragma config STVREN = OFF      // Stack Full/Underflow Reset Enable bit (Stack full/underflow will cause Reset)
 #pragma config LVP = OFF        // Single-Supply ICSP Enable bit (Single-Supply ICSP disabled)
 #pragma config XINST = OFF      // Extended Instruction Set Enable bit (Instruction set extension and Indexed Addressing mode disabled (Legacy mode))
 
@@ -69,68 +71,100 @@
 // CONFIG7H
 #pragma config EBTRB = OFF      // Boot Block Table Read Protection bit (Boot Block (000000-0007FFh) not protected from table reads executed in other blocks)
 
+// #pragma config statements should precede project file includes.
+// Use project enums instead of #define for ON and OFF.
+
 #define _XTAL_FREQ 16000000
+
+#define led0 LATD0
+#define led1 LATD1
+#define led2 LATD2
+#define led3 LATD3
+#define led4 LATD4
+#define led5 LATD5
+#define led6 LATD6
+#define led7 LATD7
+
 /*
  * 
  */
-int main(int argc, char** argv) {
+void delayX(int n)
+{
+    for(int i = 0; i < n; i++)
+        __delay_ms(1);
+}
 
-    TRISB0 = 1; /*input mode on RB0*/
-    TRISD4 = 0;           
-    TRISD0 = 0;
+int main(int argc, char** argv)
+{
+    // timer configuration
+    T0CONbits.TMR0ON = 1;
+    T0CONbits.T0CS = 0;               // Timer increments on instruction clock
+    T0CONbits.PSA = 0;               // Prescale enable
     
+    T0CONbits.T0PS0 = 0;
+    T0CONbits.T0PS1 = 0;
+    T0CONbits.T0PS2 = 0;
     
+    T0CONbits.T08BIT = 1;
+    T0CONbits.T0SE = 0;
     
-    
-    /* tiimer configuration
-    
-    
-    T0CONbits.TMR0ON = 1; // enable timer 0
-    T0CONbits.T08BIT = 1; //8 bit timer
-    T0CONbits.T0CS = 0; //internal clock
-    T0CONbits.PSA = 0; //internal clock
-    T0CONbits.T0PS2 = 1; //prescale setup 1:256
-    T0CONbits.T0PS1 = 1; //prescale setup 1:256
-    T0CONbits.T0PS0 = 1; //prescale setup 1:256
-   
     INTCONbits.TMR0IE = 1;               // Enable interrupt on TMR0 overflow
-    INTCON2bits.TMR0IP = 0;               // low priority interrupt on timer 0
-    INTCONbits.GIEL = 1;    //enable low priority interrupts
+ 
+    INTCONbits.TMR0IF = 0;              //clear interrupt flag
+    INTCONbits.GIE = 1;   
     
+    TRISD7 = 0; // RD7 to RD0 set to output for led.
+    TRISD6 = 0;
+    TRISD5 = 0;
+    TRISD4 = 0;
+    TRISD3 = 0;
+    TRISD2 = 0;
+    TRISD1 = 0;
+    TRISD0 = 0; // END LEDS
+    
+    TRISB0 = 0;
+    
+    TRISB1 = 0;
+    TRISB2 = 0;
+    TRISB3 = 0;
+    TRISB4 = 0;
+    
+    PORTBbits.RB1 = 1;  // motores 1
+    PORTBbits.RB2 = 0;  // motores 1
+    
+    PORTBbits.RB3 = 0; // motores 2
+    PORTBbits.RB4 = 1; // motores 2
+    
+    
+    
+    while(1)
+    {
+    }
 
-    */
-    
-    RCONbits.IPEN = 1;    // enable interrupt priority
-    
-    /*global interrupt enable*/
-    INTCONbits.GIE = 1;    //enable all interrupts
-    INTCONbits.INT0IE = 1;    // enable int0 
-
-    INTCON2bits.INTEDG0 = 0;  // falling edge trigger the int0
-    
-    LATD4 = 0;
-    LATD0 = 1;
-    /*needs workarround*/
-    __delay_ms(10);
-
-    
     return (EXIT_SUCCESS);
 }
 
+int count = 0;
 
-void interrupt ISR(void){
+void interrupt tc_int(void){
     
-    /*IO interrupt*/
-    /*int 0 is aways high priority*/
-    if(INTCONbits.INT0F){
-        INTCONbits.INT0F = 0;
-        LATD4 = !LATD4;
+    /* timer interrupt */
+ 
+    if(INTCONbits.TMR0IF && INTCONbits.TMR0IE) // if timer flag is set & interrupt enabled
+    {                                     
+        INTCONbits.TMR0IF = 0;                  // clear the interrupt flag 
+        
+        if(count == 7)
+        {
+            PORTBbits.RB0 = 1;             // toggle a bit to say we're alive
+        }
+        
+        if(count == 20)
+        {
+            PORTBbits.RB0 = 0;             // toggle a bit to say we're alive
+            count = 0;
+        }
+        
+        count = (count + 1);
     }
 }
-
-void interrupt low_priority lowISR(){
-
-    /*low priority interrupt write to timer 0*/
-    
-}
-

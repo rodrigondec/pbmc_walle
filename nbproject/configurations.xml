@@ -14,7 +14,9 @@
                    projectFiles="true">
       <itemPath>Interrupts.c</itemPath>
       <itemPath>ledblink18f.c</itemPath>
-      <itemPath>main.c</itemPath>
+      <itemPath>/home/rodrigo/Documents/Prog/walle/main.c</itemPath>
+      <itemPath>/home/rodrigo/Documents/Prog/walle/PWMcomTimer.c</itemPath>
+      <itemPath>/home/rodrigo/Documents/Prog/walle/PWMcomTimerV1.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -22,6 +24,10 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>/home/rodrigo/Downloads</Elem>
+    <Elem>/home/rodrigo/Documents/Prog/walle</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">
@@ -57,6 +63,14 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="/home/rodrigo/Documents/Prog/walle/PWMcomTimer.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="/home/rodrigo/Documents/Prog/walle/PWMcomTimerV1.c"
+            ex="true"
+            overriding="false">
+      </item>
       <HI-TECH-COMP>
         <property key="asmlist" value="true"/>
         <property key="define-macros" value=""/>
@@ -122,7 +136,7 @@
         <property key="opt-xc8-linker-serial" value=""/>
         <property key="program-the-device-with-default-config-words" value="true"/>
       </HI-TECH-LINK>
-      <item path="Interrupts.c" ex="false" overriding="false">
+      <item path="Interrupts.c" ex="true" overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
         <HI-TECH-LINK>
@@ -193,8 +207,6 @@
         </HI-TECH-LINK>
         <XC8-config-global>
         </XC8-config-global>
-      </item>
-      <item path="main.c" ex="true" overriding="false">
       </item>
     </conf>
   </confs>
