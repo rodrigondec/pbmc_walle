@@ -143,7 +143,7 @@ int main(int argc, char** argv)
     PORTBbits.RB4 = 1; // motores 2
     
     while(1){
-        if(PORTCbits.RC5 == 1){
+        if(PORTCbits.RC5 == 1 && PORTCbits.RC5 == 0){ // POR QUE ELE ENTRA AQUI SEMPRE INDEPENDENTE DO QUE ESTIVER NA PORTA?????
             velocidade++;
             velocidade = velocidade%3;
             if(velocidade == 0){
