@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
 
     TRISB0 = 1; /*input mode on RB0*/
     TRISD4 = 0;          
-    TRISD0 = 0;
+//    TRISD0 = 0;
     
     
     
