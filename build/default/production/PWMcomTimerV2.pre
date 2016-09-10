@@ -1,5 +1,5 @@
 
-# 1 "/home/rodrigo/Documents/Prog/walle/PWMcomTimerV1.c"
+# 1 "PWMcomTimerV2.c"
 
 # 4 "/opt/microchip/xc8/v1.38/include/__size_t.h"
 typedef unsigned size_t;
@@ -4314,7 +4314,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 extern __nonreentrant void _delay3(unsigned char);
 
 
-# 19 "/home/rodrigo/Documents/Prog/walle/PWMcomTimerV1.c"
+# 19 "PWMcomTimerV2.c"
 #pragma config FOSC = INTIO67
 #pragma config FCMEN = OFF
 #pragma config IESO = OFF
@@ -4370,10 +4370,50 @@ extern __nonreentrant void _delay3(unsigned char);
 
 #pragma config EBTRB = OFF
 
-# 92
+# 88
 enum Direcao{ frente, tras, esquerda, direita };
 
-int count = 0, on = 0;
+int off_duty = 1;
+int velocidade = 0;
+int max_cicle = 20;
+int count = 0;
+
+void setup()
+{
+
+T0CONbits.TMR0ON = 0;
+T0CONbits.T0CS = 0;
+T0CONbits.PSA = 0;
+T0CONbits.T0PS0 = 0;
+T0CONbits.T0PS1 = 0;
+T0CONbits.T0PS2 = 0;
+T0CONbits.T08BIT = 1;
+T0CONbits.T0SE = 0;
+
+INTCONbits.TMR0IE = 1;
+INTCONbits.TMR0IF = 0;
+INTCONbits.GIE = 1;
+
+TRISD7 = 0;
+TRISD6 = 0;
+TRISD5 = 0;
+TRISD4 = 0;
+TRISD3 = 0;
+TRISD2 = 0;
+TRISD1 = 0;
+TRISD0 = 0;
+
+TRISC5 = 1;
+
+TRISC6 = 0;
+
+TRISB2 = 0;
+TRISB3 = 0;
+
+TRISB1 = 0;
+TRISC7 = 0;
+}
+
 
 
 void delayX(int n)
@@ -4381,7 +4421,6 @@ void delayX(int n)
 for(int i = 0; i < n; i++)
 _delay((unsigned long)((1)*(16000000/4000.0)));
 }
-
 
 
 
@@ -4394,42 +4433,38 @@ T0CONbits.TMR0ON = 1;
 switch(velocidade)
 {
 case 1:
-on = 15;
+off_duty = 15;
 LATD0 = 1;
 LATD1 = 0;
-LATD2 = 0;
 break;
 
 case 2:
-on = 7;
+off_duty = 7;
 LATD0 = 0;
 LATD1 = 1;
-LATD2 = 0;
 break;
 
 case 3:
-on = 1;
+off_duty = 1;
 LATD0 = 1;
 LATD1 = 1;
-LATD2 = 0;
 break;
 
 default:
-on = 1;
+off_duty = 1;
 LATD0 = 1;
-LATD1 = 0;
-LATD2 = 0;
+LATD1 = 1;
 break;
 }
 }
 else
 {
-PORTBbits.RB0 = 0;
+PORTCbits.RC7 = 0;
 T0CONbits.TMR0ON = 0;
 INTCONbits.TMR0IF = 0;
 LATD0 = 0;
 LATD1 = 0;
-LATD2 = 1;
+LATD2 = 0;
 }
 }
 
@@ -4442,8 +4477,8 @@ case frente:
 PORTBbits.RB2 = 1;
 PORTBbits.RB3 = 0;
 
-PORTDbits.RD5 = 1;
-PORTDbits.RD6 = 0;
+PORTBbits.RB1 = 1;
+PORTCbits.RC7 = 0;
 
 LATD4 = 0;
 LATD5 = 0;
@@ -4495,45 +4530,13 @@ break;
 }
 }
 
-void setup()
-{
-
-T0CONbits.T0CS = 0;
-T0CONbits.PSA = 0;
-T0CONbits.T0PS0 = 0;
-T0CONbits.T0PS1 = 0;
-T0CONbits.T0PS2 = 0;
-T0CONbits.T08BIT = 1;
-T0CONbits.T0SE = 0;
-
-INTCONbits.TMR0IE = 1;
-INTCONbits.TMR0IF = 0;
-INTCONbits.GIE = 1;
-
-TRISD7 = 0;
-TRISD6 = 0;
-TRISD5 = 0;
-TRISD4 = 0;
-TRISD3 = 0;
-TRISD2 = 0;
-TRISD1 = 0;
-TRISD0 = 0;
-
-TRISD0 = 0;
-TRISB0 = 0;
-
-TRISB2 = 0;
-TRISB3 = 0;
-
-TRISB1 = 0;
-TRISC7 = 0;
-}
-
 int main(int argc, char** argv)
 {
 setup();
 
 while(1)
+{
+if(PORTCbits.RC5 == 0)
 {
 Direction(frente);
 SetPWM(1,1);
@@ -4543,30 +4546,30 @@ SetPWM(0,3);
 delayX(50);
 
 Direction(tras);
-SetPWM(1,3);
+SetPWM(1,2);
 delayX(150);
 
 SetPWM(0,3);
 delayX(50);
 
 Direction(esquerda);
-SetPWM(1,1);
+SetPWM(1,3);
 delayX(100);
 
 SetPWM(0,3);
 delayX(50);
 
 Direction(direita);
-SetPWM(1,3);
+SetPWM(1,1);
 delayX(100);
 
 SetPWM(0,3);
 delayX(50);
 }
+}
 
 return (0);
 }
-
 
 void interrupt tc_int(void){
 
@@ -4576,20 +4579,19 @@ if(INTCONbits.TMR0IF && INTCONbits.TMR0IE)
 {
 INTCONbits.TMR0IF = 0;
 
-if(count == on)
+if(count == off_duty)
 {
-PORTBbits.RB0 = 1;
-LATD3 = 1;
-
+PORTCbits.RC6 = 1;
+LATD2 = 1;
 }
 
-if(count == 20)
+if(count == max_cicle)
 {
-PORTBbits.RB0 = 0;
-LATD3 = 0;
-count = 0;
+PORTCbits.RC6 = 0;
+LATD2 = 0;
 }
 
-count = (count + 1);
+count = count%max_cicle;
+count++;
 }
 }

@@ -76,7 +76,7 @@
         </XC8-config-global>
       </item>
       <item path="/home/rodrigo/Documents/Prog/walle/PWMcomTimerV1.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <HI-TECH-COMP>
         </HI-TECH-COMP>
@@ -210,8 +210,6 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </PICkit3PlatformTool>
-      <item path="PWMcomTimerV2.c" ex="true" overriding="false">
-      </item>
       <item path="PWMcomTimerV3.c" ex="true" overriding="false">
       </item>
       <XC8-config-global>
