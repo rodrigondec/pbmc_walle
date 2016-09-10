@@ -85,12 +85,18 @@
 #define led6 LATD6
 #define led7 LATD7
 
+#define motores1a RB2
+#define motores1b RB3
+
+#define motores2a RB1
+#define motores2b RC7
+
 enum Direcao{ frente, tras, esquerda, direita };
 
-int off_duty = 1;
-int velocidade = 0;
-int max_cicle = 20;
-int count = 0;
+int off_duty = 1; // Tempo de off duty do período
+int velocidade = 1; // Estado velocidade
+int max_cicle = 20; // Tempo máximo do período
+int count = 0; // Contador para o pwm
 
 void setup()    // Configura as InterrupÃ§Ãµes, pinos de entrada e saÃ­da, timer...
 {
@@ -171,7 +177,7 @@ void SetPWM(int on, int velocidade)
             break;
             
             default:
-                off_duty = 1;
+                off_duty = 1; // velocidade 3 tem o off duty de 1 e on duty de 19
                 led0 = 1;
                 led1 = 1;
             break;
@@ -179,13 +185,13 @@ void SetPWM(int on, int velocidade)
     }
     else
     {
-        PORTCbits.RC7 = 0;                      // zera pino PWM
-        T0CONbits.TMR0ON = 0;                   // disable Timer0
-        INTCONbits.TMR0IF = 0;                  // clear the interrupt flag 
-        RC6 = 0;
-        led0 = 0;
-        led1 = 0;
-        led2 = 0; 								// desliga led indicador de PWM
+        RC6 = 0; // zera pino PWM
+        T0CONbits.TMR0ON = 0; // disable Timer0
+        INTCONbits.TMR0IF = 0; // clear the interrupt flag 
+        
+        led0 = 0; // desliga led indicador de velocidade
+        led1 = 0; // desliga led indicador de velocidade
+        led2 = 0; // desliga led indicador de PWM
     }
 }
 
@@ -195,11 +201,11 @@ void Direction(int dir)
     switch(dir)
     {
         case frente:
-            PORTBbits.RB2 = 1;  // motores 1
-            PORTBbits.RB3 = 0;  // motores 1
+            motores1a = 1;  // motores 1
+            motores1b = 0;  // motores 1
     
-            PORTBbits.RB1 = 1; // motores 2
-            PORTCbits.RC7 = 0; // motores 2
+            motores2a = 1; // motores 2
+            motores2b = 0; // motores 2
             
             led4 = 0;
             led5 = 0;
@@ -209,11 +215,11 @@ void Direction(int dir)
         
         
         case tras:
-            PORTBbits.RB2 = 0;  // motores 1
-            PORTBbits.RB3 = 1;  // motores 1
+            motores1a = 0;  // motores 1
+            motores1b = 1;  // motores 1
     
-            PORTBbits.RB1 = 0; // motores 2
-            PORTCbits.RC7 = 1; // motores 2
+            motores2a = 0; // motores 2
+            motores2b = 1; // motores 2
             
             led4 = 0;
             led5 = 0;
@@ -223,11 +229,11 @@ void Direction(int dir)
         
         
         case esquerda:
-            PORTBbits.RB2 = 1;  // motores 1
-            PORTBbits.RB3 = 0;  // motores 1
+            motores1a = 1;  // motores 1
+            motores1b = 0;  // motores 1
     
-            PORTBbits.RB1 = 0; // motores 2
-            PORTCbits.RC7 = 1; // motores 2
+            motores2a = 0; // motores 2
+            motores2b = 1; // motores 2
             
             led4 = 1;
             led5 = 0;
@@ -237,11 +243,11 @@ void Direction(int dir)
         
         
         case direita:
-            PORTBbits.RB2 = 0;  // motores 1
-            PORTBbits.RB3 = 1;  // motores 1
+            motores1a = 0;  // motores 1
+            motores1b = 1;  // motores 1
     
-            PORTBbits.RB1 = 1; // motores 2
-            PORTCbits.RC7 = 0; // motores 2
+            motores2a = 1; // motores 2
+            motores2b = 0; // motores 2
             
             led4 = 0;
             led5 = 1;
@@ -257,7 +263,7 @@ int main(int argc, char** argv)
         
     while(1)
 	{
-        if(PORTCbits.RC5 == 0)
+        if(RC5 == 0)
         {
             Direction(frente);  // Seleciona a direção dos motores
             SetPWM(1,1);        // Liga PWM na velocidade 3
@@ -302,13 +308,13 @@ void interrupt tc_int(void){
         
         if(count == off_duty)
         {
-            PORTCbits.RC6 = 1;
+            RC6 = 1;
             led2 = 1; // toggle a bit to say we're alive
         }
         
         if(count == max_cicle)
         {
-            PORTCbits.RC6 = 0;
+            RC6 = 0;
             led2 = 0; // toggle a bit to say we're alive
         }
         
