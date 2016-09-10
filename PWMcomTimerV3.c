@@ -85,20 +85,30 @@
 #define led6 LATD6
 #define led7 LATD7
 
+#define motores1a RC1
+#define motores1b RC2
+
+#define motores2a RC4
+#define motores2b RC5
+
+#define pwm RC7
+
+#define bt_velo PORTCbits.RC6
+
 enum Direcao{ frente, tras, esquerda, direita };
 
-// Variaveis referentes ao PWM
-int off_duty = 1;
-int max_cicle = 20;
-int count = 0;
+/* Variaveis referentes ao PWM */
+int off_duty = 1;   // Tempo de off duty do per�odo
+int max_cicle = 20; // Tempo m�ximo do per�odo
+int count = 0;      // Contador de ciclo para o pwm
 
-// Variaveis de Controle
-int modo = 0;       // Controla o modo em que está se movimentando
-int velocidade = 1; // Controla a velocidade em que está se movimentando
+/* Variaveis de Controle  */
+int modo = 1;       // Controla o modo em que esta se movimentando
+int velocidade = 1; // Controla a velocidade em que esta se movimentando
 int direcao = 0;
 int start = 0;
 
-void setup()    // Configura as Interrupções, pinos de entrada e saída, timer...
+void setup()    // Configura as Interrup�oes, pinos de entrada/saida, timer...
 {
     // timer configuration
     T0CONbits.TMR0ON = 0;           // disable Timer0
@@ -124,37 +134,47 @@ void setup()    // Configura as Interrupções, pinos de entrada e saída, timer
     INTCON2bits.INTEDG0 = 0;  // falling edge trigger the int0
     INTCONbits.INT0IF = 0;    // clear interrupt flag 
     
-    INTCON3bits.INT1IE = 1;    // enable int0 
-    INTCON2bits.INTEDG1 = 0;  // falling edge trigger the int0
+    INTCON3bits.INT1IE = 1;    // enable int1 
+    INTCON2bits.INTEDG1 = 0;  // falling edge trigger the int1
     INTCON3bits.INT1IF = 0;    // clear interrupt flag 
     
-    INTCON3bits.INT2IE = 1;    // enable int0 
-    INTCON2bits.INTEDG2 = 0;  // falling edge trigger the int0
+    INTCON3bits.INT2IE = 1;    // enable int2 
+    INTCON2bits.INTEDG2 = 0;  // falling edge trigger the int2
     INTCON3bits.INT2IF = 0;    // clear interrupt flag 
     
-	TRISD7 = 0; // RD7 to RD0 set to output for led.
-    TRISD6 = 0;
-    TRISD5 = 0;
-    TRISD4 = 0;
-    TRISD3 = 0;
-    TRISD2 = 0;
-    TRISD1 = 0;
-    TRISD0 = 0; // END LEDS
+	/* RD0 to RD7 set to output for led */
+    TRISD0 = 0; // led indicadora de velocidade juntamente com led1 representando os valores binarios 01 ou 10 ou 11 (velocidades 1, 2 e 3)
+	TRISD1 = 0; // led indicadora de velocidade juntamente com led0 representando os valores binarios 01 ou 10 ou 11 (velocidades 1, 2 e 3)
     
-    TRISC5 = 1; // input botao velocidade
+    TRISD2 = 0; // led indicadora da potencia do PWM
+    
+    TRISD3 = 0; // led sem uso
+    
+    TRISD4 = 0; // led indicadora do modo curva para esquerda
+    TRISD5 = 0; // led indicadora do modo curva para direita
+    
+    TRISD6 = 0; // led indicadora do modo andar para frente
+    TRISD7 = 0; // led indicadora do modo andar para tras
+    /* END LEDS */
+    
+    TRISC6 = 1; // input botao velocidade
     
     TRISB0 = 1; // input botao modo
     
     TRISB1 = 1; // input botao direcao
     TRISB2 = 1; // input botao start
     
-    TRISC7 = 0; // Saída do PWM
+    TRISC7 = 0; // Saida do PWM
     
-    TRISB3 = 0; // motores 1
-    TRISB4 = 0; // motores 1
+    /* Motores 1 */
+    TRISC1 = 0; // lado 'a' dos motores
+    TRISC2 = 0; // lado 'b' dos motores
+    /* END Motores 1 */
     
-    TRISC3 = 0; // motores 2
-    TRISC4 = 0; // motores 2
+    /* Motores 2 */
+    TRISC4 = 0; // lado 'a' dos motores
+    TRISC5 = 0; // lado 'b' dos motores
+    /* END Motores 2 */
 }
 
 
@@ -176,27 +196,39 @@ void SetPWM(int status, int veloc)
         switch(veloc)
         {
             case 1:
-                off_duty = 15;
+                off_duty = 15; // velocidade 1 tem o off duty de 15 e on duty de 5
+                led0 = 1;
+                led1 = 0;
             break;
         
             case 2:
-                off_duty = 7;
+                off_duty = 8; // velocidade 2 tem o off duty de 8 e on duty de 12
+                led0 = 0;
+                led1 = 1;
             break;
         
             case 3:
-                off_duty = 1;
+                off_duty = 1; // velocidade 3 tem o off duty de 1 e on duty de 19
+                led0 = 1;
+                led1 = 1;
             break;
             
             default:
-                off_duty = 1;
+                off_duty = 1; // velocidade 3 tem o off duty de 1 e on duty de 19
+                led0 = 1;
+                led1 = 1;
             break;
         }
     }
     else
     {
-        PORTCbits.RC7 = 0;                      // zera pino PWM
-        T0CONbits.TMR0ON = 0;                   // disable Timer0
-        INTCONbits.TMR0IF = 0;                  // clear the interrupt flag 
+        pwm = 0; // zera pino PWM
+        T0CONbits.TMR0ON = 0; // disable Timer0
+        INTCONbits.TMR0IF = 0; // clear the interrupt flag 
+        
+        led0 = 0; // desliga led indicador de velocidade
+        led1 = 0; // desliga led indicador de velocidade
+        led2 = 0; // desliga led indicador de PWM 
     }
 }
 
@@ -206,47 +238,67 @@ void Direction(int dir)
     switch(dir)
     {
         case frente:
-            PORTBbits.RB3 = 1;  // motores 1
-            PORTBbits.RB4 = 0;  // motores 1
+            motores1a = 1;
+            motores1b = 0;
     
-            PORTCbits.RC3 = 1; // motores 2
-            PORTCbits.RC4 = 0; // motores 2
+            motores2a = 1;
+            motores2b = 0;
+            
+            led4 = 0;
+            led5 = 0;
+            led6 = 1;
+            led7 = 0;
         break;
         
         
         case tras:
-            PORTBbits.RB3 = 0;  // motores 1
-            PORTBbits.RB4 = 1;  // motores 1
+            motores1a = 0;
+            motores1b = 1;
     
-            PORTCbits.RC3 = 0; // motores 2
-            PORTCbits.RC4 = 1; // motores 2
+            motores2a = 0;
+            motores2b = 1;
+            
+            led4 = 0;
+            led5 = 0;
+            led6 = 0;
+            led7 = 1;
         break;
         
         
         case esquerda:
-            PORTBbits.RB3 = 1;  // motores 1
-            PORTBbits.RB4 = 0;  // motores 1
+            motores1a = 1;
+            motores1b = 0;
     
-            PORTCbits.RC3 = 0; // motores 2
-            PORTCbits.RC4 = 1; // motores 2
+            motores2a = 0;
+            motores2b = 1;
+            
+            led4 = 1;
+            led5 = 0;
+            led6 = 0;
+            led7 = 0;
         break;
         
         
         case direita:
-            PORTBbits.RB3 = 0;  // motores 1
-            PORTBbits.RB4 = 1;  // motores 1
+            motores1a = 0;
+            motores1b = 1;
     
-            PORTCbits.RC3 = 1; // motores 2
-            PORTCbits.RC4 = 0; // motores 2
+            motores2a = 1;
+            motores2b = 0;
+            
+            led4 = 0;
+            led5 = 1;
+            led6 = 0;
+            led7 = 0;
         break;
     }
 }
 
 // @Param M : Modo que vai ser executado (1, 2, ou 3)
 // @Param dir : Direcao em que irá se movimentar (modo 1: 0 frente, 1 tras; modo 2/3: 0 direita, 1 esquerda)
-void ativaModo(int M, int dir)   // Função responsavel por gerar o comportamento de cada modo
+void ativaModo(int Modo, int dir)   // Função responsavel por gerar o comportamento de cada modo
 {
-    switch(M)
+    switch(Modo)
     {
         case 1:
             if(dir == 0)
@@ -332,44 +384,18 @@ int main(int argc, char** argv)
             
     while(1)
 	{
-        if(PORTCbits.RC5 == 1)          // Pino do botao que controla a velocidade
+        if(bt_velo == 1)          // Pino do botao que controla a velocidade
         {
             delayX(20); 
             
-            if(velocidade != 3)
-                velocidade++;
-            else
-                velocidade = 1;
-            
-            switch(velocidade)            // Liga os leds correspondentes à velocidade
-            {            
-                case 1:
-                    led3 = 1;
-                    led4 = 0;
-                    led5 = 0;
-                break;
-            
-            
-                case 2:
-                    led3 = 1;
-                    led4 = 1;
-                    led5 = 0;
-                break;
-            
-            
-                case 3:
-                    led3 = 1;
-                    led4 = 1;
-                    led5 = 1;
-                break;
-            }
+            velocidade++;
+            velocidade = (velocidade%3)+1;
         }
         
         if(start != 0)
         {
             ativaModo(modo, direcao);
             start = 0;
-            led7 = 0;
         }
     }
 
@@ -387,14 +413,14 @@ void interrupt tc_int(void)
         
         if(count == off_duty)
         {
-            PORTCbits.RC7 = 1;
-            //led4 = 1; // toggle a bit to say we're alive
+            pwm = 1;
+            led2 = 1; // toggle a bit to say we're alive
         }
         
         if(count == max_cicle)
         {
-            PORTCbits.RC7 = 0;
-            //led4 = 0; // toggle a bit to say we're alive
+            pwm = 0;
+            led2 = 0; // toggle a bit to say we're alive
         }
         
         count = count%max_cicle;
@@ -405,39 +431,37 @@ void interrupt tc_int(void)
     {
         SetPWM(0,1);            // Desliga o PWM caso ainda esteja ligado
         
-        if(modo != 3)           
-            modo++;
-        else
-            modo = 0;
+        modo++;
+        modo = (modo%3)+1;
         
-        switch(modo)            // Liga os leds correspondentes ao modo
-        {
-            case 0:
-                led0 = 0;
-                led1 = 0;
-                led2 = 0;
-            break;
-            
-            case 1:
-                led0 = 1;
-                led1 = 0;
-                led2 = 0;
-            break;
-            
-            
-            case 2:
-                led0 = 1;
-                led1 = 1;
-                led2 = 0;
-            break;
-            
-            
-            case 3:
-                led0 = 1;
-                led1 = 1;
-                led2 = 1;
-            break;
-        }
+//        switch(modo)            // Liga os leds correspondentes ao modo
+//        {
+//            case 0:
+//                led0 = 0;
+//                led1 = 0;
+//                led2 = 0;
+//            break;
+//            
+//            case 1:
+//                led0 = 1;
+//                led1 = 0;
+//                led2 = 0;
+//            break;
+//            
+//            
+//            case 2:
+//                led0 = 1;
+//                led1 = 1;
+//                led2 = 0;
+//            break;
+//            
+//            
+//            case 3:
+//                led0 = 1;
+//                led1 = 1;
+//                led2 = 1;
+//            break;
+//        }
         
         INTCONbits.INT0F = 0;   // Limpa flag da Interrupção0
     }
@@ -445,14 +469,14 @@ void interrupt tc_int(void)
     
     if(INTCON3bits.INT1F)       // Interrupção1 entrada RB1
     {
-        led6 = !led6;           // Liga um led correspondente a direção
+//        led6 = !led6;           // Liga um led correspondente a direção
         direcao = !direcao;     // Inverte a direção
         INTCON3bits.INT1F = 0;  // Limpa flag da Interrupção1
     }
     
     if(INTCON3bits.INT2F)       // Interrupção2 entrada RB2
     {
-       led7 = 1;                // Liga um led para informar inicio do modo
+//       led7 = 1;                // Liga um led para informar inicio do modo
        start = 1;               // Ativa a flag start para iniciar o modo
        INTCON3bits.INT2F = 0;   // Limpa flag da Interrupção2
     }

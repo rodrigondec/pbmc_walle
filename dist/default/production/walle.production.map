@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/opt/microchip/xc8/v1.38/dat/en_msgs.txt -cs \
   -h+dist/default/production/walle.production.sym \
   --cmf=dist/default/production/walle.production.cmf -z -Q18F45K20 \
-  -o/tmp/xcXFconxI -Mdist/default/production/walle.production.map -E1 \
+  -o/tmp/xcXxKxYXI -Mdist/default/production/walle.production.map -E1 \
   -ver=XC8 -ASTACK=060h-05ffh -pstack=STACK -ACODE=00h-07FFFh \
   -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
   -AMEDIUMCONST=0600h-07FFFh -ACOMRAM=01h-05Fh -AABS1=00h-05FFh \
@@ -21,7 +21,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcX0SKa7N.obj dist/default/production/walle.production.obj 
+  /tmp/xcXhqpYlj.obj dist/default/production/walle.production.obj 
 
 Object code version is 3.11
 
@@ -33,41 +33,47 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcX0SKa7N.obj
-                end_init                             CA       CA        4        4       0
+/tmp/xcXhqpYlj.obj
+                end_init                            12E      12E        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/production/walle.production.obj
-                intcode                               8        8       C2        4       0
-                temp                                 28       28        1        1       1
-                text6                               2F6      2F6       70        4       0
-                text4                               280      280       76        4       0
-                text3                               208      208       78        4       0
-                text2                               366      366       36        4       0
-                text1                               39C      39C       34        4       0
-                text0                                CE       CE      13A        4       0
-                cstackCOMRAM                          1        1       1F        1       1
-                dataCOMRAM                           20       20        6        1       1
-                bssCOMRAM                            26       26        2        1       1
-                cinit                               3D0      3D0       32        4       0
-                idataCOMRAM                         402      402        6        4       0
+                intcode                               8        8      126        4       0
+                temp                                 38       38        1        1       1
+                text9                               47A      47A       78        4       0
+                text8                               5D8      5D8       70        4       0
+                text6                               568      568       70        4       0
+                text5                               4F2      4F2       76        4       0
+                text4                               402      402       78        4       0
+                text3                               732      732       36        4       0
+                text2                               132      132      2D0        4       0
+                text1                               6A8      6A8       50        4       0
+                text0                               648      648       60        4       0
+                cstackCOMRAM                          1        1       29        1       1
+                dataCOMRAM                           2A       2A        8        1       1
+                bssCOMRAM                            32       32        6        1       1
+                cinit                               6F8      6F8       3A        4       0
+                idataCOMRAM                         768      768        8        4       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
-                end_init                             CA       CA        4         0
-                intcode                               8        8       C2         0
+                end_init                            12E      12E        4         0
+                intcode                               8        8      126         0
                 reset_vec                             0        0        4         0
-                text6                               2F6      2F6       70         0
-                text4                               280      280       76         0
-                text3                               208      208       78         0
-                text2                               366      366       36         0
-                text1                               39C      39C       34         0
-                text0                                CE       CE      13A         0
-                cinit                               3D0      3D0       32         0
-                idataCOMRAM                         402      402        6         0
+                text9                               47A      47A       78         0
+                text8                               5D8      5D8       70         0
+                text6                               568      568       70         0
+                text5                               4F2      4F2       76         0
+                text4                               402      402       78         0
+                text3                               732      732       36         0
+                text2                               132      132      2D0         0
+                text1                               6A8      6A8       50         0
+                text0                               648      648       60         0
+                cinit                               6F8      6F8       3A         0
+                idataCOMRAM                         768      768        8         0
 
         CLASS   CONST          
 
@@ -76,10 +82,10 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                temp                                 28       28        1         1
-                cstackCOMRAM                          1        1       1F         1
-                dataCOMRAM                           20       20        6         1
-                bssCOMRAM                            26       26        2         1
+                temp                                 38       38        1         1
+                cstackCOMRAM                          1        1       29         1
+                dataCOMRAM                           2A       2A        8         1
+                bssCOMRAM                            32       32        6         1
 
         CLASS   ABS1           
 
@@ -116,8 +122,8 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                cstackCOMRAM                   000001  000028  000029         1       1  COMRAM  
-                intcode                        000008  000400  000408         4       0  CODE    
+                cstackCOMRAM                   000001  000038  000039         1       1  COMRAM  
+                intcode                        000008  000768  000770         4       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -131,45 +137,53 @@ UNUSED ADDRESS RANGES
         BANK3            000300-0003FF              100
         BANK4            000400-0004FF              100
         BANK5            000500-0005FF              100
-        BIGRAM           000029-0005FF              5D7
+        BIGRAM           000039-0005FF              5C7
         CODE             000004-000007                4
-                         000408-007FFF             7BF8
-        COMRAM           000029-00005F               37
+                         000770-007FFF             7890
+        COMRAM           000039-00005F               27
         CONST            000004-000007                4
-                         000408-007FFF             7BF8
+                         000770-007FFF             7890
         EEDATA           F00000-F000FF              100
-        MEDIUMCONST      000600-007FFF             7A00
+        MEDIUMCONST      000770-007FFF             7890
         RAM              000060-0005FF              100
         SFR              000F60-000FFF               A0
-        SMALLCONST       000600-007FFF              100
+        SMALLCONST       000770-007FFF              100
         STACK            000060-0005FF              5A0
 
                                   Symbol Table
 
-?___awmod                cstackCOMRAM 000001
+?___awmod                cstackCOMRAM 000015
+?i2___awmod              cstackCOMRAM 000001
 Direction@dir            cstackCOMRAM 000015
-SetPWM@on                cstackCOMRAM 000015
-SetPWM@velocidade        cstackCOMRAM 000017
-_Direction               text4        000280
+SetPWM@status            cstackCOMRAM 000015
+SetPWM@veloc             cstackCOMRAM 000017
+_Direction               text5        0004F2
+_INTCON2bits             (abs)        000FF1
+_INTCON3bits             (abs)        000FF0
 _INTCONbits              (abs)        000FF2
 _LATD0                   (abs)        007C60
 _LATD1                   (abs)        007C61
 _LATD2                   (abs)        007C62
+_LATD3                   (abs)        007C63
 _LATD4                   (abs)        007C64
 _LATD5                   (abs)        007C65
 _LATD6                   (abs)        007C66
 _LATD7                   (abs)        007C67
-_RB1                     (abs)        007C09
-_RB2                     (abs)        007C0A
-_RB3                     (abs)        007C0B
+_PORTCbits               (abs)        000F82
+_RC1                     (abs)        007C11
+_RC2                     (abs)        007C12
+_RC4                     (abs)        007C14
 _RC5                     (abs)        007C15
-_RC6                     (abs)        007C16
 _RC7                     (abs)        007C17
-_SetPWM                  text3        000208
+_RCONbits                (abs)        000FD0
+_SetPWM                  text4        000402
 _T0CONbits               (abs)        000FD5
+_TRISB0                  (abs)        007C98
 _TRISB1                  (abs)        007C99
 _TRISB2                  (abs)        007C9A
-_TRISB3                  (abs)        007C9B
+_TRISC1                  (abs)        007CA1
+_TRISC2                  (abs)        007CA2
+_TRISC4                  (abs)        007CA4
 _TRISC5                  (abs)        007CA5
 _TRISC6                  (abs)        007CA6
 _TRISC7                  (abs)        007CA7
@@ -237,7 +251,7 @@ __HcstackCOMRAM          cstackCOMRAM 000000
 __Hdata                  data         000000
 __HdataCOMRAM            dataCOMRAM   000000
 __Heeprom_data           eeprom_data  000000
-__Hend_init              end_init     0000CE
+__Hend_init              end_init     000132
 __Hfarbss                farbss       000000
 __Hfardata               fardata      000000
 __Hibigdata              ibigdata     000000
@@ -245,10 +259,10 @@ __Hidata                 idata        000000
 __HidataCOMRAM           idataCOMRAM  000000
 __Hidloc                 idloc        200008
 __Hifardata              ifardata     000000
-__Hinit                  init         0000CA
-__Hintcode               intcode      0000CA
+__Hinit                  init         00012E
+__Hintcode               intcode      00012E
 __Hintcode_body          intcode_body 000000
-__Hintcodelo             intcodelo    0000CA
+__Hintcodelo             intcodelo    00012E
 __Hintentry              intentry     000000
 __Hintret                intret       000000
 __Hintsave_regs          intsave_regs 000000
@@ -258,7 +272,7 @@ __HnvFARRAM              nvFARRAM     000000
 __Hnvbit                 nvbit        000000
 __Hnvrram                nvrram       000000
 __Hparam                 rparam       000000
-__Hpowerup               powerup      0000CA
+__Hpowerup               powerup      00012E
 __Hram                   ram          000000
 __Hramtop                ramtop       000600
 __Hrbit                  rbit         000000
@@ -269,18 +283,21 @@ __Hrparam                rparam       000000
 __Hsfr                   sfr          000000
 __Hsmallconst            smallconst   000000
 __Hspace_0               (abs)        30000E
-__Hspace_1               (abs)        000029
+__Hspace_1               (abs)        000039
 __Hspace_2               (abs)        000000
 __Hstack                 stack        000000
 __Hstruct                struct       000000
-__Htemp                  temp         000029
+__Htemp                  temp         000039
 __Htext                  text         000000
 __Htext0                 text0        000000
 __Htext1                 text1        000000
 __Htext2                 text2        000000
 __Htext3                 text3        000000
 __Htext4                 text4        000000
+__Htext5                 text5        000000
 __Htext6                 text6        000000
+__Htext8                 text8        000000
+__Htext9                 text9        000000
 __LRAM                   (abs)        000001
 __Labs1                  abs1         000000
 __Lbank0                 bank0        000000
@@ -303,7 +320,7 @@ __LcstackCOMRAM          cstackCOMRAM 000000
 __Ldata                  data         000000
 __LdataCOMRAM            dataCOMRAM   000000
 __Leeprom_data           eeprom_data  000000
-__Lend_init              end_init     0000CA
+__Lend_init              end_init     00012E
 __Lfarbss                farbss       000000
 __Lfardata               fardata      000000
 __Libigdata              ibigdata     000000
@@ -311,10 +328,10 @@ __Lidata                 idata        000000
 __LidataCOMRAM           idataCOMRAM  000000
 __Lidloc                 idloc        200000
 __Lifardata              ifardata     000000
-__Linit                  init         0000CA
+__Linit                  init         00012E
 __Lintcode               intcode      000008
 __Lintcode_body          intcode_body 000000
-__Lintcodelo             intcodelo    0000CA
+__Lintcodelo             intcodelo    00012E
 __Lintentry              intentry     000000
 __Lintret                intret       000000
 __Lintsave_regs          intsave_regs 000000
@@ -324,7 +341,7 @@ __LnvFARRAM              nvFARRAM     000000
 __Lnvbit                 nvbit        000000
 __Lnvrram                nvrram       000000
 __Lparam                 rparam       000000
-__Lpowerup               powerup      0000CA
+__Lpowerup               powerup      00012E
 __Lram                   ram          000000
 __Lramtop                ramtop       000600
 __Lrbit                  rbit         000000
@@ -339,22 +356,25 @@ __Lspace_1               (abs)        000000
 __Lspace_2               (abs)        000000
 __Lstack                 stack        000000
 __Lstruct                struct       000000
-__Ltemp                  temp         000028
+__Ltemp                  temp         000038
 __Ltext                  text         000000
 __Ltext0                 text0        000000
 __Ltext1                 text1        000000
 __Ltext2                 text2        000000
 __Ltext3                 text3        000000
 __Ltext4                 text4        000000
+__Ltext5                 text5        000000
 __Ltext6                 text6        000000
+__Ltext8                 text8        000000
+__Ltext9                 text9        000000
 __S0                     (abs)        30000E
-__S1                     (abs)        000029
+__S1                     (abs)        000039
 __S2                     (abs)        000000
-___awmod                 text6        0002F6
-___awmod@counter         cstackCOMRAM 000005
-___awmod@dividend        cstackCOMRAM 000001
-___awmod@divisor         cstackCOMRAM 000003
-___awmod@sign            cstackCOMRAM 000006
+___awmod                 text6        000568
+___awmod@counter         cstackCOMRAM 000019
+___awmod@dividend        cstackCOMRAM 000015
+___awmod@divisor         cstackCOMRAM 000017
+___awmod@sign            cstackCOMRAM 00001A
 ___inthi_sp              stack        000000
 ___intlo_sp              stack        000000
 ___param_bank            (abs)        000010
@@ -362,72 +382,97 @@ ___rparam_used           (abs)        000001
 ___sp                    stack        000000
 __accesstop              (abs)        000060
 __activetblptr           (abs)        000002
-__end_of_Direction       text4        0002F6
-__end_of_SetPWM          text3        000280
-__end_of___awmod         text6        000366
-__end_of__initialization cinit        0003F4
-__end_of_delayX          text2        00039C
-__end_of_main            text0        000208
-__end_of_setup           text1        0003D0
-__end_of_tc_int          intcode      0000CA
-__initialization         cinit        0003D0
+__end_of_Direction       text5        000568
+__end_of_SetPWM          text4        00047A
+__end_of___awmod         text6        0005D8
+__end_of__initialization cinit        000724
+__end_of_ativaModo       text2        000402
+__end_of_delayX          text3        000768
+__end_of_main            text0        0006A8
+__end_of_setup           text1        0006F8
+__end_of_tc_int          intcode      00012E
+__end_ofi2_SetPWM        text9        0004F2
+__end_ofi2___awmod       text8        000648
+__initialization         cinit        0006F8
 __mediumconst            mediumconst  000000
-__pbssCOMRAM             bssCOMRAM    000026
-__pcinit                 cinit        0003D0
+__pbssCOMRAM             bssCOMRAM    000032
+__pcinit                 cinit        0006F8
 __pcstackCOMRAM          cstackCOMRAM 000001
-__pdataCOMRAM            dataCOMRAM   000020
-__pidataCOMRAM           idataCOMRAM  000402
+__pdataCOMRAM            dataCOMRAM   00002A
+__pidataCOMRAM           idataCOMRAM  000768
 __pintcode               intcode      000008
-__ptext0                 text0        0000CE
-__ptext1                 text1        00039C
-__ptext2                 text2        000366
-__ptext3                 text3        000208
-__ptext4                 text4        000280
-__ptext6                 text6        0002F6
+__ptext0                 text0        000648
+__ptext1                 text1        0006A8
+__ptext2                 text2        000132
+__ptext3                 text3        000732
+__ptext4                 text4        000402
+__ptext5                 text5        0004F2
+__ptext6                 text6        000568
+__ptext8                 text8        0005D8
+__ptext9                 text9        00047A
 __ramtop                 ramtop       000600
 __size_of_Direction      (abs)        000000
 __size_of_SetPWM         (abs)        000000
 __size_of___awmod        (abs)        000000
+__size_of_ativaModo      (abs)        000000
 __size_of_delayX         (abs)        000000
 __size_of_main           (abs)        000000
 __size_of_setup          (abs)        000000
 __size_of_tc_int         (abs)        000000
+__size_ofi2_SetPWM       (abs)        000000
+__size_ofi2___awmod      (abs)        000000
 __smallconst             smallconst   000000
-_count                   bssCOMRAM    000026
-_delayX                  text2        000366
-_main                    text0        0000CE
-_max_cicle               dataCOMRAM   000020
-_off_duty                dataCOMRAM   000022
-_setup                   text1        00039C
+_ativaModo               text2        000132
+_count                   bssCOMRAM    000032
+_delayX                  text3        000732
+_direcao                 bssCOMRAM    000034
+_main                    text0        000648
+_max_cicle               dataCOMRAM   00002A
+_modo                    dataCOMRAM   00002C
+_off_duty                dataCOMRAM   00002E
+_setup                   text1        0006A8
+_start                   bssCOMRAM    000036
 _tc_int                  intcode      000008
-_velocidade              dataCOMRAM   000024
-btemp                    temp         000028
+_velocidade              dataCOMRAM   000030
+ativaModo@Modo           cstackCOMRAM 00001B
+ativaModo@dir            cstackCOMRAM 00001D
+ativaModo@i              cstackCOMRAM 000021
+ativaModo@i_434          cstackCOMRAM 000023
+btemp                    temp         000038
 delayX@i                 cstackCOMRAM 000018
 delayX@n                 cstackCOMRAM 000015
-end_of_initialization    cinit        0003F4
-int$flags                temp         000028
+end_of_initialization    cinit        000724
+i2SetPWM@status          cstackCOMRAM 000001
+i2SetPWM@veloc           cstackCOMRAM 000003
+i2_SetPWM                text9        00047A
+i2___awmod               text8        0005D8
+i2___awmod@counter       cstackCOMRAM 000005
+i2___awmod@dividend      cstackCOMRAM 000001
+i2___awmod@divisor       cstackCOMRAM 000003
+i2___awmod@sign          cstackCOMRAM 000006
+int$flags                temp         000038
 intlevel0                text         000000
 intlevel1                text         000000
 intlevel2                text         000000
 intlevel3                text         000000
 stackhi                  (abs)        0005FF
 stacklo                  (abs)        000060
-start                    init         0000CA
-start_initialization     cinit        0003D0
+start                    init         00012E
+start_initialization     cinit        0006F8
 
 
 FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 260 in file "PWMcomTimerV2.c"
+		line 380 in file "PWMcomTimerV3.c"
  Parameters:    Size  Location     Type
-  argc            2   26[COMRAM] int 
-  argv            3   28[COMRAM] PTR PTR unsigned char 
+  argc            2   36[COMRAM] int 
+  argv            3   38[COMRAM] PTR PTR unsigned char 
  Auto vars:     Size  Location     Type
 		None
  Return value:  Size  Location     Type
-                  2   26[COMRAM] int 
+                  2   36[COMRAM] int 
  Registers used:
 		wreg, status,2, status,0, cstack
  Tracked objects:
@@ -440,10 +485,10 @@ FUNCTION INFORMATION:
       Temps:          0       0       0       0       0       0       0
       Totals:         5       0       0       0       0       0       0
 Total ram usage:        5 bytes
- Hardware stack levels required when called:    3
+ Hardware stack levels required when called:    4
  This function calls:
-		_Direction
-		_SetPWM
+		___awmod
+		_ativaModo
 		_delayX
 		_setup
  This function is called by:
@@ -453,7 +498,7 @@ Total ram usage:        5 bytes
 
  *************** function _setup *****************
  Defined at:
-		line 101 in file "PWMcomTimerV2.c"
+		line 111 in file "PWMcomTimerV3.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -481,9 +526,43 @@ Total ram usage:        0 bytes
  This function uses a non-reentrant model
 
 
+ *************** function _ativaModo *****************
+ Defined at:
+		line 299 in file "PWMcomTimerV3.c"
+ Parameters:    Size  Location     Type
+  Modo            2   26[COMRAM] int 
+  dir             2   28[COMRAM] int 
+ Auto vars:     Size  Location     Type
+  i               2   34[COMRAM] int 
+  i               2   32[COMRAM] int 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+      Params:         4       0       0       0       0       0       0
+      Locals:         4       0       0       0       0       0       0
+      Temps:          2       0       0       0       0       0       0
+      Totals:        10       0       0       0       0       0       0
+Total ram usage:       10 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_Direction
+		_SetPWM
+		_delayX
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
  *************** function _delayX *****************
  Defined at:
-		line 145 in file "PWMcomTimerV2.c"
+		line 182 in file "PWMcomTimerV3.c"
  Parameters:    Size  Location     Type
   n               2   20[COMRAM] int 
  Auto vars:     Size  Location     Type
@@ -507,16 +586,17 @@ Total ram usage:        5 bytes
  This function calls:
 		Nothing
  This function is called by:
+		_ativaModo
 		_main
  This function uses a non-reentrant model
 
 
  *************** function _SetPWM *****************
  Defined at:
-		line 153 in file "PWMcomTimerV2.c"
+		line 190 in file "PWMcomTimerV3.c"
  Parameters:    Size  Location     Type
-  on              2   20[COMRAM] int 
-  velocidade      2   22[COMRAM] int 
+  status          2   20[COMRAM] int 
+  veloc           2   22[COMRAM] int 
  Auto vars:     Size  Location     Type
 		None
  Return value:  Size  Location     Type
@@ -538,13 +618,13 @@ Total ram usage:        6 bytes
  This function calls:
 		Nothing
  This function is called by:
-		_main
+		_ativaModo
  This function uses a non-reentrant model
 
 
  *************** function _Direction *****************
  Defined at:
-		line 199 in file "PWMcomTimerV2.c"
+		line 236 in file "PWMcomTimerV3.c"
  Parameters:    Size  Location     Type
   dir             2   20[COMRAM] int 
  Auto vars:     Size  Location     Type
@@ -568,13 +648,45 @@ Total ram usage:        4 bytes
  This function calls:
 		Nothing
  This function is called by:
+		_ativaModo
+ This function uses a non-reentrant model
+
+
+ *************** function ___awmod *****************
+ Defined at:
+		line 8 in file "/opt/microchip/xc8/v1.38/sources/common/awmod.c"
+ Parameters:    Size  Location     Type
+  dividend        2   20[COMRAM] int 
+  divisor         2   22[COMRAM] int 
+ Auto vars:     Size  Location     Type
+  sign            1   25[COMRAM] unsigned char 
+  counter         1   24[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  2   20[COMRAM] int 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+      Params:         4       0       0       0       0       0       0
+      Locals:         2       0       0       0       0       0       0
+      Temps:          0       0       0       0       0       0       0
+      Totals:         6       0       0       0       0       0       0
+Total ram usage:        6 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		Nothing
+ This function is called by:
 		_main
  This function uses a non-reentrant model
 
 
  *************** function _tc_int *****************
  Defined at:
-		line 301 in file "PWMcomTimerV2.c"
+		line 405 in file "PWMcomTimerV3.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -596,21 +708,22 @@ Total ram usage:       14 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    1
  This function calls:
-		___awmod
+		i2_SetPWM
+		i2___awmod
  This function is called by:
 		Interrupt level 2
  This function uses a non-reentrant model
 
 
- *************** function ___awmod *****************
+ *************** function i2___awmod *****************
  Defined at:
 		line 8 in file "/opt/microchip/xc8/v1.38/sources/common/awmod.c"
  Parameters:    Size  Location     Type
   dividend        2    0[COMRAM] int 
   divisor         2    2[COMRAM] int 
  Auto vars:     Size  Location     Type
-  sign            1    5[COMRAM] unsigned char 
-  counter         1    4[COMRAM] unsigned char 
+  __awmod         1    5[COMRAM] unsigned char 
+  __awmod         1    4[COMRAM] unsigned char 
  Return value:  Size  Location     Type
                   2    0[COMRAM] int 
  Registers used:
@@ -633,27 +746,60 @@ Total ram usage:        6 bytes
  This function uses a non-reentrant model
 
 
+ *************** function i2_SetPWM *****************
+ Defined at:
+		line 190 in file "PWMcomTimerV3.c"
+ Parameters:    Size  Location     Type
+  status          2    0[COMRAM] int 
+  veloc           2    2[COMRAM] int 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+      Params:         4       0       0       0       0       0       0
+      Locals:         0       0       0       0       0       0       0
+      Temps:          2       0       0       0       0       0       0
+      Totals:         6       0       0       0       0       0       0
+Total ram usage:        6 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_tc_int
+ This function uses a non-reentrant model
+
+
 
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 /opt/microchip/xc8/v1.38/sources/common/awmod.c
-		___awmod       		CODE           	02F6	0000	113
+		___awmod       		CODE           	0568	0000	113
 
 /opt/microchip/xc8/v1.38/sources/common/awmod.c estimated size: 113
 
-PWMcomTimerV2.c
-		_main          		CODE           	00CE	0000	315
-		_tc_int        		CODE           	0008	0000	195
-		_delayX        		CODE           	0366	0000	55
-		_SetPWM        		CODE           	0208	0000	121
-		_setup         		CODE           	039C	0000	53
-		_Direction     		CODE           	0280	0000	119
-
-PWMcomTimerV2.c estimated size: 858
-
 shared
-		__initialization		CODE           	03D0	0000	37
+		i2_SetPWM      		CODE           	047A	0000	121
+		__initialization		CODE           	06F8	0000	45
+		i2___awmod     		CODE           	05D8	0000	113
 
-shared estimated size: 37
+shared estimated size: 279
+
+PWMcomTimerV3.c
+		_main          		CODE           	0648	0000	97
+		_tc_int        		CODE           	0008	0000	295
+		_delayX        		CODE           	0732	0000	55
+		_SetPWM        		CODE           	0402	0000	121
+		_setup         		CODE           	06A8	0000	81
+		_ativaModo     		CODE           	0132	0000	721
+		_Direction     		CODE           	04F2	0000	119
+
+PWMcomTimerV3.c estimated size: 1489
 

@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 18F45K20 ]
 [d frameptr 4065 ]
-"201 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV2.c
+"238 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
 [e E3552 Direcao `uc
 frente 0
 tras 1
@@ -12,6 +12,7 @@ direita 3
 ]
 "8 /opt/microchip/xc8/v1.38/sources/common/awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
+[v i2___awmod __awmod `(i  1 e 2 0 ]
 "62 /opt/microchip/xc8/v1.38/sources/common/float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 /opt/microchip/xc8/v1.38/sources/common/ftadd.c
@@ -32,18 +33,93 @@ direita 3
 [v ___flmul __flmul `(d  1 e 3 0 ]
 "15 /opt/microchip/xc8/v1.38/sources/common/Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"101 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV2.c
+"111 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
 [v _setup setup `(v  1 e 1 0 ]
-"145
+"182
 [v _delayX delayX `(v  1 e 1 0 ]
-"153
+"190
 [v _SetPWM SetPWM `(v  1 e 1 0 ]
-"199
+[v i2_SetPWM SetPWM `(v  1 e 1 0 ]
+"236
 [v _Direction Direction `(v  1 e 1 0 ]
-"260
+"299
+[v _ativaModo ativaModo `(v  1 e 1 0 ]
+"380
 [v _main main `(i  1 e 2 0 ]
-"301
+"405
 [v _tc_int tc_int `II(v  1 e 1 0 ]
+[s S279 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"1027 /opt/microchip/xc8/v1.38/include/pic18f45k20.h
+[s S288 . 1 `uc 1 T1OSO 1 0 :1:0 
+`uc 1 T1OSI 1 0 :1:1 
+`uc 1 CCP1 1 0 :1:2 
+`uc 1 SCK 1 0 :1:3 
+`uc 1 SDI 1 0 :1:4 
+`uc 1 SDO 1 0 :1:5 
+`uc 1 TX 1 0 :1:6 
+`uc 1 RX 1 0 :1:7 
+]
+[s S297 . 1 `uc 1 T13CKI 1 0 :1:0 
+`uc 1 CCP2 1 0 :1:1 
+`uc 1 P1A 1 0 :1:2 
+`uc 1 SCL 1 0 :1:3 
+`uc 1 SDA 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CK 1 0 :1:6 
+`uc 1 DT 1 0 :1:7 
+]
+[s S306 . 1 `uc 1 T1CKI 1 0 :1:0 
+]
+[s S308 . 1 `uc 1 T3CKI 1 0 :1:0 
+]
+[s S310 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PA1 1 0 :1:2 
+]
+[s S313 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 PA2 1 0 :1:1 
+]
+[u S316 . 1 `S279 1 . 1 0 `S288 1 . 1 0 `S297 1 . 1 0 `S306 1 . 1 0 `S308 1 . 1 0 `S310 1 . 1 0 `S313 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES316  1 e 1 @3970 ]
+[s S96 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+]
+"6128
+[s S98 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_POR 1 0 :1:1 
+]
+[s S101 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_PD 1 0 :1:2 
+]
+[s S104 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_TO 1 0 :1:3 
+]
+[s S107 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 NOT_RI 1 0 :1:4 
+]
+[s S110 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+`uc 1 nPD 1 0 :1:2 
+`uc 1 nTO 1 0 :1:3 
+`uc 1 nRI 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 SBOREN 1 0 :1:6 
+`uc 1 IPEN 1 0 :1:7 
+]
+[s S119 . 1 `uc 1 BOR 1 0 :1:0 
+`uc 1 POR 1 0 :1:1 
+`uc 1 PD 1 0 :1:2 
+`uc 1 TO 1 0 :1:3 
+`uc 1 RI 1 0 :1:4 
+]
+[u S125 . 1 `S96 1 . 1 0 `S98 1 . 1 0 `S101 1 . 1 0 `S104 1 . 1 0 `S107 1 . 1 0 `S110 1 . 1 0 `S119 1 . 1 0 ]
+[v _RCONbits RCONbits `VES125  1 e 1 @4048 ]
 [s S21 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
@@ -51,13 +127,52 @@ direita 3
 `uc 1 T08BIT 1 0 :1:6 
 `uc 1 TMR0ON 1 0 :1:7 
 ]
-"6609 /opt/microchip/xc8/v1.38/include/pic18f45k20.h
+"6609
 [s S28 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 ]
 [u S32 . 1 `S21 1 . 1 0 `S28 1 . 1 0 ]
 [v _T0CONbits T0CONbits `VES32  1 e 1 @4053 ]
+[s S198 . 1 `uc 1 INT1IF 1 0 :1:0 
+`uc 1 INT2IF 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 INT1IE 1 0 :1:3 
+`uc 1 INT2IE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 INT1IP 1 0 :1:6 
+`uc 1 INT2IP 1 0 :1:7 
+]
+"6942
+[s S207 . 1 `uc 1 INT1F 1 0 :1:0 
+`uc 1 INT2F 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 INT1E 1 0 :1:3 
+`uc 1 INT2E 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 INT1P 1 0 :1:6 
+`uc 1 INT2P 1 0 :1:7 
+]
+[u S216 . 1 `S198 1 . 1 0 `S207 1 . 1 0 ]
+[v _INTCON3bits INTCON3bits `VES216  1 e 1 @4080 ]
+[s S163 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 NOT_RBPU 1 0 :1:7 
+]
+"7031
+[s S166 . 1 `uc 1 RBIP 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 TMR0IP 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INTEDG2 1 0 :1:4 
+`uc 1 INTEDG1 1 0 :1:5 
+`uc 1 INTEDG0 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+[s S175 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 RBPU 1 0 :1:7 
+]
+[u S178 . 1 `S163 1 . 1 0 `S166 1 . 1 0 `S175 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES178  1 e 1 @4081 ]
 [s S47 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
@@ -89,6 +204,8 @@ direita 3
 [v _LATD1 LATD1 `VEb  1 e 0 @31841 ]
 "7899
 [v _LATD2 LATD2 `VEb  1 e 0 @31842 ]
+"7901
+[v _LATD3 LATD3 `VEb  1 e 0 @31843 ]
 "7903
 [v _LATD4 LATD4 `VEb  1 e 0 @31844 ]
 "7905
@@ -97,24 +214,28 @@ direita 3
 [v _LATD6 LATD6 `VEb  1 e 0 @31846 ]
 "7909
 [v _LATD7 LATD7 `VEb  1 e 0 @31847 ]
-"8183
-[v _RB1 RB1 `VEb  1 e 0 @31753 ]
-"8185
-[v _RB2 RB2 `VEb  1 e 0 @31754 ]
-"8187
-[v _RB3 RB3 `VEb  1 e 0 @31755 ]
+"8207
+[v _RC1 RC1 `VEb  1 e 0 @31761 ]
+"8215
+[v _RC2 RC2 `VEb  1 e 0 @31762 ]
+"8219
+[v _RC4 RC4 `VEb  1 e 0 @31764 ]
 "8221
 [v _RC5 RC5 `VEb  1 e 0 @31765 ]
-"8223
-[v _RC6 RC6 `VEb  1 e 0 @31766 ]
 "8225
 [v _RC7 RC7 `VEb  1 e 0 @31767 ]
+"8519
+[v _TRISB0 TRISB0 `VEb  1 e 0 @31896 ]
 "8521
 [v _TRISB1 TRISB1 `VEb  1 e 0 @31897 ]
 "8523
 [v _TRISB2 TRISB2 `VEb  1 e 0 @31898 ]
-"8525
-[v _TRISB3 TRISB3 `VEb  1 e 0 @31899 ]
+"8537
+[v _TRISC1 TRISC1 `VEb  1 e 0 @31905 ]
+"8539
+[v _TRISC2 TRISC2 `VEb  1 e 0 @31906 ]
+"8543
+[v _TRISC4 TRISC4 `VEb  1 e 0 @31908 ]
 "8545
 [v _TRISC5 TRISC5 `VEb  1 e 0 @31909 ]
 "8547
@@ -137,57 +258,93 @@ direita 3
 [v _TRISD6 TRISD6 `VEb  1 e 0 @31918 ]
 "8565
 [v _TRISD7 TRISD7 `VEb  1 e 0 @31919 ]
-"96 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV2.c
+"101 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
 [v _off_duty off_duty `i  1 e 2 0 ]
-"98
+"102
 [v _max_cicle max_cicle `i  1 e 2 0 ]
-"99
+"103
 [v _count count `i  1 e 2 0 ]
-"260
+"106
+[v _modo modo `i  1 e 2 0 ]
+"107
+[v _velocidade velocidade `i  1 e 2 0 ]
+"108
+[v _direcao direcao `i  1 e 2 0 ]
+"109
+[v _start start `i  1 e 2 0 ]
+"380
 [v _main main `(i  1 e 2 0 ]
 {
-"299
+"403
 } 0
-"101
+"111
 [v _setup setup `(v  1 e 1 0 ]
 {
-"141
+"178
 } 0
-"145
+"299
+[v _ativaModo ativaModo `(v  1 e 1 0 ]
+{
+"342
+[v ativaModo@i_434 i `i  1 a 2 34 ]
+"323
+[v ativaModo@i i `i  1 a 2 32 ]
+"299
+[v ativaModo@Modo Modo `i  1 p 2 26 ]
+[v ativaModo@dir dir `i  1 p 2 28 ]
+"378
+} 0
+"182
 [v _delayX delayX `(v  1 e 1 0 ]
 {
-"147
+"184
 [v delayX@i i `i  1 a 2 23 ]
-"145
+"182
 [v delayX@n n `i  1 p 2 20 ]
-"149
+"186
 } 0
-"153
+"190
 [v _SetPWM SetPWM `(v  1 e 1 0 ]
 {
-[v SetPWM@on on `i  1 p 2 20 ]
-[v SetPWM@velocidade velocidade `i  1 p 2 22 ]
-"196
+[v SetPWM@status status `i  1 p 2 20 ]
+[v SetPWM@veloc veloc `i  1 p 2 22 ]
+"233
 } 0
-"199
+"236
 [v _Direction Direction `(v  1 e 1 0 ]
 {
 [v Direction@dir dir `i  1 p 2 20 ]
-"258
-} 0
-"301
-[v _tc_int tc_int `II(v  1 e 1 0 ]
-{
-"324
+"295
 } 0
 "8 /opt/microchip/xc8/v1.38/sources/common/awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
 {
 "11
-[v ___awmod@sign sign `uc  1 a 1 5 ]
-[v ___awmod@counter counter `uc  1 a 1 4 ]
+[v ___awmod@sign sign `uc  1 a 1 25 ]
+[v ___awmod@counter counter `uc  1 a 1 24 ]
 "8
-[v ___awmod@dividend dividend `i  1 p 2 0 ]
-[v ___awmod@divisor divisor `i  1 p 2 2 ]
+[v ___awmod@dividend dividend `i  1 p 2 20 ]
+[v ___awmod@divisor divisor `i  1 p 2 22 ]
 "35
+} 0
+"405 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+[v _tc_int tc_int `II(v  1 e 1 0 ]
+{
+"483
+} 0
+"8 /opt/microchip/xc8/v1.38/sources/common/awmod.c
+[v i2___awmod __awmod `(i  1 e 2 0 ]
+{
+[v i2___awmod@sign __awmod `uc  1 a 1 5 ]
+[v i2___awmod@counter __awmod `uc  1 a 1 4 ]
+[v i2___awmod@dividend dividend `i  1 p 2 0 ]
+[v i2___awmod@divisor divisor `i  1 p 2 2 ]
+"35
+} 0
+"190 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+[v i2_SetPWM SetPWM `(v  1 e 1 0 ]
+{
+[v i2SetPWM@status status `i  1 p 2 0 ]
+[v i2SetPWM@veloc veloc `i  1 p 2 2 ]
+"233
 } 0

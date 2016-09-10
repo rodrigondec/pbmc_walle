@@ -210,7 +210,7 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </PICkit3PlatformTool>
-      <item path="PWMcomTimerV3.c" ex="true" overriding="false">
+      <item path="PWMcomTimerV2.c" ex="true" overriding="false">
       </item>
       <XC8-config-global>
         <property key="advanced-elf" value="true"/>
