@@ -91,6 +91,8 @@
 #define motores2a RB1
 #define motores2b RC7
 
+#define pwm RC6
+
 enum Direcao{ frente, tras, esquerda, direita };
 
 int off_duty = 1; // Tempo de off duty do período
@@ -185,7 +187,7 @@ void SetPWM(int on, int velocidade)
     }
     else
     {
-        RC6 = 0; // zera pino PWM
+        pwm = 0; // zera pino PWM
         T0CONbits.TMR0ON = 0; // disable Timer0
         INTCONbits.TMR0IF = 0; // clear the interrupt flag 
         
@@ -308,13 +310,13 @@ void interrupt tc_int(void){
         
         if(count == off_duty)
         {
-            RC6 = 1;
+            pwm = 1;
             led2 = 1; // toggle a bit to say we're alive
         }
         
         if(count == max_cicle)
         {
-            RC6 = 0;
+            pwm = 0;
             led2 = 0; // toggle a bit to say we're alive
         }
         
