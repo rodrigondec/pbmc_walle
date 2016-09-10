@@ -108,16 +108,22 @@ void setup()    // Configura as Interrupções, pinos de entrada e saída, timer
     INTCONbits.TMR0IF = 0;          //clear interrupt flag
     INTCONbits.GIE = 1;  
     
-	TRISD7 = 0; // RD7 to RD0 set to output for led.
-    TRISD6 = 0;
-    TRISD5 = 0;
-    TRISD4 = 0;
-    TRISD3 = 0;
-    TRISD2 = 0;
-    TRISD1 = 0;
-    TRISD0 = 0; // END LEDS
+    // RD0 to RD7 set to output for led.
+    TRISD0 = 0; // led indicadora de velocidade juntamente com led1 representando os valores binarios 01 ou 10 ou 11 (velocidades 1, 2 e 3)
+	TRISD1 = 0; // led indicadora de velocidade juntamente com led0 representando os valores binarios 01 ou 10 ou 11 (velocidades 1, 2 e 3)
     
-    TRISC5 = 1; // input velocidade
+    TRISD2 = 0; // led indicadora da potencia do PWM
+    
+    TRISD3 = 0; // led sem uso
+    
+    TRISD4 = 0; // led indicadora do modo curva para esquerda
+    TRISD5 = 0; // led indicadora do modo curva para direita
+    
+    TRISD6 = 0; // led indicadora do modo andar para frente
+    TRISD7 = 0; // led indicadora do modo andar para tras
+    // END LEDS
+    
+    TRISC5 = 1; // input de velocidade
     
     TRISC6 = 0; // Saida do PWM
     
@@ -136,30 +142,30 @@ void delayX(int n)
         __delay_ms(1);
 }
 
-// @Param status: Define se o pwm vai estar ligado ou desligado.
-// @Param velocidade: Define em que velocidade (1, 2 ou 3) o PWM será setado.
-void SetPWM(int status, int velocidade)
+// @Param on: Define se o pwm vai estar ligado ou desligado.
+// @Param velocidade: Define em que velocidade (1, 2 ou 3) o PWM sera setado.
+void SetPWM(int on, int velocidade)
 {
-    if(status == 1)
+    if(on)
     {
         T0CONbits.TMR0ON = 1;   // enable Timer0
     
         switch(velocidade)
         {
             case 1:
-                off_duty = 15;
+                off_duty = 15; // velocidade 1 tem o off duty de 15 e on duty de 5
                 led0 = 1;
                 led1 = 0;
             break;
         
             case 2:
-                off_duty = 7;
+                off_duty = 8; // velocidade 2 tem o off duty de 8 e on duty de 12
                 led0 = 0;
                 led1 = 1;
             break;
         
             case 3:
-                off_duty = 1;
+                off_duty = 1; // velocidade 3 tem o off duty de 1 e on duty de 19
                 led0 = 1;
                 led1 = 1;
             break;
@@ -176,6 +182,7 @@ void SetPWM(int status, int velocidade)
         PORTCbits.RC7 = 0;                      // zera pino PWM
         T0CONbits.TMR0ON = 0;                   // disable Timer0
         INTCONbits.TMR0IF = 0;                  // clear the interrupt flag 
+        RC6 = 0;
         led0 = 0;
         led1 = 0;
         led2 = 0; 								// desliga led indicador de PWM

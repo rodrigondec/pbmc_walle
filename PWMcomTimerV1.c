@@ -118,7 +118,7 @@ void SetPWM(int status, int velocidade)
             break;
         
             case 2:
-                on = 7;
+                on = 8;
                 led0 = 0;
                 led1 = 1;
             break;
