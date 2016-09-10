@@ -138,9 +138,9 @@ void SetPWM(int status, int velocidade)
     }
     else
     {
-        PORTBbits.RB0 = 0;                      // Zera pino PWM
-        T0CONbits.TMR0ON = 0;                   // disable Timer0
-        INTCONbits.TMR0IF = 0;                  // clear the interrupt flag 
+        RC6 = 0; // Zera pino PWM
+        T0CONbits.TMR0ON = 0; // disable Timer0
+        INTCONbits.TMR0IF = 0; // clear the interrupt flag 
         led0 = 0;
         led1 = 0;
         led2 = 0;

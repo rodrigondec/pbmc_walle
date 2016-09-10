@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/opt/microchip/xc8/v1.38/dat/en_msgs.txt -cs \
   -h+dist/default/production/walle.production.sym \
   --cmf=dist/default/production/walle.production.cmf -z -Q18F45K20 \
-  -o/tmp/xcXINSLvE -Mdist/default/production/walle.production.map -E1 \
+  -o/tmp/xcXFconxI -Mdist/default/production/walle.production.map -E1 \
   -ver=XC8 -ASTACK=060h-05ffh -pstack=STACK -ACODE=00h-07FFFh \
   -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
   -AMEDIUMCONST=0600h-07FFFh -ACOMRAM=01h-05Fh -AABS1=00h-05FFh \
@@ -21,7 +21,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcX09kLas.obj dist/default/production/walle.production.obj 
+  /tmp/xcX0SKa7N.obj dist/default/production/walle.production.obj 
 
 Object code version is 3.11
 
@@ -33,7 +33,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcX09kLas.obj
+/tmp/xcX0SKa7N.obj
                 end_init                             CA       CA        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
@@ -41,17 +41,17 @@ Call graph: (short form)
 dist/default/production/walle.production.obj
                 intcode                               8        8       C2        4       0
                 temp                                 28       28        1        1       1
-                text6                               278      278       70        4       0
-                text4                               202      202       76        4       0
-                text3                               188      188       7A        4       0
-                text2                               31E      31E       36        4       0
-                text1                               354      354       34        4       0
-                text0                                CE       CE       BA        4       0
+                text6                               2F6      2F6       70        4       0
+                text4                               280      280       76        4       0
+                text3                               208      208       78        4       0
+                text2                               366      366       36        4       0
+                text1                               39C      39C       34        4       0
+                text0                                CE       CE      13A        4       0
                 cstackCOMRAM                          1        1       1F        1       1
-                dataCOMRAM                           24       24        4        1       1
-                bssCOMRAM                            20       20        4        1       1
-                cinit                               2E8      2E8       36        4       0
-                idataCOMRAM                         388      388        4        4       0
+                dataCOMRAM                           20       20        6        1       1
+                bssCOMRAM                            26       26        2        1       1
+                cinit                               3D0      3D0       32        4       0
+                idataCOMRAM                         402      402        6        4       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -60,14 +60,14 @@ TOTAL           Name                               Link     Load   Length     Sp
                 end_init                             CA       CA        4         0
                 intcode                               8        8       C2         0
                 reset_vec                             0        0        4         0
-                text6                               278      278       70         0
-                text4                               202      202       76         0
-                text3                               188      188       7A         0
-                text2                               31E      31E       36         0
-                text1                               354      354       34         0
-                text0                                CE       CE       BA         0
-                cinit                               2E8      2E8       36         0
-                idataCOMRAM                         388      388        4         0
+                text6                               2F6      2F6       70         0
+                text4                               280      280       76         0
+                text3                               208      208       78         0
+                text2                               366      366       36         0
+                text1                               39C      39C       34         0
+                text0                                CE       CE      13A         0
+                cinit                               3D0      3D0       32         0
+                idataCOMRAM                         402      402        6         0
 
         CLASS   CONST          
 
@@ -78,8 +78,8 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   COMRAM         
                 temp                                 28       28        1         1
                 cstackCOMRAM                          1        1       1F         1
-                dataCOMRAM                           24       24        4         1
-                bssCOMRAM                            20       20        4         1
+                dataCOMRAM                           20       20        6         1
+                bssCOMRAM                            26       26        2         1
 
         CLASS   ABS1           
 
@@ -117,7 +117,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
                 cstackCOMRAM                   000001  000028  000029         1       1  COMRAM  
-                intcode                        000008  000384  00038C         4       0  CODE    
+                intcode                        000008  000400  000408         4       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -133,10 +133,10 @@ UNUSED ADDRESS RANGES
         BANK5            000500-0005FF              100
         BIGRAM           000029-0005FF              5D7
         CODE             000004-000007                4
-                         00038C-007FFF             7C74
+                         000408-007FFF             7BF8
         COMRAM           000029-00005F               37
         CONST            000004-000007                4
-                         00038C-007FFF             7C74
+                         000408-007FFF             7BF8
         EEDATA           F00000-F000FF              100
         MEDIUMCONST      000600-007FFF             7A00
         RAM              000060-0005FF              100
@@ -150,7 +150,7 @@ UNUSED ADDRESS RANGES
 Direction@dir            cstackCOMRAM 000015
 SetPWM@on                cstackCOMRAM 000015
 SetPWM@velocidade        cstackCOMRAM 000017
-_Direction               text4        000202
+_Direction               text4        000280
 _INTCONbits              (abs)        000FF2
 _LATD0                   (abs)        007C60
 _LATD1                   (abs)        007C61
@@ -159,10 +159,13 @@ _LATD4                   (abs)        007C64
 _LATD5                   (abs)        007C65
 _LATD6                   (abs)        007C66
 _LATD7                   (abs)        007C67
-_PORTBbits               (abs)        000F81
-_PORTCbits               (abs)        000F82
+_RB1                     (abs)        007C09
+_RB2                     (abs)        007C0A
+_RB3                     (abs)        007C0B
+_RC5                     (abs)        007C15
 _RC6                     (abs)        007C16
-_SetPWM                  text3        000188
+_RC7                     (abs)        007C17
+_SetPWM                  text3        000208
 _T0CONbits               (abs)        000FD5
 _TRISB1                  (abs)        007C99
 _TRISB2                  (abs)        007C9A
@@ -347,7 +350,7 @@ __Ltext6                 text6        000000
 __S0                     (abs)        30000E
 __S1                     (abs)        000029
 __S2                     (abs)        000000
-___awmod                 text6        000278
+___awmod                 text6        0002F6
 ___awmod@counter         cstackCOMRAM 000005
 ___awmod@dividend        cstackCOMRAM 000001
 ___awmod@divisor         cstackCOMRAM 000003
@@ -359,28 +362,28 @@ ___rparam_used           (abs)        000001
 ___sp                    stack        000000
 __accesstop              (abs)        000060
 __activetblptr           (abs)        000002
-__end_of_Direction       text4        000278
-__end_of_SetPWM          text3        000202
-__end_of___awmod         text6        0002E8
-__end_of__initialization cinit        000310
-__end_of_delayX          text2        000354
-__end_of_main            text0        000188
-__end_of_setup           text1        000388
+__end_of_Direction       text4        0002F6
+__end_of_SetPWM          text3        000280
+__end_of___awmod         text6        000366
+__end_of__initialization cinit        0003F4
+__end_of_delayX          text2        00039C
+__end_of_main            text0        000208
+__end_of_setup           text1        0003D0
 __end_of_tc_int          intcode      0000CA
-__initialization         cinit        0002E8
+__initialization         cinit        0003D0
 __mediumconst            mediumconst  000000
-__pbssCOMRAM             bssCOMRAM    000020
-__pcinit                 cinit        0002E8
+__pbssCOMRAM             bssCOMRAM    000026
+__pcinit                 cinit        0003D0
 __pcstackCOMRAM          cstackCOMRAM 000001
-__pdataCOMRAM            dataCOMRAM   000024
-__pidataCOMRAM           idataCOMRAM  000388
+__pdataCOMRAM            dataCOMRAM   000020
+__pidataCOMRAM           idataCOMRAM  000402
 __pintcode               intcode      000008
 __ptext0                 text0        0000CE
-__ptext1                 text1        000354
-__ptext2                 text2        00031E
-__ptext3                 text3        000188
-__ptext4                 text4        000202
-__ptext6                 text6        000278
+__ptext1                 text1        00039C
+__ptext2                 text2        000366
+__ptext3                 text3        000208
+__ptext4                 text4        000280
+__ptext6                 text6        0002F6
 __ramtop                 ramtop       000600
 __size_of_Direction      (abs)        000000
 __size_of_SetPWM         (abs)        000000
@@ -390,18 +393,18 @@ __size_of_main           (abs)        000000
 __size_of_setup          (abs)        000000
 __size_of_tc_int         (abs)        000000
 __smallconst             smallconst   000000
-_count                   bssCOMRAM    000020
-_delayX                  text2        00031E
+_count                   bssCOMRAM    000026
+_delayX                  text2        000366
 _main                    text0        0000CE
-_max_cicle               dataCOMRAM   000024
-_off_duty                dataCOMRAM   000026
-_setup                   text1        000354
+_max_cicle               dataCOMRAM   000020
+_off_duty                dataCOMRAM   000022
+_setup                   text1        00039C
 _tc_int                  intcode      000008
-_velocidade              bssCOMRAM    000022
+_velocidade              dataCOMRAM   000024
 btemp                    temp         000028
 delayX@i                 cstackCOMRAM 000018
 delayX@n                 cstackCOMRAM 000015
-end_of_initialization    cinit        000310
+end_of_initialization    cinit        0003F4
 int$flags                temp         000028
 intlevel0                text         000000
 intlevel1                text         000000
@@ -410,14 +413,14 @@ intlevel3                text         000000
 stackhi                  (abs)        0005FF
 stacklo                  (abs)        000060
 start                    init         0000CA
-start_initialization     cinit        0002E8
+start_initialization     cinit        0003D0
 
 
 FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 254 in file "PWMcomTimerV2.c"
+		line 260 in file "PWMcomTimerV2.c"
  Parameters:    Size  Location     Type
   argc            2   26[COMRAM] int 
   argv            3   28[COMRAM] PTR PTR unsigned char 
@@ -450,7 +453,7 @@ Total ram usage:        5 bytes
 
  *************** function _setup *****************
  Defined at:
-		line 95 in file "PWMcomTimerV2.c"
+		line 101 in file "PWMcomTimerV2.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -480,7 +483,7 @@ Total ram usage:        0 bytes
 
  *************** function _delayX *****************
  Defined at:
-		line 139 in file "PWMcomTimerV2.c"
+		line 145 in file "PWMcomTimerV2.c"
  Parameters:    Size  Location     Type
   n               2   20[COMRAM] int 
  Auto vars:     Size  Location     Type
@@ -510,7 +513,7 @@ Total ram usage:        5 bytes
 
  *************** function _SetPWM *****************
  Defined at:
-		line 147 in file "PWMcomTimerV2.c"
+		line 153 in file "PWMcomTimerV2.c"
  Parameters:    Size  Location     Type
   on              2   20[COMRAM] int 
   velocidade      2   22[COMRAM] int 
@@ -541,7 +544,7 @@ Total ram usage:        6 bytes
 
  *************** function _Direction *****************
  Defined at:
-		line 193 in file "PWMcomTimerV2.c"
+		line 199 in file "PWMcomTimerV2.c"
  Parameters:    Size  Location     Type
   dir             2   20[COMRAM] int 
  Auto vars:     Size  Location     Type
@@ -571,7 +574,7 @@ Total ram usage:        4 bytes
 
  *************** function _tc_int *****************
  Defined at:
-		line 295 in file "PWMcomTimerV2.c"
+		line 301 in file "PWMcomTimerV2.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -635,22 +638,22 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 /opt/microchip/xc8/v1.38/sources/common/awmod.c
-		___awmod       		CODE           	0278	0000	113
+		___awmod       		CODE           	02F6	0000	113
 
 /opt/microchip/xc8/v1.38/sources/common/awmod.c estimated size: 113
 
 PWMcomTimerV2.c
-		_main          		CODE           	00CE	0000	187
+		_main          		CODE           	00CE	0000	315
 		_tc_int        		CODE           	0008	0000	195
-		_delayX        		CODE           	031E	0000	55
-		_SetPWM        		CODE           	0188	0000	123
-		_setup         		CODE           	0354	0000	53
-		_Direction     		CODE           	0202	0000	119
+		_delayX        		CODE           	0366	0000	55
+		_SetPWM        		CODE           	0208	0000	121
+		_setup         		CODE           	039C	0000	53
+		_Direction     		CODE           	0280	0000	119
 
-PWMcomTimerV2.c estimated size: 732
+PWMcomTimerV2.c estimated size: 858
 
 shared
-		__initialization		CODE           	02E8	0000	41
+		__initialization		CODE           	03D0	0000	37
 
-shared estimated size: 41
+shared estimated size: 37
 
