@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$/tmp/xcXhqpYlj.obj
+$/tmp/xcXfugEGM.obj
 idloc IDLOC 0 200000 200000 8 1
 reset_vec CODE 0 0 0 4 1
 end_init CODE 0 12E 12E 4 1
@@ -342,36 +342,36 @@ F2 intcode CODE >483:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
 68A text0 CODE >397:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
 69E text0 CODE >398:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
 6A6 text0 CODE >385:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6F8 cinit CODE >624:/tmp/xcXzQz2SW
-6F8 cinit CODE >626:/tmp/xcXzQz2SW
-6F8 cinit CODE >629:/tmp/xcXzQz2SW
-6F8 cinit CODE >674:/tmp/xcXzQz2SW
-6FA cinit CODE >675:/tmp/xcXzQz2SW
-6FC cinit CODE >676:/tmp/xcXzQz2SW
-6FE cinit CODE >677:/tmp/xcXzQz2SW
-700 cinit CODE >678:/tmp/xcXzQz2SW
-702 cinit CODE >679:/tmp/xcXzQz2SW
-704 cinit CODE >680:/tmp/xcXzQz2SW
-708 cinit CODE >681:/tmp/xcXzQz2SW
-70C cinit CODE >682:/tmp/xcXzQz2SW
-70C cinit CODE >683:/tmp/xcXzQz2SW
-70E cinit CODE >684:/tmp/xcXzQz2SW
-712 cinit CODE >685:/tmp/xcXzQz2SW
-714 cinit CODE >686:/tmp/xcXzQz2SW
-716 cinit CODE >687:/tmp/xcXzQz2SW
-718 cinit CODE >691:/tmp/xcXzQz2SW
-71A cinit CODE >692:/tmp/xcXzQz2SW
-71C cinit CODE >693:/tmp/xcXzQz2SW
-71E cinit CODE >694:/tmp/xcXzQz2SW
-720 cinit CODE >695:/tmp/xcXzQz2SW
-722 cinit CODE >696:/tmp/xcXzQz2SW
-724 cinit CODE >702:/tmp/xcXzQz2SW
-724 cinit CODE >704:/tmp/xcXzQz2SW
-726 cinit CODE >705:/tmp/xcXzQz2SW
-728 cinit CODE >707:/tmp/xcXzQz2SW
-72A cinit CODE >708:/tmp/xcXzQz2SW
-72C cinit CODE >709:/tmp/xcXzQz2SW
-72E cinit CODE >710:/tmp/xcXzQz2SW
+6F8 cinit CODE >624:/tmp/xcXDTwx9h
+6F8 cinit CODE >626:/tmp/xcXDTwx9h
+6F8 cinit CODE >629:/tmp/xcXDTwx9h
+6F8 cinit CODE >674:/tmp/xcXDTwx9h
+6FA cinit CODE >675:/tmp/xcXDTwx9h
+6FC cinit CODE >676:/tmp/xcXDTwx9h
+6FE cinit CODE >677:/tmp/xcXDTwx9h
+700 cinit CODE >678:/tmp/xcXDTwx9h
+702 cinit CODE >679:/tmp/xcXDTwx9h
+704 cinit CODE >680:/tmp/xcXDTwx9h
+708 cinit CODE >681:/tmp/xcXDTwx9h
+70C cinit CODE >682:/tmp/xcXDTwx9h
+70C cinit CODE >683:/tmp/xcXDTwx9h
+70E cinit CODE >684:/tmp/xcXDTwx9h
+712 cinit CODE >685:/tmp/xcXDTwx9h
+714 cinit CODE >686:/tmp/xcXDTwx9h
+716 cinit CODE >687:/tmp/xcXDTwx9h
+718 cinit CODE >691:/tmp/xcXDTwx9h
+71A cinit CODE >692:/tmp/xcXDTwx9h
+71C cinit CODE >693:/tmp/xcXDTwx9h
+71E cinit CODE >694:/tmp/xcXDTwx9h
+720 cinit CODE >695:/tmp/xcXDTwx9h
+722 cinit CODE >696:/tmp/xcXDTwx9h
+724 cinit CODE >702:/tmp/xcXDTwx9h
+724 cinit CODE >704:/tmp/xcXDTwx9h
+726 cinit CODE >705:/tmp/xcXDTwx9h
+728 cinit CODE >707:/tmp/xcXDTwx9h
+72A cinit CODE >708:/tmp/xcXDTwx9h
+72C cinit CODE >709:/tmp/xcXDTwx9h
+72E cinit CODE >710:/tmp/xcXDTwx9h
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -390,14 +390,14 @@ __Hspace_1 39 0 ABS 0 - dist/default/production/walle.production.obj
 __Hspace_2 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production/walle.production.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcXhqpYlj.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcXfugEGM.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/walle.production.obj
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production/walle.production.obj
-___sp 0 0 STACK 2 stack /tmp/xcXhqpYlj.obj
+___sp 0 0 STACK 2 stack /tmp/xcXfugEGM.obj
 _main 648 0 CODE 0 text0 dist/default/production/walle.production.obj
 _modo 2C 0 COMRAM 1 dataCOMRAM dist/default/production/walle.production.obj
 btemp 38 0 COMRAM 1 temp dist/default/production/walle.production.obj
-start 12E 0 CODE 0 init /tmp/xcXhqpYlj.obj
+start 12E 0 CODE 0 init /tmp/xcXfugEGM.obj
 __size_of___awmod 0 0 ABS 0 - dist/default/production/walle.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_WDTEN$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
@@ -410,11 +410,11 @@ _T0CONbits FD5 0 ABS 0 - dist/default/production/walle.production.obj
 ativaModo@Modo 1B 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/walle.production.obj
 SetPWM@veloc 17 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
-__accesstop 60 0 ABS 0 - /tmp/xcXhqpYlj.obj
-intlevel0 0 0 CODE 0 text /tmp/xcXhqpYlj.obj
-intlevel1 0 0 CODE 0 text /tmp/xcXhqpYlj.obj
-intlevel2 0 0 CODE 0 text /tmp/xcXhqpYlj.obj
-intlevel3 0 0 CODE 0 text /tmp/xcXhqpYlj.obj
+__accesstop 60 0 ABS 0 - /tmp/xcXfugEGM.obj
+intlevel0 0 0 CODE 0 text /tmp/xcXfugEGM.obj
+intlevel1 0 0 CODE 0 text /tmp/xcXfugEGM.obj
+intlevel2 0 0 CODE 0 text /tmp/xcXfugEGM.obj
+intlevel3 0 0 CODE 0 text /tmp/xcXfugEGM.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/walle.production.obj
 SetPWM@status 15 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/walle.production.obj
@@ -429,8 +429,8 @@ __Hifardata 0 0 CODE 0 ifardata dist/default/production/walle.production.obj
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production/walle.production.obj
 __pidataCOMRAM 768 0 CODE 0 idataCOMRAM dist/default/production/walle.production.obj
 __CFG_FOSC$INTIO67 0 0 ABS 0 - dist/default/production/walle.production.obj
-___inthi_sp 0 0 STACK 2 stack /tmp/xcXhqpYlj.obj
-___intlo_sp 0 0 STACK 2 stack /tmp/xcXhqpYlj.obj
+___inthi_sp 0 0 STACK 2 stack /tmp/xcXfugEGM.obj
+___intlo_sp 0 0 STACK 2 stack /tmp/xcXfugEGM.obj
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/walle.production.obj
 _velocidade 30 0 COMRAM 1 dataCOMRAM dist/default/production/walle.production.obj
 _direcao 34 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
@@ -501,7 +501,7 @@ __Htext9 0 0 ABS 0 text9 dist/default/production/walle.production.obj
 __end_of_tc_int 12E 0 CODE 0 intcode dist/default/production/walle.production.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production/walle.production.obj
 __Hbigram 0 0 ABS 0 bigram dist/default/production/walle.production.obj
-__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcXhqpYlj.obj
+__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcXfugEGM.obj
 __Hcomram 0 0 ABS 0 comram dist/default/production/walle.production.obj
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production/walle.production.obj
 __CFG_LPT1OSC$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
@@ -588,8 +588,8 @@ __Lconfig 300000 0 CONFIG 0 config dist/default/production/walle.production.obj
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production/walle.production.obj
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production/walle.production.obj
 _tc_int 8 0 CODE 0 intcode dist/default/production/walle.production.obj
-stackhi 5FF 0 ABS 0 - /tmp/xcXhqpYlj.obj
-stacklo 60 0 ABS 0 - /tmp/xcXhqpYlj.obj
+stackhi 5FF 0 ABS 0 - /tmp/xcXfugEGM.obj
+stacklo 60 0 ABS 0 - /tmp/xcXfugEGM.obj
 __Lintcode 8 0 CODE 0 intcode dist/default/production/walle.production.obj
 __Lintret 0 0 ABS 0 intret dist/default/production/walle.production.obj
 __Lirdata 0 0 CODE 0 irdata dist/default/production/walle.production.obj
@@ -628,7 +628,7 @@ __ptext8 5D8 0 CODE 0 text8 dist/default/production/walle.production.obj
 __ptext9 47A 0 CODE 0 text9 dist/default/production/walle.production.obj
 __Lstruct 0 0 COMRAM 1 struct dist/default/production/walle.production.obj
 _Direction 4F2 0 CODE 0 text5 dist/default/production/walle.production.obj
-__ramtop 600 0 RAM 0 ramtop /tmp/xcXhqpYlj.obj
+__ramtop 600 0 RAM 0 ramtop /tmp/xcXfugEGM.obj
 __Lpowerup 12E 0 CODE 0 powerup dist/default/production/walle.production.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/walle.production.obj
 _max_cicle 2A 0 COMRAM 1 dataCOMRAM dist/default/production/walle.production.obj
