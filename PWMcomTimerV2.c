@@ -119,13 +119,13 @@ void setup()    // Configura as InterrupÃ§Ãµes, pinos de entrada e saÃ­da, timer
     
     TRISC5 = 1; // input velocidade
     
-    TRISC7 = 0; // SaÃ­da do PWM
+    TRISC6 = 0; // Saida do PWM
     
-    TRISB1 = 0; // motores 1
     TRISB2 = 0; // motores 1
+    TRISB3 = 0; // motores 1
     
-    TRISB3 = 0; // motores 2
-    TRISB4 = 0; // motores 2
+    TRISB1 = 0; // motores 2
+    TRISC7 = 0; // motores 2
 }
 
 
@@ -148,18 +148,26 @@ void SetPWM(int status, int velocidade)
         {
             case 1:
                 off_duty = 15;
+                led0 = 1;
+                led1 = 0;
             break;
         
             case 2:
                 off_duty = 7;
+                led0 = 0;
+                led1 = 1;
             break;
         
             case 3:
                 off_duty = 1;
+                led0 = 1;
+                led1 = 1;
             break;
             
             default:
                 off_duty = 1;
+                led0 = 1;
+                led1 = 1;
             break;
         }
     }
@@ -168,7 +176,9 @@ void SetPWM(int status, int velocidade)
         PORTCbits.RC7 = 0;                      // zera pino PWM
         T0CONbits.TMR0ON = 0;                   // disable Timer0
         INTCONbits.TMR0IF = 0;                  // clear the interrupt flag 
-        led4 = 1; 								// desliga led indicador de PWM
+        led0 = 0;
+        led1 = 0;
+        led2 = 0; 								// desliga led indicador de PWM
     }
 }
 
@@ -178,38 +188,58 @@ void Direction(int dir)
     switch(dir)
     {
         case frente:
-            PORTBbits.RB1 = 1;  // motores 1
-            PORTBbits.RB2 = 0;  // motores 1
+            PORTBbits.RB2 = 1;  // motores 1
+            PORTBbits.RB3 = 0;  // motores 1
     
-            PORTBbits.RB3 = 1; // motores 2
-            PORTBbits.RB4 = 0; // motores 2
+            PORTBbits.RB1 = 1; // motores 2
+            PORTCbits.RC7 = 0; // motores 2
+            
+            led4 = 0;
+            led5 = 0;
+            led6 = 1;
+            led7 = 0;
         break;
         
         
         case tras:
-            PORTBbits.RB1 = 0;  // motores 1
-            PORTBbits.RB2 = 1;  // motores 1
+            PORTBbits.RB2 = 0;  // motores 1
+            PORTBbits.RB3 = 1;  // motores 1
     
-            PORTBbits.RB3 = 0; // motores 2
-            PORTBbits.RB4 = 1; // motores 2
+            PORTBbits.RB1 = 0; // motores 2
+            PORTCbits.RC7 = 1; // motores 2
+            
+            led4 = 0;
+            led5 = 0;
+            led6 = 0;
+            led7 = 1;
         break;
         
         
         case esquerda:
-            PORTBbits.RB1 = 1;  // motores 1
-            PORTBbits.RB2 = 0;  // motores 1
+            PORTBbits.RB2 = 1;  // motores 1
+            PORTBbits.RB3 = 0;  // motores 1
     
-            PORTBbits.RB3 = 0; // motores 2
-            PORTBbits.RB4 = 1; // motores 2
+            PORTBbits.RB1 = 0; // motores 2
+            PORTCbits.RC7 = 1; // motores 2
+            
+            led4 = 1;
+            led5 = 0;
+            led6 = 0;
+            led7 = 0;
         break;
         
         
         case direita:
-            PORTBbits.RB1 = 0;  // motores 1
-            PORTBbits.RB2 = 1;  // motores 1
+            PORTBbits.RB2 = 0;  // motores 1
+            PORTBbits.RB3 = 1;  // motores 1
     
-            PORTBbits.RB3 = 1; // motores 2
-            PORTBbits.RB4 = 0; // motores 2
+            PORTBbits.RB1 = 1; // motores 2
+            PORTCbits.RC7 = 0; // motores 2
+            
+            led4 = 0;
+            led5 = 1;
+            led6 = 0;
+            led7 = 0;
         break;
     }
 }
@@ -222,17 +252,33 @@ int main(int argc, char** argv)
 	{
         if(PORTCbits.RC5 == 0)
         {
-            Direction(frente);
-            SetPWM(1,2);
-            delayX(150);
-            SetPWM(0,2);
-            delayX(50);
-            
-            Direction(tras);
-            SetPWM(1,2);
-            delayX(150);
-            SetPWM(0,2);
-            delayX(50);
+            Direction(frente);  // Seleciona a direção dos motores
+            SetPWM(1,1);        // Liga PWM na velocidade 3
+            delayX(150);        // Delay 3s
+
+            SetPWM(0,3);        // Desliga PWM
+            delayX(50);         // Delay 1sn
+
+            Direction(tras);  // Seleciona a direção dos motores
+            SetPWM(1,2);        // Liga PWM na velocidade 3
+            delayX(150);        // Delay 3s
+
+            SetPWM(0,3);        // Desliga PWM
+            delayX(50);         // Delay 1sn
+
+            Direction(esquerda); // Seleciona a direção dos motores
+            SetPWM(1,3);        // Liga PWM na velocidade 3
+            delayX(100);        // Delay 2s
+
+            SetPWM(0,3);        // Desliga PWM
+            delayX(50);         // Delay 1s
+
+            Direction(direita); // Seleciona a direção dos motores
+            SetPWM(1,1);        // Liga PWM na velocidade 3
+            delayX(100);        // Delay 2s
+
+            SetPWM(0,3);        // Desliga PWM
+            delayX(50);         // Delay 1s
         }
     }
 
@@ -249,14 +295,14 @@ void interrupt tc_int(void){
         
         if(count == off_duty)
         {
-            PORTCbits.RC7 = 1;
-            led4 = 1; // toggle a bit to say we're alive
+            PORTCbits.RC6 = 1;
+            led2 = 1; // toggle a bit to say we're alive
         }
         
         if(count == max_cicle)
         {
-            PORTCbits.RC7 = 0;
-            led4 = 0; // toggle a bit to say we're alive
+            PORTCbits.RC6 = 0;
+            led2 = 0; // toggle a bit to say we're alive
         }
         
         count = count%max_cicle;
