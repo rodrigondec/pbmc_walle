@@ -85,13 +85,15 @@
 #define led6 LATD6
 #define led7 LATD7
 
-#define motores1a RB2
-#define motores1b RB3
+#define motores1a RC1
+#define motores1b RC2
 
-#define motores2a RB1
-#define motores2b RC7
+#define motores2a RC4
+#define motores2b RC5
 
-#define pwm RC6
+#define pwm RC7
+
+#define bt_velo PORTCbits.RC6
 
 enum Direcao{ frente, tras, esquerda, direita };
 
@@ -131,15 +133,15 @@ void setup()    // Configura as Interrup√ß√µes, pinos de entrada e sa√≠da, timer
     TRISD7 = 0; // led indicadora do modo andar para tras
     // END LEDS
     
-    TRISC5 = 1; // input de velocidade
+    TRISC6 = 1; // input de velocidade
     
-    TRISC6 = 0; // Saida do PWM
+    TRISC7 = 0; // Saida do PWM
     
-    TRISB2 = 0; // motores 1
-    TRISB3 = 0; // motores 1
+    TRISC1 = 0; // motores 1
+    TRISC2 = 0; // motores 1
     
-    TRISB1 = 0; // motores 2
-    TRISC7 = 0; // motores 2
+    TRISC4 = 0; // motores 2
+    TRISC5 = 0; // motores 2
 }
 
 
@@ -203,11 +205,11 @@ void Direction(int dir)
     switch(dir)
     {
         case frente:
-            motores1a = 1;  // motores 1
-            motores1b = 0;  // motores 1
+            motores1a = 1;
+            motores1b = 0;
     
-            motores2a = 1; // motores 2
-            motores2b = 0; // motores 2
+            motores2a = 1;
+            motores2b = 0;
             
             led4 = 0;
             led5 = 0;
@@ -217,11 +219,11 @@ void Direction(int dir)
         
         
         case tras:
-            motores1a = 0;  // motores 1
-            motores1b = 1;  // motores 1
+            motores1a = 0;
+            motores1b = 1;
     
-            motores2a = 0; // motores 2
-            motores2b = 1; // motores 2
+            motores2a = 0;
+            motores2b = 1;
             
             led4 = 0;
             led5 = 0;
@@ -231,11 +233,11 @@ void Direction(int dir)
         
         
         case esquerda:
-            motores1a = 1;  // motores 1
-            motores1b = 0;  // motores 1
+            motores1a = 1;
+            motores1b = 0;
     
-            motores2a = 0; // motores 2
-            motores2b = 1; // motores 2
+            motores2a = 0;
+            motores2b = 1;
             
             led4 = 1;
             led5 = 0;
@@ -245,11 +247,11 @@ void Direction(int dir)
         
         
         case direita:
-            motores1a = 0;  // motores 1
-            motores1b = 1;  // motores 1
+            motores1a = 0;
+            motores1b = 1;
     
-            motores2a = 1; // motores 2
-            motores2b = 0; // motores 2
+            motores2a = 1;
+            motores2b = 0;
             
             led4 = 0;
             led5 = 1;
@@ -265,7 +267,7 @@ int main(int argc, char** argv)
         
     while(1)
 	{
-        if(RC5 == 0)
+        if(bt_velo == 0)
         {
             Direction(frente);  // Seleciona a direÁ„o dos motores
             SetPWM(1,1);        // Liga PWM na velocidade 3
