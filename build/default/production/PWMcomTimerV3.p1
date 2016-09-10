@@ -109,20 +109,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISC4 `Vb ~T0 @X0 0 e@31908 ]
 "8545
 [v _TRISC5 `Vb ~T0 @X0 0 e@31909 ]
+"7895
+[v _LATD0 `Vb ~T0 @X0 0 e@31840 ]
+"7897
+[v _LATD1 `Vb ~T0 @X0 0 e@31841 ]
+"7899
+[v _LATD2 `Vb ~T0 @X0 0 e@31842 ]
+"7903
+[v _LATD4 `Vb ~T0 @X0 0 e@31844 ]
+"7907
+[v _LATD6 `Vb ~T0 @X0 0 e@31846 ]
+"7909
+[v _LATD7 `Vb ~T0 @X0 0 e@31847 ]
 [v F3545 `(v ~T0 @X0 1 tf1`ul ]
 "157 /opt/microchip/xc8/v1.38/include/pic18.h
 [v __delay `JF3545 ~T0 @X0 0 e ]
 [p i __delay ]
-"7895 /opt/microchip/xc8/v1.38/include/pic18f45k20.h
-[v _LATD0 `Vb ~T0 @X0 0 e@31840 ]
-"7897
-[v _LATD1 `Vb ~T0 @X0 0 e@31841 ]
 [t ~ __deprecated__ ]
 [t T32 __deprecated__ ]
-"8225
+"8225 /opt/microchip/xc8/v1.38/include/pic18f45k20.h
 [v _RC7 `Vb ~T32 @X0 0 e@31767 ]
-"7899
-[v _LATD2 `Vb ~T0 @X0 0 e@31842 ]
 "8207
 [v _RC1 `Vb ~T32 @X0 0 e@31761 ]
 "8215
@@ -131,21 +137,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RC4 `Vb ~T32 @X0 0 e@31764 ]
 "8221
 [v _RC5 `Vb ~T32 @X0 0 e@31765 ]
-"7903
-[v _LATD4 `Vb ~T0 @X0 0 e@31844 ]
-"7905
-[v _LATD5 `Vb ~T0 @X0 0 e@31845 ]
-"7907
-[v _LATD6 `Vb ~T0 @X0 0 e@31846 ]
-"7909
-[v _LATD7 `Vb ~T0 @X0 0 e@31847 ]
-"238 PWMcomTimerV3.c
+"262 PWMcomTimerV3.c
 [c E3552 0 1 2 3 .. ]
 [n E3552 Direcao frente tras esquerda direita  ]
 [p mainexit ]
-"7901 /opt/microchip/xc8/v1.38/include/pic18f45k20.h
-[v _LATD3 `Vb ~T0 @X0 0 e@31843 ]
-"982
+"982 /opt/microchip/xc8/v1.38/include/pic18f45k20.h
 [s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S45 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
 "992
@@ -3465,15 +3461,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "106
 [v _modo `i ~T0 @X0 1 e ]
 [i _modo
--> 1 `i
+-> 0 `i
 ]
-[; ;PWMcomTimerV3.c: 106: int modo = 1;
+[; ;PWMcomTimerV3.c: 106: int modo = 0;
 "107
 [v _velocidade `i ~T0 @X0 1 e ]
 [i _velocidade
--> 1 `i
+-> 0 `i
 ]
-[; ;PWMcomTimerV3.c: 107: int velocidade = 1;
+[; ;PWMcomTimerV3.c: 107: int velocidade = 0;
 "108
 [v _direcao `i ~T0 @X0 1 e ]
 [i _direcao
@@ -3481,11 +3477,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;PWMcomTimerV3.c: 108: int direcao = 0;
 "109
-[v _start `i ~T0 @X0 1 e ]
-[i _start
+[v _running `i ~T0 @X0 1 e ]
+[i _running
 -> 0 `i
 ]
-[; ;PWMcomTimerV3.c: 109: int start = 0;
+[; ;PWMcomTimerV3.c: 109: int running = 0;
 "111
 [v _setup `(v ~T0 @X0 1 ef ]
 "112
@@ -3615,776 +3611,852 @@ Version 3.2 HI-TECH Software Intermediate Code
 "178
 [e :UE 363 ]
 }
-"182
-[v _delayX `(v ~T0 @X0 1 ef1`i ]
-"183
+"180
+[v _attLeds `(v ~T0 @X0 1 ef ]
 {
-[; ;PWMcomTimerV3.c: 182: void delayX(int n)
-[; ;PWMcomTimerV3.c: 183: {
-[e :U _delayX ]
-"182
-[v _n `i ~T0 @X0 1 r1 ]
-"183
+[; ;PWMcomTimerV3.c: 180: void attLeds(){
+[e :U _attLeds ]
 [f ]
-[; ;PWMcomTimerV3.c: 184: for(int i = 0; i < n; i++)
-"184
+[; ;PWMcomTimerV3.c: 181: if(velocidade == 0){
+"181
+[e $ ! == _velocidade -> 0 `i 365  ]
 {
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $U 368  ]
+[; ;PWMcomTimerV3.c: 182: LATD0 = 1;
+"182
+[e = _LATD0 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 183: LATD1 = 0;
+"183
+[e = _LATD1 -> -> 0 `i `b ]
+"184
+}
+[; ;PWMcomTimerV3.c: 184: }
+[e $U 366  ]
 "185
 [e :U 365 ]
-[; ;PWMcomTimerV3.c: 185: _delay((unsigned long)((1)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"184
-[e ++ _i -> 1 `i ]
-[e :U 368 ]
-[e $ < _i _n 365  ]
-[e :U 366 ]
-"185
-}
-[; ;PWMcomTimerV3.c: 186: }
+[; ;PWMcomTimerV3.c: 185: else if(velocidade == 1){
+[e $ ! == _velocidade -> 1 `i 367  ]
+{
+[; ;PWMcomTimerV3.c: 186: LATD0 = 0;
 "186
+[e = _LATD0 -> -> 0 `i `b ]
+[; ;PWMcomTimerV3.c: 187: LATD1 = 1;
+"187
+[e = _LATD1 -> -> 1 `i `b ]
+"188
+}
+[; ;PWMcomTimerV3.c: 188: }
+[e $U 368  ]
+"189
+[e :U 367 ]
+[; ;PWMcomTimerV3.c: 189: else if(velocidade == 2){
+[e $ ! == _velocidade -> 2 `i 369  ]
+{
+[; ;PWMcomTimerV3.c: 190: LATD0 = 1;
+"190
+[e = _LATD0 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 191: LATD1 = 1;
+"191
+[e = _LATD1 -> -> 1 `i `b ]
+"192
+}
+[e :U 369 ]
+"194
+[e :U 368 ]
+[e :U 366 ]
+[; ;PWMcomTimerV3.c: 192: }
+[; ;PWMcomTimerV3.c: 194: if(running){
+[e $ ! != _running -> 0 `i 370  ]
+{
+[; ;PWMcomTimerV3.c: 195: LATD2 = 1;
+"195
+[e = _LATD2 -> -> 1 `i `b ]
+"196
+}
+[; ;PWMcomTimerV3.c: 196: }
+[e $U 371  ]
+"197
+[e :U 370 ]
+[; ;PWMcomTimerV3.c: 197: else{
+{
+[; ;PWMcomTimerV3.c: 198: LATD2 = 0;
+"198
+[e = _LATD2 -> -> 0 `i `b ]
+"199
+}
+[e :U 371 ]
+[; ;PWMcomTimerV3.c: 199: }
+[; ;PWMcomTimerV3.c: 201: LATD4 = direcao;
+"201
+[e = _LATD4 -> _direcao `b ]
+[; ;PWMcomTimerV3.c: 203: if(modo == 0){
+"203
+[e $ ! == _modo -> 0 `i 372  ]
+{
+[; ;PWMcomTimerV3.c: 204: LATD6 = 1;
+"204
+[e = _LATD6 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 205: LATD7 = 0;
+"205
+[e = _LATD7 -> -> 0 `i `b ]
+"206
+}
+[; ;PWMcomTimerV3.c: 206: }
+[e $U 373  ]
+"207
+[e :U 372 ]
+[; ;PWMcomTimerV3.c: 207: else if(modo == 1){
+[e $ ! == _modo -> 1 `i 374  ]
+{
+[; ;PWMcomTimerV3.c: 208: LATD6 = 0;
+"208
+[e = _LATD6 -> -> 0 `i `b ]
+[; ;PWMcomTimerV3.c: 209: LATD7 = 1;
+"209
+[e = _LATD7 -> -> 1 `i `b ]
+"210
+}
+[; ;PWMcomTimerV3.c: 210: }
+[e $U 375  ]
+"211
+[e :U 374 ]
+[; ;PWMcomTimerV3.c: 211: else if(modo == 2){
+[e $ ! == _modo -> 2 `i 376  ]
+{
+[; ;PWMcomTimerV3.c: 212: LATD6 = 1;
+"212
+[e = _LATD6 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 213: LATD7 = 1;
+"213
+[e = _LATD7 -> -> 1 `i `b ]
+"214
+}
+[e :U 376 ]
+"215
+[e :U 375 ]
+[e :U 373 ]
+[; ;PWMcomTimerV3.c: 214: }
+[; ;PWMcomTimerV3.c: 215: }
 [e :UE 364 ]
 }
-"190
-[v _SetPWM `(v ~T0 @X0 1 ef2`i`i ]
-"191
-{
-[; ;PWMcomTimerV3.c: 190: void SetPWM(int status, int veloc)
-[; ;PWMcomTimerV3.c: 191: {
-[e :U _SetPWM ]
-"190
-[v _status `i ~T0 @X0 1 r1 ]
-[v _veloc `i ~T0 @X0 1 r2 ]
-"191
-[f ]
-[; ;PWMcomTimerV3.c: 192: if(status == 1)
-"192
-[e $ ! == _status -> 1 `i 370  ]
-[; ;PWMcomTimerV3.c: 193: {
-"193
-{
-[; ;PWMcomTimerV3.c: 194: T0CONbits.TMR0ON = 1;
-"194
-[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
-[; ;PWMcomTimerV3.c: 196: switch(veloc)
-"196
-[e $U 372  ]
-[; ;PWMcomTimerV3.c: 197: {
-"197
-{
-[; ;PWMcomTimerV3.c: 198: case 1:
-"198
-[e :U 373 ]
-[; ;PWMcomTimerV3.c: 199: off_duty = 15;
-"199
-[e = _off_duty -> 15 `i ]
-[; ;PWMcomTimerV3.c: 200: LATD0 = 1;
-"200
-[e = _LATD0 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 201: LATD1 = 0;
-"201
-[e = _LATD1 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 202: break;
-"202
-[e $U 371  ]
-[; ;PWMcomTimerV3.c: 204: case 2:
-"204
-[e :U 374 ]
-[; ;PWMcomTimerV3.c: 205: off_duty = 8;
-"205
-[e = _off_duty -> 8 `i ]
-[; ;PWMcomTimerV3.c: 206: LATD0 = 0;
-"206
-[e = _LATD0 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 207: LATD1 = 1;
-"207
-[e = _LATD1 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 208: break;
-"208
-[e $U 371  ]
-[; ;PWMcomTimerV3.c: 210: case 3:
-"210
-[e :U 375 ]
-[; ;PWMcomTimerV3.c: 211: off_duty = 1;
-"211
-[e = _off_duty -> 1 `i ]
-[; ;PWMcomTimerV3.c: 212: LATD0 = 1;
-"212
-[e = _LATD0 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 213: LATD1 = 1;
-"213
-[e = _LATD1 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 214: break;
-"214
-[e $U 371  ]
-[; ;PWMcomTimerV3.c: 216: default:
-"216
-[e :U 376 ]
-[; ;PWMcomTimerV3.c: 217: off_duty = 1;
-"217
-[e = _off_duty -> 1 `i ]
-[; ;PWMcomTimerV3.c: 218: LATD0 = 1;
 "218
-[e = _LATD0 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 219: LATD1 = 1;
+[v _delayX `(v ~T0 @X0 1 ef1`i ]
 "219
-[e = _LATD1 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 220: break;
+{
+[; ;PWMcomTimerV3.c: 218: void delayX(int n)
+[; ;PWMcomTimerV3.c: 219: {
+[e :U _delayX ]
+"218
+[v _n `i ~T0 @X0 1 r1 ]
+"219
+[f ]
+[; ;PWMcomTimerV3.c: 220: for(int i = 0; i < n; i++)
 "220
-[e $U 371  ]
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 381  ]
 "221
-}
-[; ;PWMcomTimerV3.c: 221: }
-[e $U 371  ]
-"196
-[e :U 372 ]
-[e [\ _veloc , $ -> 1 `i 373
- , $ -> 2 `i 374
- , $ -> 3 `i 375
- 376 ]
+[e :U 378 ]
+[; ;PWMcomTimerV3.c: 221: _delay((unsigned long)((1)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"220
+[e ++ _i -> 1 `i ]
+[e :U 381 ]
+[e $ < _i _n 378  ]
+[e :U 379 ]
 "221
-[e :U 371 ]
-"222
 }
 [; ;PWMcomTimerV3.c: 222: }
-[e $U 377  ]
-"223
-[e :U 370 ]
-[; ;PWMcomTimerV3.c: 223: else
-[; ;PWMcomTimerV3.c: 224: {
-"224
-{
-[; ;PWMcomTimerV3.c: 225: RC7 = 0;
-"225
-[e = _RC7 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 226: T0CONbits.TMR0ON = 0;
+"222
+[e :UE 377 ]
+}
 "226
-[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-[; ;PWMcomTimerV3.c: 227: INTCONbits.TMR0IF = 0;
+[v _SetPWM `(v ~T0 @X0 1 ef2`i`i ]
 "227
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;PWMcomTimerV3.c: 229: LATD0 = 0;
+{
+[; ;PWMcomTimerV3.c: 226: void SetPWM(int status, int veloc)
+[; ;PWMcomTimerV3.c: 227: {
+[e :U _SetPWM ]
+"226
+[v _status `i ~T0 @X0 1 r1 ]
+[v _veloc `i ~T0 @X0 1 r2 ]
+"227
+[f ]
+[; ;PWMcomTimerV3.c: 228: if(status == 1)
+"228
+[e $ ! == _status -> 1 `i 383  ]
+[; ;PWMcomTimerV3.c: 229: {
 "229
-[e = _LATD0 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 230: LATD1 = 0;
+{
+[; ;PWMcomTimerV3.c: 230: T0CONbits.TMR0ON = 1;
 "230
-[e = _LATD1 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 231: LATD2 = 0;
-"231
-[e = _LATD2 -> -> 0 `i `b ]
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+[; ;PWMcomTimerV3.c: 232: switch(veloc)
 "232
-}
-[e :U 377 ]
-[; ;PWMcomTimerV3.c: 232: }
-[; ;PWMcomTimerV3.c: 233: }
+[e $U 385  ]
+[; ;PWMcomTimerV3.c: 233: {
 "233
-[e :UE 369 ]
-}
-"236
-[v _Direction `(v ~T0 @X0 1 ef1`i ]
-"237
 {
-[; ;PWMcomTimerV3.c: 236: void Direction(int dir)
-[; ;PWMcomTimerV3.c: 237: {
-[e :U _Direction ]
+[; ;PWMcomTimerV3.c: 234: case 0:
+"234
+[e :U 386 ]
+[; ;PWMcomTimerV3.c: 235: off_duty = 15;
+"235
+[e = _off_duty -> 15 `i ]
+[; ;PWMcomTimerV3.c: 236: break;
 "236
-[v _dir `i ~T0 @X0 1 r1 ]
-"237
-[f ]
-[; ;PWMcomTimerV3.c: 238: switch(dir)
+[e $U 384  ]
+[; ;PWMcomTimerV3.c: 238: case 1:
 "238
-[e $U 380  ]
-[; ;PWMcomTimerV3.c: 239: {
+[e :U 387 ]
+[; ;PWMcomTimerV3.c: 239: off_duty = 8;
 "239
-{
-[; ;PWMcomTimerV3.c: 240: case frente:
+[e = _off_duty -> 8 `i ]
+[; ;PWMcomTimerV3.c: 240: break;
 "240
-[e :U 381 ]
-[; ;PWMcomTimerV3.c: 241: RC1 = 1;
-"241
-[e = _RC1 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 242: RC2 = 0;
+[e $U 384  ]
+[; ;PWMcomTimerV3.c: 242: case 2:
 "242
-[e = _RC2 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 244: RC4 = 1;
-"244
-[e = _RC4 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 245: RC5 = 0;
-"245
-[e = _RC5 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 247: LATD4 = 0;
-"247
-[e = _LATD4 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 248: LATD5 = 0;
-"248
-[e = _LATD5 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 249: LATD6 = 1;
-"249
-[e = _LATD6 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 250: LATD7 = 0;
-"250
-[e = _LATD7 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 251: break;
-"251
-[e $U 379  ]
-[; ;PWMcomTimerV3.c: 254: case tras:
-"254
-[e :U 382 ]
-[; ;PWMcomTimerV3.c: 255: RC1 = 0;
-"255
-[e = _RC1 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 256: RC2 = 1;
-"256
-[e = _RC2 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 258: RC4 = 0;
-"258
-[e = _RC4 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 259: RC5 = 1;
-"259
-[e = _RC5 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 261: LATD4 = 0;
-"261
-[e = _LATD4 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 262: LATD5 = 0;
-"262
-[e = _LATD5 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 263: LATD6 = 0;
-"263
-[e = _LATD6 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 264: LATD7 = 1;
-"264
-[e = _LATD7 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 265: break;
-"265
-[e $U 379  ]
-[; ;PWMcomTimerV3.c: 268: case esquerda:
-"268
-[e :U 383 ]
-[; ;PWMcomTimerV3.c: 269: RC1 = 1;
-"269
-[e = _RC1 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 270: RC2 = 0;
-"270
-[e = _RC2 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 272: RC4 = 0;
-"272
-[e = _RC4 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 273: RC5 = 1;
-"273
-[e = _RC5 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 275: LATD4 = 1;
-"275
-[e = _LATD4 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 276: LATD5 = 0;
-"276
-[e = _LATD5 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 277: LATD6 = 0;
-"277
-[e = _LATD6 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 278: LATD7 = 0;
-"278
-[e = _LATD7 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 279: break;
-"279
-[e $U 379  ]
-[; ;PWMcomTimerV3.c: 282: case direita:
-"282
-[e :U 384 ]
-[; ;PWMcomTimerV3.c: 283: RC1 = 0;
-"283
-[e = _RC1 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 284: RC2 = 1;
-"284
-[e = _RC2 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 286: RC4 = 1;
-"286
-[e = _RC4 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 287: RC5 = 0;
-"287
-[e = _RC5 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 289: LATD4 = 0;
-"289
-[e = _LATD4 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 290: LATD5 = 1;
-"290
-[e = _LATD5 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 291: LATD6 = 0;
-"291
-[e = _LATD6 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 292: LATD7 = 0;
-"292
-[e = _LATD7 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 293: break;
-"293
-[e $U 379  ]
-"294
-}
-[; ;PWMcomTimerV3.c: 294: }
-[e $U 379  ]
-"238
-[e :U 380 ]
-[e [\ _dir , $ -> . `E3552 0 `i 381
- , $ -> . `E3552 1 `i 382
- , $ -> . `E3552 2 `i 383
- , $ -> . `E3552 3 `i 384
- 379 ]
-"294
-[e :U 379 ]
-[; ;PWMcomTimerV3.c: 295: }
-"295
-[e :UE 378 ]
-}
-"299
-[v _ativaModo `(v ~T0 @X0 1 ef2`i`i ]
-"300
-{
-[; ;PWMcomTimerV3.c: 299: void ativaModo(int Modo, int dir)
-[; ;PWMcomTimerV3.c: 300: {
-[e :U _ativaModo ]
-"299
-[v _Modo `i ~T0 @X0 1 r1 ]
-[v _dir `i ~T0 @X0 1 r2 ]
-"300
-[f ]
-[; ;PWMcomTimerV3.c: 301: switch(Modo)
-"301
-[e $U 387  ]
-[; ;PWMcomTimerV3.c: 302: {
-"302
-{
-[; ;PWMcomTimerV3.c: 303: case 1:
-"303
 [e :U 388 ]
-[; ;PWMcomTimerV3.c: 304: if(dir == 0)
-"304
-[e $ ! == _dir -> 0 `i 389  ]
-[; ;PWMcomTimerV3.c: 305: {
-"305
-{
-[; ;PWMcomTimerV3.c: 306: Direction(frente);
-"306
-[e ( _Direction (1 -> . `E3552 0 `i ]
-[; ;PWMcomTimerV3.c: 307: SetPWM(1,velocidade);
-"307
-[e ( _SetPWM (2 , -> 1 `i _velocidade ]
-[; ;PWMcomTimerV3.c: 308: delayX(100);
-"308
-[e ( _delayX (1 -> 100 `i ]
-[; ;PWMcomTimerV3.c: 309: SetPWM(0,velocidade);
-"309
-[e ( _SetPWM (2 , -> 0 `i _velocidade ]
-"310
-}
-[; ;PWMcomTimerV3.c: 310: }
-[e $U 390  ]
-"311
+[; ;PWMcomTimerV3.c: 243: off_duty = 1;
+"243
+[e = _off_duty -> 1 `i ]
+[; ;PWMcomTimerV3.c: 244: break;
+"244
+[e $U 384  ]
+[; ;PWMcomTimerV3.c: 246: default:
+"246
 [e :U 389 ]
-[; ;PWMcomTimerV3.c: 311: else
-[; ;PWMcomTimerV3.c: 312: {
-"312
+[; ;PWMcomTimerV3.c: 247: off_duty = 1;
+"247
+[e = _off_duty -> 1 `i ]
+[; ;PWMcomTimerV3.c: 248: break;
+"248
+[e $U 384  ]
+"249
+}
+[; ;PWMcomTimerV3.c: 249: }
+[e $U 384  ]
+"232
+[e :U 385 ]
+[e [\ _veloc , $ -> 0 `i 386
+ , $ -> 1 `i 387
+ , $ -> 2 `i 388
+ 389 ]
+"249
+[e :U 384 ]
+"250
+}
+[; ;PWMcomTimerV3.c: 250: }
+[e $U 390  ]
+"251
+[e :U 383 ]
+[; ;PWMcomTimerV3.c: 251: else
+[; ;PWMcomTimerV3.c: 252: {
+"252
 {
-[; ;PWMcomTimerV3.c: 313: Direction(tras);
-"313
-[e ( _Direction (1 -> . `E3552 1 `i ]
-[; ;PWMcomTimerV3.c: 314: SetPWM(1,velocidade);
-"314
-[e ( _SetPWM (2 , -> 1 `i _velocidade ]
-[; ;PWMcomTimerV3.c: 315: delayX(100);
-"315
-[e ( _delayX (1 -> 100 `i ]
-[; ;PWMcomTimerV3.c: 316: SetPWM(0,velocidade);
-"316
-[e ( _SetPWM (2 , -> 0 `i _velocidade ]
-"317
+[; ;PWMcomTimerV3.c: 253: RC7 = 0;
+"253
+[e = _RC7 -> -> 0 `i `b ]
+[; ;PWMcomTimerV3.c: 254: T0CONbits.TMR0ON = 0;
+"254
+[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
+[; ;PWMcomTimerV3.c: 255: INTCONbits.TMR0IF = 0;
+"255
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+"256
 }
 [e :U 390 ]
-[; ;PWMcomTimerV3.c: 317: }
-[; ;PWMcomTimerV3.c: 318: break;
-"318
-[e $U 386  ]
-[; ;PWMcomTimerV3.c: 320: case 2:
-"320
-[e :U 391 ]
-[; ;PWMcomTimerV3.c: 321: if(dir == 0)
-"321
-[e $ ! == _dir -> 0 `i 392  ]
-[; ;PWMcomTimerV3.c: 322: {
-"322
-{
-[; ;PWMcomTimerV3.c: 323: for(int i = 0; i < 4; i++)
-"323
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 4 `i 393  ]
-[e $U 394  ]
-"324
-[e :U 393 ]
-[; ;PWMcomTimerV3.c: 324: {
-{
-[; ;PWMcomTimerV3.c: 325: Direction(frente);
-"325
-[e ( _Direction (1 -> . `E3552 0 `i ]
-[; ;PWMcomTimerV3.c: 326: SetPWM(1,velocidade);
-"326
-[e ( _SetPWM (2 , -> 1 `i _velocidade ]
-[; ;PWMcomTimerV3.c: 327: delayX(100);
-"327
-[e ( _delayX (1 -> 100 `i ]
-[; ;PWMcomTimerV3.c: 329: SetPWM(0,velocidade);
-"329
-[e ( _SetPWM (2 , -> 0 `i _velocidade ]
-[; ;PWMcomTimerV3.c: 330: delayX(10);
-"330
-[e ( _delayX (1 -> 10 `i ]
-[; ;PWMcomTimerV3.c: 332: Direction(direita);
-"332
-[e ( _Direction (1 -> . `E3552 3 `i ]
-[; ;PWMcomTimerV3.c: 333: SetPWM(1,velocidade);
-"333
-[e ( _SetPWM (2 , -> 1 `i _velocidade ]
-[; ;PWMcomTimerV3.c: 334: delayX(50);
-"334
-[e ( _delayX (1 -> 50 `i ]
-[; ;PWMcomTimerV3.c: 336: SetPWM(0,velocidade);
-"336
-[e ( _SetPWM (2 , -> 0 `i _velocidade ]
-[; ;PWMcomTimerV3.c: 337: delayX(10);
-"337
-[e ( _delayX (1 -> 10 `i ]
-"338
+[; ;PWMcomTimerV3.c: 256: }
+[; ;PWMcomTimerV3.c: 257: }
+"257
+[e :UE 382 ]
 }
-"323
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 4 `i 393  ]
+"260
+[v _Direction `(v ~T0 @X0 1 ef1`i ]
+"261
+{
+[; ;PWMcomTimerV3.c: 260: void Direction(int dir)
+[; ;PWMcomTimerV3.c: 261: {
+[e :U _Direction ]
+"260
+[v _dir `i ~T0 @X0 1 r1 ]
+"261
+[f ]
+[; ;PWMcomTimerV3.c: 262: switch(dir)
+"262
+[e $U 393  ]
+[; ;PWMcomTimerV3.c: 263: {
+"263
+{
+[; ;PWMcomTimerV3.c: 264: case frente:
+"264
 [e :U 394 ]
-"338
+[; ;PWMcomTimerV3.c: 265: RC1 = 1;
+"265
+[e = _RC1 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 266: RC2 = 0;
+"266
+[e = _RC2 -> -> 0 `i `b ]
+[; ;PWMcomTimerV3.c: 268: RC4 = 1;
+"268
+[e = _RC4 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 269: RC5 = 0;
+"269
+[e = _RC5 -> -> 0 `i `b ]
+[; ;PWMcomTimerV3.c: 270: break;
+"270
+[e $U 392  ]
+[; ;PWMcomTimerV3.c: 273: case tras:
+"273
+[e :U 395 ]
+[; ;PWMcomTimerV3.c: 274: RC1 = 0;
+"274
+[e = _RC1 -> -> 0 `i `b ]
+[; ;PWMcomTimerV3.c: 275: RC2 = 1;
+"275
+[e = _RC2 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 277: RC4 = 0;
+"277
+[e = _RC4 -> -> 0 `i `b ]
+[; ;PWMcomTimerV3.c: 278: RC5 = 1;
+"278
+[e = _RC5 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 279: break;
+"279
+[e $U 392  ]
+[; ;PWMcomTimerV3.c: 282: case esquerda:
+"282
+[e :U 396 ]
+[; ;PWMcomTimerV3.c: 283: RC1 = 1;
+"283
+[e = _RC1 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 284: RC2 = 0;
+"284
+[e = _RC2 -> -> 0 `i `b ]
+[; ;PWMcomTimerV3.c: 286: RC4 = 0;
+"286
+[e = _RC4 -> -> 0 `i `b ]
+[; ;PWMcomTimerV3.c: 287: RC5 = 1;
+"287
+[e = _RC5 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 288: break;
+"288
+[e $U 392  ]
+[; ;PWMcomTimerV3.c: 291: case direita:
+"291
+[e :U 397 ]
+[; ;PWMcomTimerV3.c: 292: RC1 = 0;
+"292
+[e = _RC1 -> -> 0 `i `b ]
+[; ;PWMcomTimerV3.c: 293: RC2 = 1;
+"293
+[e = _RC2 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 295: RC4 = 1;
+"295
+[e = _RC4 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 296: RC5 = 0;
+"296
+[e = _RC5 -> -> 0 `i `b ]
+[; ;PWMcomTimerV3.c: 297: break;
+"297
+[e $U 392  ]
+"298
 }
-"339
-}
-[; ;PWMcomTimerV3.c: 338: }
-[; ;PWMcomTimerV3.c: 339: }
-[e $U 396  ]
-"340
+[; ;PWMcomTimerV3.c: 298: }
+[e $U 392  ]
+"262
+[e :U 393 ]
+[e [\ _dir , $ -> . `E3552 0 `i 394
+ , $ -> . `E3552 1 `i 395
+ , $ -> . `E3552 2 `i 396
+ , $ -> . `E3552 3 `i 397
+ 392 ]
+"298
 [e :U 392 ]
-[; ;PWMcomTimerV3.c: 340: else
-[; ;PWMcomTimerV3.c: 341: {
-"341
+[; ;PWMcomTimerV3.c: 299: }
+"299
+[e :UE 391 ]
+}
+"303
+[v _ativaModo `(v ~T0 @X0 1 ef2`i`i ]
+"304
 {
-[; ;PWMcomTimerV3.c: 342: for(int i = 0; i < 4; i++)
-"342
+[; ;PWMcomTimerV3.c: 303: void ativaModo(int Modo, int dir)
+[; ;PWMcomTimerV3.c: 304: {
+[e :U _ativaModo ]
+"303
+[v _Modo `i ~T0 @X0 1 r1 ]
+[v _dir `i ~T0 @X0 1 r2 ]
+"304
+[f ]
+[; ;PWMcomTimerV3.c: 305: switch(Modo)
+"305
+[e $U 400  ]
+[; ;PWMcomTimerV3.c: 306: {
+"306
+{
+[; ;PWMcomTimerV3.c: 307: case 0:
+"307
+[e :U 401 ]
+[; ;PWMcomTimerV3.c: 308: if(dir == 0)
+"308
+[e $ ! == _dir -> 0 `i 402  ]
+[; ;PWMcomTimerV3.c: 309: {
+"309
+{
+[; ;PWMcomTimerV3.c: 310: Direction(frente);
+"310
+[e ( _Direction (1 -> . `E3552 0 `i ]
+[; ;PWMcomTimerV3.c: 311: SetPWM(1,velocidade);
+"311
+[e ( _SetPWM (2 , -> 1 `i _velocidade ]
+[; ;PWMcomTimerV3.c: 312: delayX(100);
+"312
+[e ( _delayX (1 -> 100 `i ]
+[; ;PWMcomTimerV3.c: 313: SetPWM(0,velocidade);
+"313
+[e ( _SetPWM (2 , -> 0 `i _velocidade ]
+"314
+}
+[; ;PWMcomTimerV3.c: 314: }
+[e $U 403  ]
+"315
+[e :U 402 ]
+[; ;PWMcomTimerV3.c: 315: else
+[; ;PWMcomTimerV3.c: 316: {
+"316
+{
+[; ;PWMcomTimerV3.c: 317: Direction(tras);
+"317
+[e ( _Direction (1 -> . `E3552 1 `i ]
+[; ;PWMcomTimerV3.c: 318: SetPWM(1,velocidade);
+"318
+[e ( _SetPWM (2 , -> 1 `i _velocidade ]
+[; ;PWMcomTimerV3.c: 319: delayX(100);
+"319
+[e ( _delayX (1 -> 100 `i ]
+[; ;PWMcomTimerV3.c: 320: SetPWM(0,velocidade);
+"320
+[e ( _SetPWM (2 , -> 0 `i _velocidade ]
+"321
+}
+[e :U 403 ]
+[; ;PWMcomTimerV3.c: 321: }
+[; ;PWMcomTimerV3.c: 322: break;
+"322
+[e $U 399  ]
+[; ;PWMcomTimerV3.c: 324: case 1:
+"324
+[e :U 404 ]
+[; ;PWMcomTimerV3.c: 325: if(dir == 0)
+"325
+[e $ ! == _dir -> 0 `i 405  ]
+[; ;PWMcomTimerV3.c: 326: {
+"326
+{
+[; ;PWMcomTimerV3.c: 327: for(int i = 0; i < 4; i++)
+"327
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 4 `i 397  ]
-[e $U 398  ]
-"343
-[e :U 397 ]
-[; ;PWMcomTimerV3.c: 343: {
-{
-[; ;PWMcomTimerV3.c: 344: Direction(frente);
-"344
-[e ( _Direction (1 -> . `E3552 0 `i ]
-[; ;PWMcomTimerV3.c: 345: SetPWM(1,velocidade);
-"345
-[e ( _SetPWM (2 , -> 1 `i _velocidade ]
-[; ;PWMcomTimerV3.c: 346: delayX(100);
-"346
-[e ( _delayX (1 -> 100 `i ]
-[; ;PWMcomTimerV3.c: 348: SetPWM(0,velocidade);
-"348
-[e ( _SetPWM (2 , -> 0 `i _velocidade ]
-[; ;PWMcomTimerV3.c: 349: delayX(10);
-"349
-[e ( _delayX (1 -> 10 `i ]
-[; ;PWMcomTimerV3.c: 351: Direction(esquerda);
-"351
-[e ( _Direction (1 -> . `E3552 2 `i ]
-[; ;PWMcomTimerV3.c: 352: SetPWM(1,velocidade);
-"352
-[e ( _SetPWM (2 , -> 1 `i _velocidade ]
-[; ;PWMcomTimerV3.c: 353: delayX(50);
-"353
-[e ( _delayX (1 -> 50 `i ]
-[; ;PWMcomTimerV3.c: 355: SetPWM(0,velocidade);
-"355
-[e ( _SetPWM (2 , -> 0 `i _velocidade ]
-[; ;PWMcomTimerV3.c: 356: delayX(10);
-"356
-[e ( _delayX (1 -> 10 `i ]
-"357
-}
-"342
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 4 `i 397  ]
-[e :U 398 ]
-"357
-}
-"358
-}
-[e :U 396 ]
-[; ;PWMcomTimerV3.c: 357: }
-[; ;PWMcomTimerV3.c: 358: }
-[; ;PWMcomTimerV3.c: 359: break;
-"359
-[e $U 386  ]
-[; ;PWMcomTimerV3.c: 361: case 3:
-"361
-[e :U 400 ]
-[; ;PWMcomTimerV3.c: 362: if(dir == 0)
-"362
-[e $ ! == _dir -> 0 `i 401  ]
-[; ;PWMcomTimerV3.c: 363: {
-"363
-{
-[; ;PWMcomTimerV3.c: 364: Direction(direita);
-"364
-[e ( _Direction (1 -> . `E3552 3 `i ]
-[; ;PWMcomTimerV3.c: 365: SetPWM(1,velocidade);
-"365
-[e ( _SetPWM (2 , -> 1 `i _velocidade ]
-[; ;PWMcomTimerV3.c: 366: delayX(200);
-"366
-[e ( _delayX (1 -> 200 `i ]
-[; ;PWMcomTimerV3.c: 367: SetPWM(0,velocidade);
-"367
-[e ( _SetPWM (2 , -> 0 `i _velocidade ]
-"368
-}
-[; ;PWMcomTimerV3.c: 368: }
-[e $U 402  ]
-"369
-[e :U 401 ]
-[; ;PWMcomTimerV3.c: 369: else
-[; ;PWMcomTimerV3.c: 370: {
-"370
-{
-[; ;PWMcomTimerV3.c: 371: Direction(esquerda);
-"371
-[e ( _Direction (1 -> . `E3552 2 `i ]
-[; ;PWMcomTimerV3.c: 372: SetPWM(1,velocidade);
-"372
-[e ( _SetPWM (2 , -> 1 `i _velocidade ]
-[; ;PWMcomTimerV3.c: 373: delayX(200);
-"373
-[e ( _delayX (1 -> 200 `i ]
-[; ;PWMcomTimerV3.c: 374: SetPWM(0,velocidade);
-"374
-[e ( _SetPWM (2 , -> 0 `i _velocidade ]
-"375
-}
-[e :U 402 ]
-[; ;PWMcomTimerV3.c: 375: }
-[; ;PWMcomTimerV3.c: 376: break;
-"376
-[e $U 386  ]
-"377
-}
-[; ;PWMcomTimerV3.c: 377: }
-[e $U 386  ]
-"301
-[e :U 387 ]
-[e [\ _Modo , $ -> 1 `i 388
- , $ -> 2 `i 391
- , $ -> 3 `i 400
- 386 ]
-"377
-[e :U 386 ]
-[; ;PWMcomTimerV3.c: 378: }
-"378
-[e :UE 385 ]
-}
-"380
-[v _main `(i ~T0 @X0 1 ef2`i`**uc ]
-"381
-{
-[; ;PWMcomTimerV3.c: 380: int main(int argc, char** argv)
-[; ;PWMcomTimerV3.c: 381: {
-[e :U _main ]
-"380
-[v _argc `i ~T0 @X0 1 r1 ]
-[v _argv `**uc ~T0 @X0 1 r2 ]
-"381
-[f ]
-[; ;PWMcomTimerV3.c: 382: setup();
-"382
-[e ( _setup ..  ]
-[; ;PWMcomTimerV3.c: 383: LATD3 = 1;
-"383
-[e = _LATD3 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 385: while(1)
-"385
-[e :U 405 ]
-[; ;PWMcomTimerV3.c: 386: {
-"386
-{
-[; ;PWMcomTimerV3.c: 387: if(PORTCbits.RC6 == 1)
-"387
-[e $ ! == -> . . _PORTCbits 0 6 `i -> 1 `i 407  ]
-[; ;PWMcomTimerV3.c: 388: {
-"388
-{
-[; ;PWMcomTimerV3.c: 389: delayX(20);
-"389
-[e ( _delayX (1 -> 20 `i ]
-[; ;PWMcomTimerV3.c: 391: velocidade++;
-"391
-[e ++ _velocidade -> 1 `i ]
-[; ;PWMcomTimerV3.c: 392: velocidade = (velocidade%3)+1;
-"392
-[e = _velocidade + % _velocidade -> 3 `i -> 1 `i ]
-"393
-}
-[e :U 407 ]
-[; ;PWMcomTimerV3.c: 393: }
-[; ;PWMcomTimerV3.c: 395: if(start != 0)
-"395
-[e $ ! != _start -> 0 `i 408  ]
-[; ;PWMcomTimerV3.c: 396: {
-"396
-{
-[; ;PWMcomTimerV3.c: 397: ativaModo(modo, direcao);
-"397
-[e ( _ativaModo (2 , _modo _direcao ]
-[; ;PWMcomTimerV3.c: 398: start = 0;
-"398
-[e = _start -> 0 `i ]
-"399
-}
-[e :U 408 ]
-"400
-}
-[e :U 404 ]
-"385
-[e $U 405  ]
+[e $ < _i -> 4 `i 406  ]
+[e $U 407  ]
+"328
 [e :U 406 ]
-[; ;PWMcomTimerV3.c: 399: }
-[; ;PWMcomTimerV3.c: 400: }
-[; ;PWMcomTimerV3.c: 402: return (0);
-"402
-[e ) -> 0 `i ]
-[e $UE 403  ]
-[; ;PWMcomTimerV3.c: 403: }
-"403
-[e :UE 403 ]
-}
-[v F3584 `(v ~T0 @X0 1 tf ]
-"405
-[v _tc_int `IF3584 ~T0 @X0 1 e ]
-"406
+[; ;PWMcomTimerV3.c: 328: {
 {
-[; ;PWMcomTimerV3.c: 405: void interrupt tc_int(void)
-[; ;PWMcomTimerV3.c: 406: {
-[e :U _tc_int ]
-[f ]
-[; ;PWMcomTimerV3.c: 410: if(INTCONbits.TMR0IF && INTCONbits.TMR0IE)
-"410
-[e $ ! && != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i != -> . . _INTCONbits 0 5 `i -> -> -> 0 `i `Vuc `i 410  ]
-[; ;PWMcomTimerV3.c: 411: {
-"411
-{
-[; ;PWMcomTimerV3.c: 412: INTCONbits.TMR0IF = 0;
-"412
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-[; ;PWMcomTimerV3.c: 414: if(count == off_duty)
-"414
-[e $ ! == _count _off_duty 411  ]
-[; ;PWMcomTimerV3.c: 415: {
-"415
-{
-[; ;PWMcomTimerV3.c: 416: RC7 = 1;
-"416
-[e = _RC7 -> -> 1 `i `b ]
-[; ;PWMcomTimerV3.c: 417: LATD2 = 1;
-"417
-[e = _LATD2 -> -> 1 `i `b ]
-"418
+[; ;PWMcomTimerV3.c: 329: Direction(frente);
+"329
+[e ( _Direction (1 -> . `E3552 0 `i ]
+[; ;PWMcomTimerV3.c: 330: SetPWM(1,velocidade);
+"330
+[e ( _SetPWM (2 , -> 1 `i _velocidade ]
+[; ;PWMcomTimerV3.c: 331: delayX(100);
+"331
+[e ( _delayX (1 -> 100 `i ]
+[; ;PWMcomTimerV3.c: 333: SetPWM(0,velocidade);
+"333
+[e ( _SetPWM (2 , -> 0 `i _velocidade ]
+[; ;PWMcomTimerV3.c: 334: delayX(10);
+"334
+[e ( _delayX (1 -> 10 `i ]
+[; ;PWMcomTimerV3.c: 336: Direction(direita);
+"336
+[e ( _Direction (1 -> . `E3552 3 `i ]
+[; ;PWMcomTimerV3.c: 337: SetPWM(1,velocidade);
+"337
+[e ( _SetPWM (2 , -> 1 `i _velocidade ]
+[; ;PWMcomTimerV3.c: 338: delayX(50);
+"338
+[e ( _delayX (1 -> 50 `i ]
+[; ;PWMcomTimerV3.c: 340: SetPWM(0,velocidade);
+"340
+[e ( _SetPWM (2 , -> 0 `i _velocidade ]
+[; ;PWMcomTimerV3.c: 341: delayX(10);
+"341
+[e ( _delayX (1 -> 10 `i ]
+"342
 }
-[e :U 411 ]
-[; ;PWMcomTimerV3.c: 418: }
-[; ;PWMcomTimerV3.c: 420: if(count == max_cicle)
-"420
-[e $ ! == _count _max_cicle 412  ]
-[; ;PWMcomTimerV3.c: 421: {
-"421
+"327
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 4 `i 406  ]
+[e :U 407 ]
+"342
+}
+"343
+}
+[; ;PWMcomTimerV3.c: 342: }
+[; ;PWMcomTimerV3.c: 343: }
+[e $U 409  ]
+"344
+[e :U 405 ]
+[; ;PWMcomTimerV3.c: 344: else
+[; ;PWMcomTimerV3.c: 345: {
+"345
 {
-[; ;PWMcomTimerV3.c: 422: RC7 = 0;
-"422
-[e = _RC7 -> -> 0 `i `b ]
-[; ;PWMcomTimerV3.c: 423: LATD2 = 0;
-"423
-[e = _LATD2 -> -> 0 `i `b ]
-"424
-}
-[e :U 412 ]
-[; ;PWMcomTimerV3.c: 424: }
-[; ;PWMcomTimerV3.c: 426: count = count%max_cicle;
-"426
-[e = _count % _count _max_cicle ]
-[; ;PWMcomTimerV3.c: 427: count++;
-"427
-[e ++ _count -> 1 `i ]
-"428
-}
+[; ;PWMcomTimerV3.c: 346: for(int i = 0; i < 4; i++)
+"346
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 4 `i 410  ]
+[e $U 411  ]
+"347
 [e :U 410 ]
-[; ;PWMcomTimerV3.c: 428: }
-[; ;PWMcomTimerV3.c: 430: if(INTCONbits.INT0F)
-"430
-[e $ ! != -> . . _INTCONbits 1 1 `i -> -> -> 0 `i `Vuc `i 413  ]
-[; ;PWMcomTimerV3.c: 431: {
-"431
+[; ;PWMcomTimerV3.c: 347: {
 {
-[; ;PWMcomTimerV3.c: 432: SetPWM(0,1);
-"432
-[e ( _SetPWM (2 , -> 0 `i -> 1 `i ]
-[; ;PWMcomTimerV3.c: 434: modo++;
-"434
-[e ++ _modo -> 1 `i ]
-[; ;PWMcomTimerV3.c: 435: modo = (modo%3)+1;
-"435
-[e = _modo + % _modo -> 3 `i -> 1 `i ]
-[; ;PWMcomTimerV3.c: 466: INTCONbits.INT0F = 0;
-"466
-[e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
-"467
+[; ;PWMcomTimerV3.c: 348: Direction(frente);
+"348
+[e ( _Direction (1 -> . `E3552 0 `i ]
+[; ;PWMcomTimerV3.c: 349: SetPWM(1,velocidade);
+"349
+[e ( _SetPWM (2 , -> 1 `i _velocidade ]
+[; ;PWMcomTimerV3.c: 350: delayX(100);
+"350
+[e ( _delayX (1 -> 100 `i ]
+[; ;PWMcomTimerV3.c: 352: SetPWM(0,velocidade);
+"352
+[e ( _SetPWM (2 , -> 0 `i _velocidade ]
+[; ;PWMcomTimerV3.c: 353: delayX(10);
+"353
+[e ( _delayX (1 -> 10 `i ]
+[; ;PWMcomTimerV3.c: 355: Direction(esquerda);
+"355
+[e ( _Direction (1 -> . `E3552 2 `i ]
+[; ;PWMcomTimerV3.c: 356: SetPWM(1,velocidade);
+"356
+[e ( _SetPWM (2 , -> 1 `i _velocidade ]
+[; ;PWMcomTimerV3.c: 357: delayX(50);
+"357
+[e ( _delayX (1 -> 50 `i ]
+[; ;PWMcomTimerV3.c: 359: SetPWM(0,velocidade);
+"359
+[e ( _SetPWM (2 , -> 0 `i _velocidade ]
+[; ;PWMcomTimerV3.c: 360: delayX(10);
+"360
+[e ( _delayX (1 -> 10 `i ]
+"361
 }
+"346
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 4 `i 410  ]
+[e :U 411 ]
+"361
+}
+"362
+}
+[e :U 409 ]
+[; ;PWMcomTimerV3.c: 361: }
+[; ;PWMcomTimerV3.c: 362: }
+[; ;PWMcomTimerV3.c: 363: break;
+"363
+[e $U 399  ]
+[; ;PWMcomTimerV3.c: 365: case 2:
+"365
 [e :U 413 ]
-[; ;PWMcomTimerV3.c: 467: }
-[; ;PWMcomTimerV3.c: 470: if(INTCON3bits.INT1F)
-"470
-[e $ ! != -> . . _INTCON3bits 1 0 `i -> -> -> 0 `i `Vuc `i 414  ]
-[; ;PWMcomTimerV3.c: 471: {
-"471
+[; ;PWMcomTimerV3.c: 366: if(dir == 0)
+"366
+[e $ ! == _dir -> 0 `i 414  ]
+[; ;PWMcomTimerV3.c: 367: {
+"367
 {
-[; ;PWMcomTimerV3.c: 473: direcao = !direcao;
-"473
-[e = _direcao -> ! != _direcao -> 0 `i `i ]
-[; ;PWMcomTimerV3.c: 474: INTCON3bits.INT1F = 0;
-"474
-[e = . . _INTCON3bits 1 0 -> -> 0 `i `uc ]
-"475
+[; ;PWMcomTimerV3.c: 368: Direction(direita);
+"368
+[e ( _Direction (1 -> . `E3552 3 `i ]
+[; ;PWMcomTimerV3.c: 369: SetPWM(1,velocidade);
+"369
+[e ( _SetPWM (2 , -> 1 `i _velocidade ]
+[; ;PWMcomTimerV3.c: 370: delayX(200);
+"370
+[e ( _delayX (1 -> 200 `i ]
+[; ;PWMcomTimerV3.c: 371: SetPWM(0,velocidade);
+"371
+[e ( _SetPWM (2 , -> 0 `i _velocidade ]
+"372
 }
+[; ;PWMcomTimerV3.c: 372: }
+[e $U 415  ]
+"373
 [e :U 414 ]
-[; ;PWMcomTimerV3.c: 475: }
-[; ;PWMcomTimerV3.c: 477: if(INTCON3bits.INT2F)
-"477
-[e $ ! != -> . . _INTCON3bits 1 1 `i -> -> -> 0 `i `Vuc `i 415  ]
-[; ;PWMcomTimerV3.c: 478: {
-"478
+[; ;PWMcomTimerV3.c: 373: else
+[; ;PWMcomTimerV3.c: 374: {
+"374
 {
-[; ;PWMcomTimerV3.c: 480: start = 1;
-"480
-[e = _start -> 1 `i ]
-[; ;PWMcomTimerV3.c: 481: INTCON3bits.INT2F = 0;
-"481
-[e = . . _INTCON3bits 1 1 -> -> 0 `i `uc ]
-"482
+[; ;PWMcomTimerV3.c: 375: Direction(esquerda);
+"375
+[e ( _Direction (1 -> . `E3552 2 `i ]
+[; ;PWMcomTimerV3.c: 376: SetPWM(1,velocidade);
+"376
+[e ( _SetPWM (2 , -> 1 `i _velocidade ]
+[; ;PWMcomTimerV3.c: 377: delayX(200);
+"377
+[e ( _delayX (1 -> 200 `i ]
+[; ;PWMcomTimerV3.c: 378: SetPWM(0,velocidade);
+"378
+[e ( _SetPWM (2 , -> 0 `i _velocidade ]
+"379
 }
 [e :U 415 ]
-[; ;PWMcomTimerV3.c: 482: }
-[; ;PWMcomTimerV3.c: 483: }
-"483
-[e :UE 409 ]
+[; ;PWMcomTimerV3.c: 379: }
+[; ;PWMcomTimerV3.c: 380: break;
+"380
+[e $U 399  ]
+"381
+}
+[; ;PWMcomTimerV3.c: 381: }
+[e $U 399  ]
+"305
+[e :U 400 ]
+[e [\ _Modo , $ -> 0 `i 401
+ , $ -> 1 `i 404
+ , $ -> 2 `i 413
+ 399 ]
+"381
+[e :U 399 ]
+[; ;PWMcomTimerV3.c: 382: }
+"382
+[e :UE 398 ]
+}
+"384
+[v _main `(i ~T0 @X0 1 ef2`i`**uc ]
+"385
+{
+[; ;PWMcomTimerV3.c: 384: int main(int argc, char** argv)
+[; ;PWMcomTimerV3.c: 385: {
+[e :U _main ]
+"384
+[v _argc `i ~T0 @X0 1 r1 ]
+[v _argv `**uc ~T0 @X0 1 r2 ]
+"385
+[f ]
+[; ;PWMcomTimerV3.c: 386: setup();
+"386
+[e ( _setup ..  ]
+[; ;PWMcomTimerV3.c: 387: attLeds();
+"387
+[e ( _attLeds ..  ]
+[; ;PWMcomTimerV3.c: 389: while(1)
+"389
+[e :U 418 ]
+[; ;PWMcomTimerV3.c: 390: {
+"390
+{
+[; ;PWMcomTimerV3.c: 391: if(PORTCbits.RC6 == 1)
+"391
+[e $ ! == -> . . _PORTCbits 0 6 `i -> 1 `i 420  ]
+[; ;PWMcomTimerV3.c: 392: {
+"392
+{
+[; ;PWMcomTimerV3.c: 393: delayX(20);
+"393
+[e ( _delayX (1 -> 20 `i ]
+[; ;PWMcomTimerV3.c: 395: velocidade++;
+"395
+[e ++ _velocidade -> 1 `i ]
+[; ;PWMcomTimerV3.c: 396: velocidade = velocidade%3;
+"396
+[e = _velocidade % _velocidade -> 3 `i ]
+"397
+}
+[e :U 420 ]
+[; ;PWMcomTimerV3.c: 397: }
+[; ;PWMcomTimerV3.c: 398: if(running){
+"398
+[e $ ! != _running -> 0 `i 421  ]
+{
+[; ;PWMcomTimerV3.c: 399: ativaModo(modo, direcao);
+"399
+[e ( _ativaModo (2 , _modo _direcao ]
+[; ;PWMcomTimerV3.c: 400: running = 0;
+"400
+[e = _running -> 0 `i ]
+"401
+}
+[e :U 421 ]
+[; ;PWMcomTimerV3.c: 401: }
+[; ;PWMcomTimerV3.c: 402: attLeds();
+"402
+[e ( _attLeds ..  ]
+"403
+}
+[e :U 417 ]
+"389
+[e $U 418  ]
+[e :U 419 ]
+[; ;PWMcomTimerV3.c: 403: }
+[; ;PWMcomTimerV3.c: 405: return (0);
+"405
+[e ) -> 0 `i ]
+[e $UE 416  ]
+[; ;PWMcomTimerV3.c: 406: }
+"406
+[e :UE 416 ]
+}
+[v F3585 `(v ~T0 @X0 1 tf ]
+"408
+[v _tc_int `IF3585 ~T0 @X0 1 e ]
+"409
+{
+[; ;PWMcomTimerV3.c: 408: void interrupt tc_int(void)
+[; ;PWMcomTimerV3.c: 409: {
+[e :U _tc_int ]
+[f ]
+[; ;PWMcomTimerV3.c: 413: if(INTCONbits.TMR0IF && INTCONbits.TMR0IE)
+"413
+[e $ ! && != -> . . _INTCONbits 0 2 `i -> -> -> 0 `i `Vuc `i != -> . . _INTCONbits 0 5 `i -> -> -> 0 `i `Vuc `i 423  ]
+[; ;PWMcomTimerV3.c: 414: {
+"414
+{
+[; ;PWMcomTimerV3.c: 415: INTCONbits.TMR0IF = 0;
+"415
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;PWMcomTimerV3.c: 416: if(running){
+"416
+[e $ ! != _running -> 0 `i 424  ]
+{
+[; ;PWMcomTimerV3.c: 417: if(count == off_duty)
+"417
+[e $ ! == _count _off_duty 425  ]
+[; ;PWMcomTimerV3.c: 418: {
+"418
+{
+[; ;PWMcomTimerV3.c: 419: RC7 = 1;
+"419
+[e = _RC7 -> -> 1 `i `b ]
+[; ;PWMcomTimerV3.c: 420: LATD2 = 1;
+"420
+[e = _LATD2 -> -> 1 `i `b ]
+"421
+}
+[e :U 425 ]
+[; ;PWMcomTimerV3.c: 421: }
+[; ;PWMcomTimerV3.c: 423: if(count == max_cicle)
+"423
+[e $ ! == _count _max_cicle 426  ]
+[; ;PWMcomTimerV3.c: 424: {
+"424
+{
+[; ;PWMcomTimerV3.c: 425: RC7 = 0;
+"425
+[e = _RC7 -> -> 0 `i `b ]
+[; ;PWMcomTimerV3.c: 426: LATD2 = 0;
+"426
+[e = _LATD2 -> -> 0 `i `b ]
+"427
+}
+[e :U 426 ]
+[; ;PWMcomTimerV3.c: 427: }
+[; ;PWMcomTimerV3.c: 429: count = count%max_cicle;
+"429
+[e = _count % _count _max_cicle ]
+[; ;PWMcomTimerV3.c: 430: count++;
+"430
+[e ++ _count -> 1 `i ]
+"431
+}
+[e :U 424 ]
+"432
+}
+[e :U 423 ]
+[; ;PWMcomTimerV3.c: 431: }
+[; ;PWMcomTimerV3.c: 432: }
+[; ;PWMcomTimerV3.c: 434: if(INTCONbits.INT0F)
+"434
+[e $ ! != -> . . _INTCONbits 1 1 `i -> -> -> 0 `i `Vuc `i 427  ]
+[; ;PWMcomTimerV3.c: 435: {
+"435
+{
+[; ;PWMcomTimerV3.c: 436: if(!running){
+"436
+[e $ ! ! != _running -> 0 `i 428  ]
+{
+[; ;PWMcomTimerV3.c: 437: modo++;
+"437
+[e ++ _modo -> 1 `i ]
+[; ;PWMcomTimerV3.c: 438: modo = modo%3;
+"438
+[e = _modo % _modo -> 3 `i ]
+"439
+}
+[e :U 428 ]
+[; ;PWMcomTimerV3.c: 439: }
+[; ;PWMcomTimerV3.c: 441: INTCONbits.INT0F = 0;
+"441
+[e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
+"442
+}
+[e :U 427 ]
+[; ;PWMcomTimerV3.c: 442: }
+[; ;PWMcomTimerV3.c: 445: if(INTCON3bits.INT1F)
+"445
+[e $ ! != -> . . _INTCON3bits 1 0 `i -> -> -> 0 `i `Vuc `i 429  ]
+[; ;PWMcomTimerV3.c: 446: {
+"446
+{
+[; ;PWMcomTimerV3.c: 447: if(!running){
+"447
+[e $ ! ! != _running -> 0 `i 430  ]
+{
+[; ;PWMcomTimerV3.c: 448: direcao = !direcao;
+"448
+[e = _direcao -> ! != _direcao -> 0 `i `i ]
+"449
+}
+[e :U 430 ]
+[; ;PWMcomTimerV3.c: 449: }
+[; ;PWMcomTimerV3.c: 451: INTCON3bits.INT1F = 0;
+"451
+[e = . . _INTCON3bits 1 0 -> -> 0 `i `uc ]
+"452
+}
+[e :U 429 ]
+[; ;PWMcomTimerV3.c: 452: }
+[; ;PWMcomTimerV3.c: 454: if(INTCON3bits.INT2F)
+"454
+[e $ ! != -> . . _INTCON3bits 1 1 `i -> -> -> 0 `i `Vuc `i 431  ]
+[; ;PWMcomTimerV3.c: 455: {
+"455
+{
+[; ;PWMcomTimerV3.c: 456: if(!running){
+"456
+[e $ ! ! != _running -> 0 `i 432  ]
+{
+[; ;PWMcomTimerV3.c: 457: running = 1;
+"457
+[e = _running -> 1 `i ]
+"458
+}
+[e :U 432 ]
+[; ;PWMcomTimerV3.c: 458: }
+[; ;PWMcomTimerV3.c: 460: INTCON3bits.INT2F = 0;
+"460
+[e = . . _INTCON3bits 1 1 -> -> 0 `i `uc ]
+"461
+}
+[e :U 431 ]
+[; ;PWMcomTimerV3.c: 461: }
+[; ;PWMcomTimerV3.c: 462: }
+"462
+[e :UE 422 ]
 }

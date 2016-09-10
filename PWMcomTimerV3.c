@@ -103,10 +103,10 @@ int max_cicle = 20; // Tempo m�ximo do per�odo
 int count = 0;      // Contador de ciclo para o pwm
 
 /* Variaveis de Controle  */
-int modo = 1;       // Controla o modo em que esta se movimentando
-int velocidade = 1; // Controla a velocidade em que esta se movimentando
-int direcao = 0;
-int start = 0;
+int modo = 0;       // Controla o modo em que esta se movimentando
+int velocidade = 0; // Controla a velocidade em que esta se movimentando
+int direcao = 0;    // Controla a dire��o do modo
+int running = 0;    // Flag para ver se o robo est� executando algum modo
 
 void setup()    // Configura as Interrup�oes, pinos de entrada/saida, timer...
 {
@@ -177,6 +177,42 @@ void setup()    // Configura as Interrup�oes, pinos de entrada/saida, timer...
     /* END Motores 2 */
 }
 
+void attLeds(){
+    if(velocidade == 0){
+        led0 = 1;
+        led1 = 0;
+    }
+    else if(velocidade == 1){
+        led0 = 0;
+        led1 = 1;
+    }
+    else if(velocidade == 2){
+        led0 = 1;
+        led1 = 1;
+    }
+    
+    if(running){
+        led2 = 1;
+    }
+    else{
+        led2 = 0;
+    }
+    
+    led4 = direcao;
+    
+    if(modo == 0){
+        led6 = 1;
+        led7 = 0;
+    }
+    else if(modo == 1){
+        led6 = 0;
+        led7 = 1;
+    }
+    else if(modo == 2){
+        led6 = 1;
+        led7 = 1;
+    }
+}
 
 // @Param n: Tempo de delay
 void delayX(int n)
@@ -195,28 +231,20 @@ void SetPWM(int status, int veloc)
     
         switch(veloc)
         {
-            case 1:
+            case 0:
                 off_duty = 15; // velocidade 1 tem o off duty de 15 e on duty de 5
-                led0 = 1;
-                led1 = 0;
+            break;
+        
+            case 1:
+                off_duty = 8; // velocidade 2 tem o off duty de 8 e on duty de 12
             break;
         
             case 2:
-                off_duty = 8; // velocidade 2 tem o off duty de 8 e on duty de 12
-                led0 = 0;
-                led1 = 1;
-            break;
-        
-            case 3:
                 off_duty = 1; // velocidade 3 tem o off duty de 1 e on duty de 19
-                led0 = 1;
-                led1 = 1;
             break;
             
             default:
                 off_duty = 1; // velocidade 3 tem o off duty de 1 e on duty de 19
-                led0 = 1;
-                led1 = 1;
             break;
         }
     }
@@ -225,10 +253,6 @@ void SetPWM(int status, int veloc)
         pwm = 0; // zera pino PWM
         T0CONbits.TMR0ON = 0; // disable Timer0
         INTCONbits.TMR0IF = 0; // clear the interrupt flag 
-        
-        led0 = 0; // desliga led indicador de velocidade
-        led1 = 0; // desliga led indicador de velocidade
-        led2 = 0; // desliga led indicador de PWM 
     }
 }
 
@@ -243,11 +267,6 @@ void Direction(int dir)
     
             motores2a = 1;
             motores2b = 0;
-            
-            led4 = 0;
-            led5 = 0;
-            led6 = 1;
-            led7 = 0;
         break;
         
         
@@ -257,11 +276,6 @@ void Direction(int dir)
     
             motores2a = 0;
             motores2b = 1;
-            
-            led4 = 0;
-            led5 = 0;
-            led6 = 0;
-            led7 = 1;
         break;
         
         
@@ -271,11 +285,6 @@ void Direction(int dir)
     
             motores2a = 0;
             motores2b = 1;
-            
-            led4 = 1;
-            led5 = 0;
-            led6 = 0;
-            led7 = 0;
         break;
         
         
@@ -285,11 +294,6 @@ void Direction(int dir)
     
             motores2a = 1;
             motores2b = 0;
-            
-            led4 = 0;
-            led5 = 1;
-            led6 = 0;
-            led7 = 0;
         break;
     }
 }
@@ -300,7 +304,7 @@ void ativaModo(int Modo, int dir)   // Função responsavel por gerar o comporta
 {
     switch(Modo)
     {
-        case 1:
+        case 0:
             if(dir == 0)
             {
                 Direction(frente);      // Configura motores para frente
@@ -317,7 +321,7 @@ void ativaModo(int Modo, int dir)   // Função responsavel por gerar o comporta
             }
         break;
         
-        case 2:
+        case 1:
             if(dir == 0)        // dir = 0 : Quadrado virando a direita
             {
                 for(int i = 0; i < 4; i++)      // Repete os passos abaixo para formar o quadrado
@@ -358,7 +362,7 @@ void ativaModo(int Modo, int dir)   // Função responsavel por gerar o comporta
             }
         break;
         
-        case 3:
+        case 2:
             if(dir == 0)        // dir = 0 : Girar em torno do proprio eixo para a direita
             {
                 Direction(direita);             // Configura motores para a direita
@@ -380,7 +384,7 @@ void ativaModo(int Modo, int dir)   // Função responsavel por gerar o comporta
 int main(int argc, char** argv)
 {    
     setup();
-    led3 = 1;
+    attLeds();
             
     while(1)
 	{
@@ -389,14 +393,13 @@ int main(int argc, char** argv)
             delayX(20); 
             
             velocidade++;
-            velocidade = (velocidade%3)+1;
+            velocidade = velocidade%3;
         }
-        
-        if(start != 0)
-        {
+        if(running){
             ativaModo(modo, direcao);
-            start = 0;
+            running = 0;
         }
+        attLeds();
     }
 
     return (EXIT_SUCCESS);
@@ -410,58 +413,30 @@ void interrupt tc_int(void)
     if(INTCONbits.TMR0IF && INTCONbits.TMR0IE) // if timer flag is set & interrupt enabled
     {                                     
         INTCONbits.TMR0IF = 0; // clear the interrupt flag 
-        
-        if(count == off_duty)
-        {
-            pwm = 1;
-            led2 = 1; // toggle a bit to say we're alive
+        if(running){
+            if(count == off_duty)
+            {
+                pwm = 1;
+                led2 = 1; // toggle a bit to say we're alive
+            }
+
+            if(count == max_cicle)
+            {
+                pwm = 0;
+                led2 = 0; // toggle a bit to say we're alive
+            }
+
+            count = count%max_cicle;
+            count++;
         }
-        
-        if(count == max_cicle)
-        {
-            pwm = 0;
-            led2 = 0; // toggle a bit to say we're alive
-        }
-        
-        count = count%max_cicle;
-        count++;
     }
     
     if(INTCONbits.INT0F)        // Interrupção0 entrada RB0
     {
-        SetPWM(0,1);            // Desliga o PWM caso ainda esteja ligado
-        
-        modo++;
-        modo = (modo%3)+1;
-        
-//        switch(modo)            // Liga os leds correspondentes ao modo
-//        {
-//            case 0:
-//                led0 = 0;
-//                led1 = 0;
-//                led2 = 0;
-//            break;
-//            
-//            case 1:
-//                led0 = 1;
-//                led1 = 0;
-//                led2 = 0;
-//            break;
-//            
-//            
-//            case 2:
-//                led0 = 1;
-//                led1 = 1;
-//                led2 = 0;
-//            break;
-//            
-//            
-//            case 3:
-//                led0 = 1;
-//                led1 = 1;
-//                led2 = 1;
-//            break;
-//        }
+        if(!running){
+            modo++;
+            modo = modo%3;
+        }
         
         INTCONbits.INT0F = 0;   // Limpa flag da Interrupção0
     }
@@ -469,15 +444,19 @@ void interrupt tc_int(void)
     
     if(INTCON3bits.INT1F)       // Interrupção1 entrada RB1
     {
-//        led6 = !led6;           // Liga um led correspondente a direção
-        direcao = !direcao;     // Inverte a direção
+        if(!running){
+            direcao = !direcao;     // Inverte a direção
+        }
+//        
         INTCON3bits.INT1F = 0;  // Limpa flag da Interrupção1
     }
     
     if(INTCON3bits.INT2F)       // Interrupção2 entrada RB2
     {
-//       led7 = 1;                // Liga um led para informar inicio do modo
-       start = 1;               // Ativa a flag start para iniciar o modo
-       INTCON3bits.INT2F = 0;   // Limpa flag da Interrupção2
+        if(!running){
+            running = 1; // Ativa a flag running  
+        }
+        
+        INTCON3bits.INT2F = 0;   // Limpa flag da Interrupção2
     }
 }

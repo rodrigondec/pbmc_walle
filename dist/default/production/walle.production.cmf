@@ -11,28 +11,28 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$/tmp/xcXfugEGM.obj
-idloc IDLOC 0 200000 200000 8 1
-reset_vec CODE 0 0 0 4 1
-end_init CODE 0 12E 12E 4 1
-config CONFIG 0 300000 300000 E 1
 $dist/default/production/walle.production.obj
-cinit CODE 0 6F8 6F8 3A 1
-text0 CODE 0 648 648 60 1
-text1 CODE 0 6A8 6A8 50 1
-text2 CODE 0 132 132 2D0 1
-text3 CODE 0 732 732 36 1
-text4 CODE 0 402 402 78 1
-text5 CODE 0 4F2 4F2 76 1
-text6 CODE 0 568 568 70 1
-text8 CODE 0 5D8 5D8 70 1
-text9 CODE 0 47A 47A 78 1
-idataCOMRAM CODE 0 768 768 8 1
+cinit CODE 0 6C0 6C0 3A 1
+text0 CODE 0 556 556 62 1
+text1 CODE 0 670 670 50 1
+text2 CODE 0 4EA 4EA 6C 1
+text3 CODE 0 13A 13A 2D0 1
+text4 CODE 0 6FA 6FA 36 1
+text5 CODE 0 5B8 5B8 62 1
+text6 CODE 0 61A 61A 56 1
+text7 CODE 0 40A 40A 70 1
+text9 CODE 0 47A 47A 70 1
+idataCOMRAM CODE 0 730 730 4 1
 cstackCOMRAM COMRAM 1 1 1 29 1
 temp COMRAM 1 38 38 1 1
-intcode CODE 0 8 8 126 1
-dataCOMRAM COMRAM 1 2A 2A 8 1
-bssCOMRAM COMRAM 1 32 32 6 1
+intcode CODE 0 8 8 12E 1
+dataCOMRAM COMRAM 1 34 34 4 1
+bssCOMRAM COMRAM 1 2A 2A A 1
+$/tmp/xcX5flVi2.obj
+idloc IDLOC 0 200000 200000 8 1
+reset_vec CODE 0 0 0 4 1
+end_init CODE 0 136 136 4 1
+config CONFIG 0 300000 300000 E 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -48,15 +48,15 @@ BANK3 300-3FF 1
 BANK4 400-4FF 1
 BANK5 500-5FF 1
 CONST 4-7 1
-CONST 770-7FFF 1
+CONST 734-7FFF 1
 STACK 60-5FF 1
-SMALLCONST 770-7FFF 1
+SMALLCONST 734-7FFF 1
 CODE 4-7 1
-CODE 770-7FFF 1
+CODE 734-7FFF 1
 BIGRAM 39-5FF 1
 COMRAM 39-5F 1
 EEDATA F00000-F000FF 1
-MEDIUMCONST 770-7FFF 1
+MEDIUMCONST 734-7FFF 1
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -72,306 +72,284 @@ MEDIUMCONST 770-7FFF 1
 %LINETAB
 $dist/default/production/walle.production.obj
 8 intcode CODE >35:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-8 intcode CODE >405:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-42 intcode CODE >410:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-48 intcode CODE >412:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4A intcode CODE >414:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-58 intcode CODE >416:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-5A intcode CODE >417:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-5C intcode CODE >420:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6A intcode CODE >422:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6C intcode CODE >423:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6E intcode CODE >426:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-8A intcode CODE >427:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-8E intcode CODE >430:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-92 intcode CODE >432:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-A6 intcode CODE >434:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-AA intcode CODE >435:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-CA intcode CODE >466:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-CC intcode CODE >470:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-D0 intcode CODE >473:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-E2 intcode CODE >474:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-E4 intcode CODE >477:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-E8 intcode CODE >480:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-F0 intcode CODE >481:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-F2 intcode CODE >483:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-47A text9 CODE >190:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-47A text9 CODE >192:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-482 text9 CODE >194:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-484 text9 CODE >196:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-486 text9 CODE >199:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-48E text9 CODE >200:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-490 text9 CODE >201:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-492 text9 CODE >202:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-494 text9 CODE >205:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-49C text9 CODE >206:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-49E text9 CODE >207:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4A0 text9 CODE >208:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4A2 text9 CODE >211:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4AA text9 CODE >212:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4AC text9 CODE >213:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4AE text9 CODE >214:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4B0 text9 CODE >217:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4B8 text9 CODE >218:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4BA text9 CODE >219:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4BC text9 CODE >221:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4BE text9 CODE >196:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4E4 text9 CODE >223:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4E4 text9 CODE >225:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4E6 text9 CODE >226:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4E8 text9 CODE >227:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4EA text9 CODE >229:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4EC text9 CODE >230:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4EE text9 CODE >231:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-5D8 text8 CODE >8:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5D8 text8 CODE >13:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5DC text8 CODE >14:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5E0 text8 CODE >15:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5E8 text8 CODE >16:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5EC text8 CODE >18:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5F0 text8 CODE >19:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5F8 text8 CODE >20:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-600 text8 CODE >21:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-604 text8 CODE >22:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-606 text8 CODE >23:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-60C text8 CODE >24:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-60E text8 CODE >22:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-612 text8 CODE >27:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-61E text8 CODE >28:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-626 text8 CODE >29:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-62C text8 CODE >30:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-630 text8 CODE >32:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-636 text8 CODE >33:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-63E text8 CODE >34:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-568 text6 CODE >8:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-568 text6 CODE >13:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-56C text6 CODE >14:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-570 text6 CODE >15:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-578 text6 CODE >16:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-57C text6 CODE >18:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-580 text6 CODE >19:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-588 text6 CODE >20:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-590 text6 CODE >21:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-594 text6 CODE >22:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-596 text6 CODE >23:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-59C text6 CODE >24:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-59E text6 CODE >22:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5A2 text6 CODE >27:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5AE text6 CODE >28:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5B6 text6 CODE >29:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5BC text6 CODE >30:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5C0 text6 CODE >32:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5C6 text6 CODE >33:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-5CE text6 CODE >34:/opt/microchip/xc8/v1.38/sources/common/awmod.c
-4F2 text5 CODE >236:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4F2 text5 CODE >238:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4F4 text5 CODE >240:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4F4 text5 CODE >241:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4F6 text5 CODE >242:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4F8 text5 CODE >244:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4FA text5 CODE >245:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4FC text5 CODE >247:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-4FE text5 CODE >248:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-500 text5 CODE >249:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-502 text5 CODE >250:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-504 text5 CODE >251:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-506 text5 CODE >254:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-506 text5 CODE >255:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-508 text5 CODE >256:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-50A text5 CODE >258:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-50C text5 CODE >259:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-50E text5 CODE >261:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-510 text5 CODE >262:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-512 text5 CODE >263:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-514 text5 CODE >264:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-516 text5 CODE >265:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-518 text5 CODE >268:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-518 text5 CODE >269:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-51A text5 CODE >270:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-51C text5 CODE >272:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-51E text5 CODE >273:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-520 text5 CODE >275:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-522 text5 CODE >276:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-524 text5 CODE >277:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-526 text5 CODE >278:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-528 text5 CODE >279:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-52A text5 CODE >282:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-52A text5 CODE >283:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-52C text5 CODE >284:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-52E text5 CODE >286:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-530 text5 CODE >287:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-532 text5 CODE >289:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-534 text5 CODE >290:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-536 text5 CODE >291:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-538 text5 CODE >292:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-53A text5 CODE >294:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-53C text5 CODE >238:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-402 text4 CODE >190:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-402 text4 CODE >192:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-40A text4 CODE >194:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-40C text4 CODE >196:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-40E text4 CODE >199:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-416 text4 CODE >200:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-418 text4 CODE >201:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-41A text4 CODE >202:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-41C text4 CODE >205:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-424 text4 CODE >206:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-426 text4 CODE >207:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-428 text4 CODE >208:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-42A text4 CODE >211:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-432 text4 CODE >212:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-434 text4 CODE >213:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-436 text4 CODE >214:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-438 text4 CODE >217:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-440 text4 CODE >218:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-442 text4 CODE >219:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-444 text4 CODE >221:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-446 text4 CODE >196:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-46C text4 CODE >223:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-46C text4 CODE >225:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-46E text4 CODE >226:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-470 text4 CODE >227:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-472 text4 CODE >229:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-474 text4 CODE >230:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-476 text4 CODE >231:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-732 text3 CODE >182:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-732 text3 CODE >184:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-73C text3 CODE >185:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-74E text3 CODE >184:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-132 text2 CODE >299:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-132 text2 CODE >301:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-134 text2 CODE >304:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-13C text2 CODE >306:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-148 text2 CODE >307:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-15C text2 CODE >308:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-168 text2 CODE >309:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-17C text2 CODE >310:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-17E text2 CODE >313:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-18A text2 CODE >314:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-19E text2 CODE >315:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-1AA text2 CODE >316:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-1BE text2 CODE >318:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-1C0 text2 CODE >321:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-1C8 text2 CODE >323:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-1E4 text2 CODE >325:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-1F0 text2 CODE >326:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-204 text2 CODE >327:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-210 text2 CODE >329:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-224 text2 CODE >330:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-230 text2 CODE >332:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-23C text2 CODE >333:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-250 text2 CODE >334:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-25C text2 CODE >336:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-270 text2 CODE >337:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-27C text2 CODE >323:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-28A text2 CODE >339:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-28C text2 CODE >342:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-2A8 text2 CODE >344:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-2B4 text2 CODE >345:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-2C8 text2 CODE >346:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-2D4 text2 CODE >348:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-2E8 text2 CODE >349:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-2F4 text2 CODE >351:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-300 text2 CODE >352:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-314 text2 CODE >353:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-320 text2 CODE >355:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-334 text2 CODE >356:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-340 text2 CODE >342:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-34E text2 CODE >362:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-356 text2 CODE >364:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-362 text2 CODE >365:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-376 text2 CODE >366:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-382 text2 CODE >367:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-396 text2 CODE >368:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-398 text2 CODE >371:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-3A4 text2 CODE >372:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-3B8 text2 CODE >373:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-3C4 text2 CODE >374:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-3D8 text2 CODE >377:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-3DA text2 CODE >301:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-400 text2 CODE >378:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6A8 text1 CODE >111:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6A8 text1 CODE >114:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6AA text1 CODE >115:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6AC text1 CODE >116:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6AE text1 CODE >117:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6B0 text1 CODE >118:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6B2 text1 CODE >119:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6B4 text1 CODE >120:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6B6 text1 CODE >121:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6B8 text1 CODE >124:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6BA text1 CODE >125:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6BC text1 CODE >126:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6BE text1 CODE >129:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6C0 text1 CODE >130:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6C2 text1 CODE >133:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6C4 text1 CODE >134:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6C6 text1 CODE >135:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6C8 text1 CODE >137:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6CA text1 CODE >138:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6CC text1 CODE >139:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6CE text1 CODE >141:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6D0 text1 CODE >142:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6D2 text1 CODE >143:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6D4 text1 CODE >146:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6D6 text1 CODE >147:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6D8 text1 CODE >149:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6DA text1 CODE >151:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6DC text1 CODE >153:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6DE text1 CODE >154:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6E0 text1 CODE >156:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6E2 text1 CODE >157:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6E4 text1 CODE >160:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6E6 text1 CODE >162:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6E8 text1 CODE >164:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6EA text1 CODE >165:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6EC text1 CODE >167:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6EE text1 CODE >170:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6F0 text1 CODE >171:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6F2 text1 CODE >175:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6F4 text1 CODE >176:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6F6 text1 CODE >178:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-648 text0 CODE >380:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-648 text0 CODE >382:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-64C text0 CODE >383:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-64E text0 CODE >387:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-652 text0 CODE >389:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-65E text0 CODE >391:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-662 text0 CODE >392:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-682 text0 CODE >395:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-68A text0 CODE >397:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-69E text0 CODE >398:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6A6 text0 CODE >385:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6F8 cinit CODE >624:/tmp/xcXDTwx9h
-6F8 cinit CODE >626:/tmp/xcXDTwx9h
-6F8 cinit CODE >629:/tmp/xcXDTwx9h
-6F8 cinit CODE >674:/tmp/xcXDTwx9h
-6FA cinit CODE >675:/tmp/xcXDTwx9h
-6FC cinit CODE >676:/tmp/xcXDTwx9h
-6FE cinit CODE >677:/tmp/xcXDTwx9h
-700 cinit CODE >678:/tmp/xcXDTwx9h
-702 cinit CODE >679:/tmp/xcXDTwx9h
-704 cinit CODE >680:/tmp/xcXDTwx9h
-708 cinit CODE >681:/tmp/xcXDTwx9h
-70C cinit CODE >682:/tmp/xcXDTwx9h
-70C cinit CODE >683:/tmp/xcXDTwx9h
-70E cinit CODE >684:/tmp/xcXDTwx9h
-712 cinit CODE >685:/tmp/xcXDTwx9h
-714 cinit CODE >686:/tmp/xcXDTwx9h
-716 cinit CODE >687:/tmp/xcXDTwx9h
-718 cinit CODE >691:/tmp/xcXDTwx9h
-71A cinit CODE >692:/tmp/xcXDTwx9h
-71C cinit CODE >693:/tmp/xcXDTwx9h
-71E cinit CODE >694:/tmp/xcXDTwx9h
-720 cinit CODE >695:/tmp/xcXDTwx9h
-722 cinit CODE >696:/tmp/xcXDTwx9h
-724 cinit CODE >702:/tmp/xcXDTwx9h
-724 cinit CODE >704:/tmp/xcXDTwx9h
-726 cinit CODE >705:/tmp/xcXDTwx9h
-728 cinit CODE >707:/tmp/xcXDTwx9h
-72A cinit CODE >708:/tmp/xcXDTwx9h
-72C cinit CODE >709:/tmp/xcXDTwx9h
-72E cinit CODE >710:/tmp/xcXDTwx9h
+8 intcode CODE >408:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+42 intcode CODE >413:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+48 intcode CODE >415:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+4A intcode CODE >416:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+52 intcode CODE >417:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+60 intcode CODE >419:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+62 intcode CODE >420:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+64 intcode CODE >423:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+72 intcode CODE >425:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+74 intcode CODE >426:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+76 intcode CODE >429:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+92 intcode CODE >430:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+96 intcode CODE >434:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+9A intcode CODE >436:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+A2 intcode CODE >437:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+A6 intcode CODE >438:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+C2 intcode CODE >441:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+C4 intcode CODE >445:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+C8 intcode CODE >447:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+D0 intcode CODE >448:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+E2 intcode CODE >451:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+E4 intcode CODE >454:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+E8 intcode CODE >456:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+F0 intcode CODE >457:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+F8 intcode CODE >460:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+FA intcode CODE >462:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+47A text9 CODE >8:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+47A text9 CODE >13:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+47E text9 CODE >14:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+482 text9 CODE >15:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+48A text9 CODE >16:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+48E text9 CODE >18:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+492 text9 CODE >19:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+49A text9 CODE >20:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+4A2 text9 CODE >21:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+4A6 text9 CODE >22:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+4A8 text9 CODE >23:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+4AE text9 CODE >24:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+4B0 text9 CODE >22:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+4B4 text9 CODE >27:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+4C0 text9 CODE >28:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+4C8 text9 CODE >29:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+4CE text9 CODE >30:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+4D2 text9 CODE >32:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+4D8 text9 CODE >33:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+4E0 text9 CODE >34:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+40A text7 CODE >8:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+40A text7 CODE >13:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+40E text7 CODE >14:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+412 text7 CODE >15:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+41A text7 CODE >16:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+41E text7 CODE >18:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+422 text7 CODE >19:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+42A text7 CODE >20:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+432 text7 CODE >21:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+436 text7 CODE >22:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+438 text7 CODE >23:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+43E text7 CODE >24:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+440 text7 CODE >22:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+444 text7 CODE >27:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+450 text7 CODE >28:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+458 text7 CODE >29:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+45E text7 CODE >30:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+462 text7 CODE >32:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+468 text7 CODE >33:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+470 text7 CODE >34:/opt/microchip/xc8/v1.38/sources/common/awmod.c
+61A text6 CODE >260:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+61A text6 CODE >262:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+61C text6 CODE >264:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+61C text6 CODE >265:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+61E text6 CODE >266:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+620 text6 CODE >268:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+622 text6 CODE >269:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+624 text6 CODE >270:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+626 text6 CODE >273:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+626 text6 CODE >274:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+628 text6 CODE >275:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+62A text6 CODE >277:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+62C text6 CODE >278:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+62E text6 CODE >279:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+630 text6 CODE >282:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+630 text6 CODE >283:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+632 text6 CODE >284:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+634 text6 CODE >286:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+636 text6 CODE >287:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+638 text6 CODE >288:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+63A text6 CODE >291:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+63A text6 CODE >292:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+63C text6 CODE >293:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+63E text6 CODE >295:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+640 text6 CODE >296:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+642 text6 CODE >298:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+644 text6 CODE >262:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5B8 text5 CODE >226:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5B8 text5 CODE >228:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5C0 text5 CODE >230:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5C2 text5 CODE >232:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5C4 text5 CODE >235:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5CC text5 CODE >236:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5CE text5 CODE >239:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5D6 text5 CODE >240:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5D8 text5 CODE >243:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5E0 text5 CODE >244:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5E2 text5 CODE >247:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5EA text5 CODE >249:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5EC text5 CODE >232:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+612 text5 CODE >251:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+612 text5 CODE >253:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+614 text5 CODE >254:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+616 text5 CODE >255:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6FA text4 CODE >218:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6FA text4 CODE >220:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+704 text4 CODE >221:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+716 text4 CODE >220:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+13A text3 CODE >303:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+13A text3 CODE >305:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+13C text3 CODE >308:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+144 text3 CODE >310:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+150 text3 CODE >311:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+164 text3 CODE >312:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+170 text3 CODE >313:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+184 text3 CODE >314:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+186 text3 CODE >317:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+192 text3 CODE >318:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+1A6 text3 CODE >319:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+1B2 text3 CODE >320:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+1C6 text3 CODE >322:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+1C8 text3 CODE >325:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+1D0 text3 CODE >327:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+1EC text3 CODE >329:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+1F8 text3 CODE >330:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+20C text3 CODE >331:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+218 text3 CODE >333:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+22C text3 CODE >334:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+238 text3 CODE >336:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+244 text3 CODE >337:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+258 text3 CODE >338:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+264 text3 CODE >340:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+278 text3 CODE >341:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+284 text3 CODE >327:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+292 text3 CODE >343:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+294 text3 CODE >346:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+2B0 text3 CODE >348:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+2BC text3 CODE >349:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+2D0 text3 CODE >350:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+2DC text3 CODE >352:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+2F0 text3 CODE >353:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+2FC text3 CODE >355:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+308 text3 CODE >356:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+31C text3 CODE >357:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+328 text3 CODE >359:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+33C text3 CODE >360:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+348 text3 CODE >346:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+356 text3 CODE >366:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+35E text3 CODE >368:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+36A text3 CODE >369:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+37E text3 CODE >370:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+38A text3 CODE >371:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+39E text3 CODE >372:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+3A0 text3 CODE >375:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+3AC text3 CODE >376:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+3C0 text3 CODE >377:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+3CC text3 CODE >378:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+3E0 text3 CODE >381:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+3E2 text3 CODE >305:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+408 text3 CODE >382:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+4EA text2 CODE >180:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+4EA text2 CODE >181:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+4F2 text2 CODE >182:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+4F4 text2 CODE >183:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+4F6 text2 CODE >184:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+4F8 text2 CODE >185:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+500 text2 CODE >186:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+504 text2 CODE >189:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+50E text2 CODE >190:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+510 text2 CODE >191:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+512 text2 CODE >194:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+51A text2 CODE >195:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+51C text2 CODE >196:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+51E text2 CODE >197:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+51E text2 CODE >198:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+520 text2 CODE >199:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+520 text2 CODE >201:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+52A text2 CODE >203:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+532 text2 CODE >204:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+534 text2 CODE >205:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+536 text2 CODE >206:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+538 text2 CODE >207:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+540 text2 CODE >208:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+542 text2 CODE >209:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+544 text2 CODE >210:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+546 text2 CODE >211:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+550 text2 CODE >212:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+552 text2 CODE >213:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+554 text2 CODE >215:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+670 text1 CODE >111:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+670 text1 CODE >114:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+672 text1 CODE >115:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+674 text1 CODE >116:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+676 text1 CODE >117:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+678 text1 CODE >118:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+67A text1 CODE >119:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+67C text1 CODE >120:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+67E text1 CODE >121:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+680 text1 CODE >124:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+682 text1 CODE >125:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+684 text1 CODE >126:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+686 text1 CODE >129:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+688 text1 CODE >130:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+68A text1 CODE >133:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+68C text1 CODE >134:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+68E text1 CODE >135:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+690 text1 CODE >137:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+692 text1 CODE >138:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+694 text1 CODE >139:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+696 text1 CODE >141:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+698 text1 CODE >142:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+69A text1 CODE >143:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+69C text1 CODE >146:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+69E text1 CODE >147:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6A0 text1 CODE >149:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6A2 text1 CODE >151:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6A4 text1 CODE >153:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6A6 text1 CODE >154:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6A8 text1 CODE >156:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6AA text1 CODE >157:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6AC text1 CODE >160:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6AE text1 CODE >162:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6B0 text1 CODE >164:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6B2 text1 CODE >165:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6B4 text1 CODE >167:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6B6 text1 CODE >170:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6B8 text1 CODE >171:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6BA text1 CODE >175:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6BC text1 CODE >176:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6BE text1 CODE >178:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+556 text0 CODE >384:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+556 text0 CODE >386:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+55A text0 CODE >387:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+55E text0 CODE >391:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+562 text0 CODE >393:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+56E text0 CODE >395:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+572 text0 CODE >396:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+58E text0 CODE >398:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+596 text0 CODE >399:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5AA text0 CODE >400:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5B2 text0 CODE >402:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+5B6 text0 CODE >389:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+6C0 cinit CODE >612:/tmp/xcX5XkuKr
+6C0 cinit CODE >614:/tmp/xcX5XkuKr
+6C0 cinit CODE >617:/tmp/xcX5XkuKr
+6C0 cinit CODE >656:/tmp/xcX5XkuKr
+6C2 cinit CODE >657:/tmp/xcX5XkuKr
+6C4 cinit CODE >658:/tmp/xcX5XkuKr
+6C6 cinit CODE >659:/tmp/xcX5XkuKr
+6C8 cinit CODE >660:/tmp/xcX5XkuKr
+6CA cinit CODE >661:/tmp/xcX5XkuKr
+6CC cinit CODE >662:/tmp/xcX5XkuKr
+6D0 cinit CODE >663:/tmp/xcX5XkuKr
+6D4 cinit CODE >664:/tmp/xcX5XkuKr
+6D4 cinit CODE >665:/tmp/xcX5XkuKr
+6D6 cinit CODE >666:/tmp/xcX5XkuKr
+6DA cinit CODE >667:/tmp/xcX5XkuKr
+6DC cinit CODE >668:/tmp/xcX5XkuKr
+6DE cinit CODE >669:/tmp/xcX5XkuKr
+6E0 cinit CODE >673:/tmp/xcX5XkuKr
+6E4 cinit CODE >674:/tmp/xcX5XkuKr
+6E6 cinit CODE >675:/tmp/xcX5XkuKr
+6E6 cinit CODE >676:/tmp/xcX5XkuKr
+6E8 cinit CODE >677:/tmp/xcX5XkuKr
+6EA cinit CODE >678:/tmp/xcX5XkuKr
+6EC cinit CODE >684:/tmp/xcX5XkuKr
+6EC cinit CODE >686:/tmp/xcX5XkuKr
+6EE cinit CODE >687:/tmp/xcX5XkuKr
+6F0 cinit CODE >689:/tmp/xcX5XkuKr
+6F2 cinit CODE >690:/tmp/xcX5XkuKr
+6F4 cinit CODE >691:/tmp/xcX5XkuKr
+6F6 cinit CODE >692:/tmp/xcX5XkuKr
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -390,31 +368,31 @@ __Hspace_1 39 0 ABS 0 - dist/default/production/walle.production.obj
 __Hspace_2 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production/walle.production.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcXfugEGM.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcX5flVi2.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/walle.production.obj
+__end_of_attLeds 556 0 CODE 0 text2 dist/default/production/walle.production.obj
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production/walle.production.obj
-___sp 0 0 STACK 2 stack /tmp/xcXfugEGM.obj
-_main 648 0 CODE 0 text0 dist/default/production/walle.production.obj
-_modo 2C 0 COMRAM 1 dataCOMRAM dist/default/production/walle.production.obj
+___sp 0 0 STACK 2 stack /tmp/xcX5flVi2.obj
+_main 556 0 CODE 0 text0 dist/default/production/walle.production.obj
+_modo 2E 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
 btemp 38 0 COMRAM 1 temp dist/default/production/walle.production.obj
-start 12E 0 CODE 0 init /tmp/xcXfugEGM.obj
+start 136 0 CODE 0 init /tmp/xcX5flVi2.obj
 __size_of___awmod 0 0 ABS 0 - dist/default/production/walle.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_WDTEN$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/walle.production.obj
-__size_ofi2_SetPWM 0 0 ABS 0 - dist/default/production/walle.production.obj
-__Hpowerup 12E 0 CODE 0 powerup dist/default/production/walle.production.obj
-__end_of_SetPWM 47A 0 CODE 0 text4 dist/default/production/walle.production.obj
+__Hpowerup 136 0 CODE 0 powerup dist/default/production/walle.production.obj
+__end_of_SetPWM 61A 0 CODE 0 text5 dist/default/production/walle.production.obj
 ___awmod@sign 1A 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 _T0CONbits FD5 0 ABS 0 - dist/default/production/walle.production.obj
 ativaModo@Modo 1B 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/walle.production.obj
 SetPWM@veloc 17 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
-__accesstop 60 0 ABS 0 - /tmp/xcXfugEGM.obj
-intlevel0 0 0 CODE 0 text /tmp/xcXfugEGM.obj
-intlevel1 0 0 CODE 0 text /tmp/xcXfugEGM.obj
-intlevel2 0 0 CODE 0 text /tmp/xcXfugEGM.obj
-intlevel3 0 0 CODE 0 text /tmp/xcXfugEGM.obj
+__accesstop 60 0 ABS 0 - /tmp/xcX5flVi2.obj
+intlevel0 0 0 CODE 0 text /tmp/xcX5flVi2.obj
+intlevel1 0 0 CODE 0 text /tmp/xcX5flVi2.obj
+intlevel2 0 0 CODE 0 text /tmp/xcX5flVi2.obj
+intlevel3 0 0 CODE 0 text /tmp/xcX5flVi2.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/walle.production.obj
 SetPWM@status 15 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/walle.production.obj
@@ -427,37 +405,35 @@ delayX@i 18 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 delayX@n 15 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __Hifardata 0 0 CODE 0 ifardata dist/default/production/walle.production.obj
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production/walle.production.obj
-__pidataCOMRAM 768 0 CODE 0 idataCOMRAM dist/default/production/walle.production.obj
+__pidataCOMRAM 730 0 CODE 0 idataCOMRAM dist/default/production/walle.production.obj
 __CFG_FOSC$INTIO67 0 0 ABS 0 - dist/default/production/walle.production.obj
-___inthi_sp 0 0 STACK 2 stack /tmp/xcXfugEGM.obj
-___intlo_sp 0 0 STACK 2 stack /tmp/xcXfugEGM.obj
+___inthi_sp 0 0 STACK 2 stack /tmp/xcX5flVi2.obj
+___intlo_sp 0 0 STACK 2 stack /tmp/xcX5flVi2.obj
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/walle.production.obj
-_velocidade 30 0 COMRAM 1 dataCOMRAM dist/default/production/walle.production.obj
-_direcao 34 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
+_velocidade 32 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
+_direcao 2C 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production/walle.production.obj
-i2_SetPWM 47A 0 CODE 0 text9 dist/default/production/walle.production.obj
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production/walle.production.obj
-_off_duty 2E 0 COMRAM 1 dataCOMRAM dist/default/production/walle.production.obj
+_off_duty 36 0 COMRAM 1 dataCOMRAM dist/default/production/walle.production.obj
 __Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production/walle.production.obj
-__Hintcodelo 12E 0 CODE 0 intcodelo dist/default/production/walle.production.obj
-__end_ofi2_SetPWM 4F2 0 CODE 0 text9 dist/default/production/walle.production.obj
-__end_of___awmod 5D8 0 CODE 0 text6 dist/default/production/walle.production.obj
-__end_of_delayX 768 0 CODE 0 text3 dist/default/production/walle.production.obj
+__Hintcodelo 136 0 CODE 0 intcodelo dist/default/production/walle.production.obj
+__end_of___awmod 47A 0 CODE 0 text7 dist/default/production/walle.production.obj
+__end_of_delayX 730 0 CODE 0 text4 dist/default/production/walle.production.obj
 ?i2___awmod 1 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 Direction@dir 15 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __LidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production/walle.production.obj
 __size_of_setup 0 0 ABS 0 - dist/default/production/walle.production.obj
 _INTCON2bits FF1 0 ABS 0 - dist/default/production/walle.production.obj
 _INTCON3bits FF0 0 ABS 0 - dist/default/production/walle.production.obj
-__Lintcodelo 12E 0 CODE 0 intcodelo dist/default/production/walle.production.obj
+__Lintcodelo 136 0 CODE 0 intcodelo dist/default/production/walle.production.obj
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
-start_initialization 6F8 0 CODE 0 cinit dist/default/production/walle.production.obj
+start_initialization 6C0 0 CODE 0 cinit dist/default/production/walle.production.obj
 __HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/walle.production.obj
 ___rparam_used 1 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_STVREN$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_WDTPS$32768 0 0 ABS 0 - dist/default/production/walle.production.obj
-_SetPWM 402 0 CODE 0 text4 dist/default/production/walle.production.obj
+_SetPWM 5B8 0 CODE 0 text5 dist/default/production/walle.production.obj
 _TRISB0 7C98 0 ABS 0 - dist/default/production/walle.production.obj
 _TRISB1 7C99 0 ABS 0 - dist/default/production/walle.production.obj
 _TRISB2 7C9A 0 ABS 0 - dist/default/production/walle.production.obj
@@ -496,12 +472,13 @@ __Htext3 0 0 ABS 0 text3 dist/default/production/walle.production.obj
 __Htext4 0 0 ABS 0 text4 dist/default/production/walle.production.obj
 __Htext5 0 0 ABS 0 text5 dist/default/production/walle.production.obj
 __Htext6 0 0 ABS 0 text6 dist/default/production/walle.production.obj
-__Htext8 0 0 ABS 0 text8 dist/default/production/walle.production.obj
+__Htext7 0 0 ABS 0 text7 dist/default/production/walle.production.obj
 __Htext9 0 0 ABS 0 text9 dist/default/production/walle.production.obj
-__end_of_tc_int 12E 0 CODE 0 intcode dist/default/production/walle.production.obj
+__end_of_tc_int 136 0 CODE 0 intcode dist/default/production/walle.production.obj
+_attLeds 4EA 0 CODE 0 text2 dist/default/production/walle.production.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production/walle.production.obj
 __Hbigram 0 0 ABS 0 bigram dist/default/production/walle.production.obj
-__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcXfugEGM.obj
+__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcX5flVi2.obj
 __Hcomram 0 0 ABS 0 comram dist/default/production/walle.production.obj
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production/walle.production.obj
 __CFG_LPT1OSC$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
@@ -526,7 +503,7 @@ __Ltext3 0 0 ABS 0 text3 dist/default/production/walle.production.obj
 __Ltext4 0 0 ABS 0 text4 dist/default/production/walle.production.obj
 __Ltext5 0 0 ABS 0 text5 dist/default/production/walle.production.obj
 __Ltext6 0 0 ABS 0 text6 dist/default/production/walle.production.obj
-__Ltext8 0 0 ABS 0 text8 dist/default/production/walle.production.obj
+__Ltext7 0 0 ABS 0 text7 dist/default/production/walle.production.obj
 __Ltext9 0 0 ABS 0 text9 dist/default/production/walle.production.obj
 __Hfarbss 0 0 FARRAM 0 farbss dist/default/production/walle.production.obj
 __Lintcode_body 0 0 ABS 0 intcode_body dist/default/production/walle.production.obj
@@ -534,14 +511,14 @@ _PORTCbits F82 0 ABS 0 - dist/default/production/walle.production.obj
 _INTCONbits FF2 0 ABS 0 - dist/default/production/walle.production.obj
 __Habs1 0 0 ABS 0 abs1 dist/default/production/walle.production.obj
 __Hdata 0 0 ABS 0 data dist/default/production/walle.production.obj
-__Hinit 12E 0 CODE 0 init dist/default/production/walle.production.obj
+__Hinit 136 0 CODE 0 init dist/default/production/walle.production.obj
 __Hrbit 0 0 COMRAM 1 rbit dist/default/production/walle.production.obj
 __Hrbss 0 0 COMRAM 1 rbss dist/default/production/walle.production.obj
 __Htemp 39 0 COMRAM 1 temp dist/default/production/walle.production.obj
 __Htext 0 0 ABS 0 text dist/default/production/walle.production.obj
 __Labs1 0 0 ABS 0 abs1 dist/default/production/walle.production.obj
 __Ldata 0 0 ABS 0 data dist/default/production/walle.production.obj
-__Linit 12E 0 CODE 0 init dist/default/production/walle.production.obj
+__Linit 136 0 CODE 0 init dist/default/production/walle.production.obj
 __Lrbit 0 0 COMRAM 1 rbit dist/default/production/walle.production.obj
 __Lrbss 0 0 COMRAM 1 rbss dist/default/production/walle.production.obj
 __Ltemp 38 0 COMRAM 1 temp dist/default/production/walle.production.obj
@@ -561,12 +538,13 @@ __S0 30000E 0 ABS 0 - dist/default/production/walle.production.obj
 __S1 39 0 ABS 0 - dist/default/production/walle.production.obj
 __S2 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_PBADEN$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
-__end_of_ativaModo 402 0 CODE 0 text2 dist/default/production/walle.production.obj
-_delayX 732 0 CODE 0 text3 dist/default/production/walle.production.obj
+__end_of_ativaModo 40A 0 CODE 0 text3 dist/default/production/walle.production.obj
+_delayX 6FA 0 CODE 0 text4 dist/default/production/walle.production.obj
 __HidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/production/walle.production.obj
 __size_of_ativaModo 0 0 ABS 0 - dist/default/production/walle.production.obj
 __Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production/walle.production.obj
 __Hnvrram 0 0 COMRAM 1 nvrram dist/default/production/walle.production.obj
+_running 30 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
 i2___awmod@dividend 1 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __CFG_CCP2MX$PORTC 0 0 ABS 0 - dist/default/production/walle.production.obj
 __Lintentry 0 0 ABS 0 intentry dist/default/production/walle.production.obj
@@ -574,70 +552,69 @@ i2___awmod@counter 5 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.produ
 __Hramtop 600 0 RAM 0 ramtop dist/default/production/walle.production.obj
 __Hrparam 0 0 COMRAM 1 rparam dist/default/production/walle.production.obj
 __activetblptr 2 0 ABS 0 - dist/default/production/walle.production.obj
-_ativaModo 132 0 CODE 0 text2 dist/default/production/walle.production.obj
+_ativaModo 13A 0 CODE 0 text3 dist/default/production/walle.production.obj
 __Hstruct 0 0 COMRAM 1 struct dist/default/production/walle.production.obj
 ___awmod@counter 19 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
-___awmod 568 0 CODE 0 text6 dist/default/production/walle.production.obj
+___awmod 40A 0 CODE 0 text7 dist/default/production/walle.production.obj
 __Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production/walle.production.obj
 __Lbigram 0 0 ABS 0 bigram dist/default/production/walle.production.obj
 __CFG_BORV$18 0 0 ABS 0 - dist/default/production/walle.production.obj
 __size_of_delayX 0 0 ABS 0 - dist/default/production/walle.production.obj
-i2SetPWM@veloc 3 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __Lcomram 0 0 ABS 0 comram dist/default/production/walle.production.obj
 __Lconfig 300000 0 CONFIG 0 config dist/default/production/walle.production.obj
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production/walle.production.obj
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production/walle.production.obj
 _tc_int 8 0 CODE 0 intcode dist/default/production/walle.production.obj
-stackhi 5FF 0 ABS 0 - /tmp/xcXfugEGM.obj
-stacklo 60 0 ABS 0 - /tmp/xcXfugEGM.obj
+stackhi 5FF 0 ABS 0 - /tmp/xcX5flVi2.obj
+stacklo 60 0 ABS 0 - /tmp/xcX5flVi2.obj
 __Lintcode 8 0 CODE 0 intcode dist/default/production/walle.production.obj
 __Lintret 0 0 ABS 0 intret dist/default/production/walle.production.obj
 __Lirdata 0 0 CODE 0 irdata dist/default/production/walle.production.obj
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
-__end_ofi2___awmod 648 0 CODE 0 text8 dist/default/production/walle.production.obj
+__end_ofi2___awmod 4EA 0 CODE 0 text9 dist/default/production/walle.production.obj
 __Lspace_0 0 0 ABS 0 - dist/default/production/walle.production.obj
 __Lspace_1 0 0 ABS 0 - dist/default/production/walle.production.obj
 __Lspace_2 0 0 ABS 0 - dist/default/production/walle.production.obj
 __size_ofi2___awmod 0 0 ABS 0 - dist/default/production/walle.production.obj
-__pbssCOMRAM 32 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
-__Lend_init 12E 0 CODE 0 end_init dist/default/production/walle.production.obj
+__pbssCOMRAM 2A 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
+__Lend_init 136 0 CODE 0 end_init dist/default/production/walle.production.obj
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production/walle.production.obj
-__end_of_Direction 568 0 CODE 0 text5 dist/default/production/walle.production.obj
-end_of_initialization 724 0 CODE 0 cinit dist/default/production/walle.production.obj
+__end_of_Direction 670 0 CODE 0 text6 dist/default/production/walle.production.obj
+end_of_initialization 6EC 0 CODE 0 cinit dist/default/production/walle.production.obj
 __size_of_Direction 0 0 ABS 0 - dist/default/production/walle.production.obj
 __Lnvrram 0 0 COMRAM 1 nvrram dist/default/production/walle.production.obj
 __Hintentry 0 0 ABS 0 intentry dist/default/production/walle.production.obj
 _RCONbits FD0 0 ABS 0 - dist/default/production/walle.production.obj
 ?___awmod 15 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
-i2___awmod 5D8 0 CODE 0 text8 dist/default/production/walle.production.obj
+i2___awmod 47A 0 CODE 0 text9 dist/default/production/walle.production.obj
 __Hreset_vec 4 0 CODE 0 reset_vec dist/default/production/walle.production.obj
 ativaModo@dir 1D 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 ___awmod@dividend 15 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __Lramtop 600 0 RAM 0 ramtop dist/default/production/walle.production.obj
 __Lrparam 0 0 COMRAM 1 rparam dist/default/production/walle.production.obj
 __size_of_tc_int 0 0 ABS 0 - dist/default/production/walle.production.obj
-__pcinit 6F8 0 CODE 0 cinit dist/default/production/walle.production.obj
-__ptext0 648 0 CODE 0 text0 dist/default/production/walle.production.obj
-__ptext1 6A8 0 CODE 0 text1 dist/default/production/walle.production.obj
-__ptext2 132 0 CODE 0 text2 dist/default/production/walle.production.obj
-__ptext3 732 0 CODE 0 text3 dist/default/production/walle.production.obj
-__ptext4 402 0 CODE 0 text4 dist/default/production/walle.production.obj
-__ptext5 4F2 0 CODE 0 text5 dist/default/production/walle.production.obj
-__ptext6 568 0 CODE 0 text6 dist/default/production/walle.production.obj
-__ptext8 5D8 0 CODE 0 text8 dist/default/production/walle.production.obj
+__pcinit 6C0 0 CODE 0 cinit dist/default/production/walle.production.obj
+__ptext0 556 0 CODE 0 text0 dist/default/production/walle.production.obj
+__ptext1 670 0 CODE 0 text1 dist/default/production/walle.production.obj
+__ptext2 4EA 0 CODE 0 text2 dist/default/production/walle.production.obj
+__ptext3 13A 0 CODE 0 text3 dist/default/production/walle.production.obj
+__ptext4 6FA 0 CODE 0 text4 dist/default/production/walle.production.obj
+__ptext5 5B8 0 CODE 0 text5 dist/default/production/walle.production.obj
+__ptext6 61A 0 CODE 0 text6 dist/default/production/walle.production.obj
+__ptext7 40A 0 CODE 0 text7 dist/default/production/walle.production.obj
 __ptext9 47A 0 CODE 0 text9 dist/default/production/walle.production.obj
 __Lstruct 0 0 COMRAM 1 struct dist/default/production/walle.production.obj
-_Direction 4F2 0 CODE 0 text5 dist/default/production/walle.production.obj
-__ramtop 600 0 RAM 0 ramtop /tmp/xcXfugEGM.obj
-__Lpowerup 12E 0 CODE 0 powerup dist/default/production/walle.production.obj
+_Direction 61A 0 CODE 0 text6 dist/default/production/walle.production.obj
+__ramtop 600 0 RAM 0 ramtop /tmp/xcX5flVi2.obj
+__Lpowerup 136 0 CODE 0 powerup dist/default/production/walle.production.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/walle.production.obj
-_max_cicle 2A 0 COMRAM 1 dataCOMRAM dist/default/production/walle.production.obj
+_max_cicle 34 0 COMRAM 1 dataCOMRAM dist/default/production/walle.production.obj
 i2___awmod@divisor 3 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production/walle.production.obj
 i2___awmod@sign 6 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 ___param_bank 10 0 ABS 0 - dist/default/production/walle.production.obj
 __Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production/walle.production.obj
-__end_of__initialization 724 0 CODE 0 cinit dist/default/production/walle.production.obj
+__end_of__initialization 6EC 0 CODE 0 cinit dist/default/production/walle.production.obj
 ___awmod@divisor 17 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __CFG_WRT0$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_WRT1$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
@@ -647,25 +624,23 @@ __CFG_WRTB$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __Libigdata 0 0 CODE 0 ibigdata dist/default/production/walle.production.obj
 __CFG_WRTC$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_WRTD$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
-i2SetPWM@status 1 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 ativaModo@i 21 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __Lclrtext 0 0 ABS 0 clrtext dist/default/production/walle.production.obj
 __CFG_HFOFST$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
+__size_of_attLeds 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_PWRT$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
-__Hend_init 132 0 CODE 0 end_init dist/default/production/walle.production.obj
+__Hend_init 13A 0 CODE 0 end_init dist/default/production/walle.production.obj
 __CFG_BOREN$SBORDIS 0 0 ABS 0 - dist/default/production/walle.production.obj
-__end_of_main 6A8 0 CODE 0 text0 dist/default/production/walle.production.obj
+__end_of_main 5B8 0 CODE 0 text0 dist/default/production/walle.production.obj
 __pintcode 8 0 CODE 0 intcode dist/default/production/walle.production.obj
 _LATD0 7C60 0 ABS 0 - dist/default/production/walle.production.obj
 _LATD1 7C61 0 ABS 0 - dist/default/production/walle.production.obj
 _LATD2 7C62 0 ABS 0 - dist/default/production/walle.production.obj
-_LATD3 7C63 0 ABS 0 - dist/default/production/walle.production.obj
 _LATD4 7C64 0 ABS 0 - dist/default/production/walle.production.obj
-_LATD5 7C65 0 ABS 0 - dist/default/production/walle.production.obj
 _LATD6 7C66 0 ABS 0 - dist/default/production/walle.production.obj
 _LATD7 7C67 0 ABS 0 - dist/default/production/walle.production.obj
-__end_of_setup 6F8 0 CODE 0 text1 dist/default/production/walle.production.obj
+__end_of_setup 6C0 0 CODE 0 text1 dist/default/production/walle.production.obj
 __CFG_CP0$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_CP1$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __HRAM 0 0 ABS 0 - dist/default/production/walle.production.obj
@@ -678,19 +653,18 @@ __Lram 0 0 ABS 0 ram dist/default/production/walle.production.obj
 __Lsfr 0 0 ABS 0 sfr dist/default/production/walle.production.obj
 __CFG_CP2$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_CP3$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
-_count 32 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
+_count 2A 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
 __CFG_CPB$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
-_setup 6A8 0 CODE 0 text1 dist/default/production/walle.production.obj
-_start 36 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
-__initialization 6F8 0 CODE 0 cinit dist/default/production/walle.production.obj
-__pdataCOMRAM 2A 0 COMRAM 1 dataCOMRAM dist/default/production/walle.production.obj
-ativaModo@i_434 23 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
+_setup 670 0 CODE 0 text1 dist/default/production/walle.production.obj
+__initialization 6C0 0 CODE 0 cinit dist/default/production/walle.production.obj
+__pdataCOMRAM 34 0 COMRAM 1 dataCOMRAM dist/default/production/walle.production.obj
+ativaModo@i_433 23 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __Hfardata 0 0 FARRAM 0 fardata dist/default/production/walle.production.obj
 __Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production/walle.production.obj
 __Lifardata 0 0 CODE 0 ifardata dist/default/production/walle.production.obj
 __Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production/walle.production.obj
-__Hintcode 12E 0 CODE 0 intcode dist/default/production/walle.production.obj
+__Hintcode 136 0 CODE 0 intcode dist/default/production/walle.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -718,5 +692,5 @@ __Hintcode 12E 0 CODE 0 intcode dist/default/production/walle.production.obj
 idloc 0 200000 200000 8 1
 cstackCOMRAM 1 1 1 38 1
 reset_vec 0 0 0 4 1
-intcode 0 8 8 768 1
+intcode 0 8 8 72C 1
 config 0 300000 300000 E 1

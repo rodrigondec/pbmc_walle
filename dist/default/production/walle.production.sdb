@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 18F45K20 ]
 [d frameptr 4065 ]
-"238 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+"262 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
 [e E3552 Direcao `uc
 frente 0
 tras 1
@@ -35,20 +35,21 @@ direita 3
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "111 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
 [v _setup setup `(v  1 e 1 0 ]
-"182
+"180
+[v _attLeds attLeds `(v  1 e 1 0 ]
+"218
 [v _delayX delayX `(v  1 e 1 0 ]
-"190
+"226
 [v _SetPWM SetPWM `(v  1 e 1 0 ]
-[v i2_SetPWM SetPWM `(v  1 e 1 0 ]
-"236
+"260
 [v _Direction Direction `(v  1 e 1 0 ]
-"299
+"303
 [v _ativaModo ativaModo `(v  1 e 1 0 ]
-"380
+"384
 [v _main main `(i  1 e 2 0 ]
-"405
+"408
 [v _tc_int tc_int `II(v  1 e 1 0 ]
-[s S279 . 1 `uc 1 RC0 1 0 :1:0 
+[s S277 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -58,7 +59,7 @@ direita 3
 `uc 1 RC7 1 0 :1:7 
 ]
 "1027 /opt/microchip/xc8/v1.38/include/pic18f45k20.h
-[s S288 . 1 `uc 1 T1OSO 1 0 :1:0 
+[s S286 . 1 `uc 1 T1OSO 1 0 :1:0 
 `uc 1 T1OSI 1 0 :1:1 
 `uc 1 CCP1 1 0 :1:2 
 `uc 1 SCK 1 0 :1:3 
@@ -67,7 +68,7 @@ direita 3
 `uc 1 TX 1 0 :1:6 
 `uc 1 RX 1 0 :1:7 
 ]
-[s S297 . 1 `uc 1 T13CKI 1 0 :1:0 
+[s S295 . 1 `uc 1 T13CKI 1 0 :1:0 
 `uc 1 CCP2 1 0 :1:1 
 `uc 1 P1A 1 0 :1:2 
 `uc 1 SCL 1 0 :1:3 
@@ -76,18 +77,18 @@ direita 3
 `uc 1 CK 1 0 :1:6 
 `uc 1 DT 1 0 :1:7 
 ]
-[s S306 . 1 `uc 1 T1CKI 1 0 :1:0 
+[s S304 . 1 `uc 1 T1CKI 1 0 :1:0 
 ]
-[s S308 . 1 `uc 1 T3CKI 1 0 :1:0 
+[s S306 . 1 `uc 1 T3CKI 1 0 :1:0 
 ]
-[s S310 . 1 `uc 1 . 1 0 :2:0 
+[s S308 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PA1 1 0 :1:2 
 ]
-[s S313 . 1 `uc 1 . 1 0 :1:0 
+[s S311 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 PA2 1 0 :1:1 
 ]
-[u S316 . 1 `S279 1 . 1 0 `S288 1 . 1 0 `S297 1 . 1 0 `S306 1 . 1 0 `S308 1 . 1 0 `S310 1 . 1 0 `S313 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES316  1 e 1 @3970 ]
+[u S314 . 1 `S277 1 . 1 0 `S286 1 . 1 0 `S295 1 . 1 0 `S304 1 . 1 0 `S306 1 . 1 0 `S308 1 . 1 0 `S311 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES314  1 e 1 @3970 ]
 [s S96 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
 "6128
@@ -204,12 +205,8 @@ direita 3
 [v _LATD1 LATD1 `VEb  1 e 0 @31841 ]
 "7899
 [v _LATD2 LATD2 `VEb  1 e 0 @31842 ]
-"7901
-[v _LATD3 LATD3 `VEb  1 e 0 @31843 ]
 "7903
 [v _LATD4 LATD4 `VEb  1 e 0 @31844 ]
-"7905
-[v _LATD5 LATD5 `VEb  1 e 0 @31845 ]
 "7907
 [v _LATD6 LATD6 `VEb  1 e 0 @31846 ]
 "7909
@@ -271,50 +268,55 @@ direita 3
 "108
 [v _direcao direcao `i  1 e 2 0 ]
 "109
-[v _start start `i  1 e 2 0 ]
-"380
+[v _running running `i  1 e 2 0 ]
+"384
 [v _main main `(i  1 e 2 0 ]
 {
-"403
+"406
 } 0
 "111
 [v _setup setup `(v  1 e 1 0 ]
 {
 "178
 } 0
-"299
+"180
+[v _attLeds attLeds `(v  1 e 1 0 ]
+{
+"215
+} 0
+"303
 [v _ativaModo ativaModo `(v  1 e 1 0 ]
 {
-"342
-[v ativaModo@i_434 i `i  1 a 2 34 ]
-"323
+"346
+[v ativaModo@i_433 i `i  1 a 2 34 ]
+"327
 [v ativaModo@i i `i  1 a 2 32 ]
-"299
+"303
 [v ativaModo@Modo Modo `i  1 p 2 26 ]
 [v ativaModo@dir dir `i  1 p 2 28 ]
-"378
+"382
 } 0
-"182
+"218
 [v _delayX delayX `(v  1 e 1 0 ]
 {
-"184
+"220
 [v delayX@i i `i  1 a 2 23 ]
-"182
+"218
 [v delayX@n n `i  1 p 2 20 ]
-"186
+"222
 } 0
-"190
+"226
 [v _SetPWM SetPWM `(v  1 e 1 0 ]
 {
 [v SetPWM@status status `i  1 p 2 20 ]
 [v SetPWM@veloc veloc `i  1 p 2 22 ]
-"233
+"257
 } 0
-"236
+"260
 [v _Direction Direction `(v  1 e 1 0 ]
 {
 [v Direction@dir dir `i  1 p 2 20 ]
-"295
+"299
 } 0
 "8 /opt/microchip/xc8/v1.38/sources/common/awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
@@ -327,10 +329,10 @@ direita 3
 [v ___awmod@divisor divisor `i  1 p 2 22 ]
 "35
 } 0
-"405 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
+"408 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
 [v _tc_int tc_int `II(v  1 e 1 0 ]
 {
-"483
+"462
 } 0
 "8 /opt/microchip/xc8/v1.38/sources/common/awmod.c
 [v i2___awmod __awmod `(i  1 e 2 0 ]
@@ -340,11 +342,4 @@ direita 3
 [v i2___awmod@dividend dividend `i  1 p 2 0 ]
 [v i2___awmod@divisor divisor `i  1 p 2 2 ]
 "35
-} 0
-"190 /media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-[v i2_SetPWM SetPWM `(v  1 e 1 0 ]
-{
-[v i2SetPWM@status status `i  1 p 2 0 ]
-[v i2SetPWM@veloc veloc `i  1 p 2 2 ]
-"233
 } 0
