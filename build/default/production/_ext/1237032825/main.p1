@@ -3537,9 +3537,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "145
 [e :U 370 ]
 {
-[; ;main.c: 146: if(PORTCbits.RC5 == 1 && PORTCbits.RC5 == 0){
+[; ;main.c: 146: if(PORTCbits.RC5){
 "146
-[e $ ! && == -> . . _PORTCbits 0 5 `i -> 1 `i == -> . . _PORTCbits 0 5 `i -> 0 `i 372  ]
+[e $ ! != -> . . _PORTCbits 0 5 `i -> -> -> 0 `i `Vuc `i 372  ]
 {
 [; ;main.c: 147: velocidade++;
 "147
