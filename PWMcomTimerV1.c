@@ -157,11 +157,11 @@ void Direction(int dir)
     switch(dir)
     {
         case frente:
-            PORTBbits.RB1 = 1;  // motores 1
-            PORTBbits.RB2 = 0;  // motores 1
+            PORTBbits.RB2 = 1;  // motores 1
+            PORTBbits.RB3 = 0;  // motores 1
     
-            PORTBbits.RB3 = 1; // motores 2
-            PORTBbits.RB4 = 0; // motores 2
+            PORTDbits.RD5 = 1; // motores 2
+            PORTDbits.RD6 = 0; // motores 2
             
             led4 = 0;
             led5 = 0;
@@ -171,11 +171,11 @@ void Direction(int dir)
         
         
         case tras:
-            PORTBbits.RB1 = 0;  // motores 1
-            PORTBbits.RB2 = 1;  // motores 1
+            PORTBbits.RB2 = 0;  // motores 1
+            PORTBbits.RB3 = 1;  // motores 1
     
-            PORTBbits.RB3 = 0; // motores 2
-            PORTBbits.RB4 = 1; // motores 2
+            PORTBbits.RB1 = 0; // motores 2
+            PORTCbits.RC7 = 1; // motores 2
             
             led4 = 0;
             led5 = 0;
@@ -185,11 +185,11 @@ void Direction(int dir)
         
         
         case esquerda:
-            PORTBbits.RB1 = 1;  // motores 1
-            PORTBbits.RB2 = 0;  // motores 1
+            PORTBbits.RB2 = 1;  // motores 1
+            PORTBbits.RB3 = 0;  // motores 1
     
-            PORTBbits.RB3 = 0; // motores 2
-            PORTBbits.RB4 = 1; // motores 2
+            PORTBbits.RB1 = 0; // motores 2
+            PORTCbits.RC7 = 1; // motores 2
             
             led4 = 1;
             led5 = 0;
@@ -199,11 +199,11 @@ void Direction(int dir)
         
         
         case direita:
-            PORTBbits.RB1 = 0;  // motores 1
-            PORTBbits.RB2 = 1;  // motores 1
+            PORTBbits.RB2 = 0;  // motores 1
+            PORTBbits.RB3 = 1;  // motores 1
     
-            PORTBbits.RB3 = 1; // motores 2
-            PORTBbits.RB4 = 0; // motores 2
+            PORTBbits.RB1 = 1; // motores 2
+            PORTCbits.RC7 = 0; // motores 2
             
             led4 = 0;
             led5 = 1;
@@ -240,11 +240,11 @@ void setup()    // Configura as Interrupções, pinos de entrada e saída, timer...
     TRISD0 = 0;     // Pino usado para o PWM
     TRISB0 = 0;     // Pino usado para o PWM
     
-    TRISB1 = 0;     // Pino usado para controlar a direção dos motores 1
     TRISB2 = 0;     // Pino usado para controlar a direção dos motores 1
+    TRISB3 = 0;     // Pino usado para controlar a direção dos motores 1
     
-    TRISB3 = 0;     // Pino usado para controlar a direção dos motores 2
-    TRISB4 = 0;     // Pino usado para controlar a direção dos motores 2
+    TRISB1 = 0;     // Pino usado para controlar a direção dos motores 2
+    TRISC7 = 0;     // Pino usado para controlar a direção dos motores 2
 }
 
 int main(int argc, char** argv)
