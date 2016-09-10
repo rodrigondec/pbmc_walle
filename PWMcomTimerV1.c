@@ -115,28 +115,24 @@ void SetPWM(int status, int velocidade)
                 on = 15;
                 led0 = 1;
                 led1 = 0;
-                led2 = 0;
             break;
         
             case 2:
                 on = 7;
                 led0 = 0;
                 led1 = 1;
-                led2 = 0;
             break;
         
             case 3:
                 on = 1;
                 led0 = 1;
                 led1 = 1;
-                led2 = 0;
             break;
             
             default:
                 on = 1;
                 led0 = 1;
                 led1 = 0;
-                led2 = 0;
             break;
         }
     }
@@ -147,7 +143,7 @@ void SetPWM(int status, int velocidade)
         INTCONbits.TMR0IF = 0;                  // clear the interrupt flag 
         led0 = 0;
         led1 = 0;
-        led2 = 1;
+        led2 = 0;
     }
 }
 
@@ -160,8 +156,8 @@ void Direction(int dir)
             PORTBbits.RB2 = 1;  // motores 1
             PORTBbits.RB3 = 0;  // motores 1
     
-            PORTDbits.RD5 = 1; // motores 2
-            PORTDbits.RD6 = 0; // motores 2
+            PORTBbits.RB1 = 1; // motores 2
+            PORTCbits.RC7 = 0; // motores 2
             
             led4 = 0;
             led5 = 0;
@@ -297,14 +293,14 @@ void interrupt tc_int(void){
         if(count == on)     
         {
             PORTBbits.RB0 = 1;  
-            led3 = 1;
+            led2 = 1;
             
         }
         
         if(count == 20)
         {
             PORTBbits.RB0 = 0;
-            led3 = 0;
+            led2 = 0;
             count = 0;
         }
         
