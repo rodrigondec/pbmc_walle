@@ -76,6 +76,15 @@
 
 #define _XTAL_FREQ 16000000
 
+#define led0 LATD0
+#define led1 LATD1
+#define led2 LATD2
+#define led3 LATD3
+#define led4 LATD4
+#define led5 LATD5
+#define led6 LATD6
+#define led7 LATD7
+
 /*
  * 
  */
@@ -104,18 +113,30 @@ void SetPWM(int status, int velocidade)
         {
             case 1:
                 on = 15;
+                led0 = 1;
+                led1 = 0;
+                led2 = 0;
             break;
         
             case 2:
                 on = 7;
+                led0 = 0;
+                led1 = 1;
+                led2 = 0;
             break;
         
             case 3:
                 on = 1;
+                led0 = 1;
+                led1 = 1;
+                led2 = 0;
             break;
             
             default:
                 on = 1;
+                led0 = 1;
+                led1 = 0;
+                led2 = 0;
             break;
         }
     }
@@ -124,6 +145,9 @@ void SetPWM(int status, int velocidade)
         PORTBbits.RB0 = 0;                      // Zera pino PWM
         T0CONbits.TMR0ON = 0;                   // disable Timer0
         INTCONbits.TMR0IF = 0;                  // clear the interrupt flag 
+        led0 = 0;
+        led1 = 0;
+        led2 = 1;
     }
 }
 
@@ -138,6 +162,11 @@ void Direction(int dir)
     
             PORTBbits.RB3 = 1; // motores 2
             PORTBbits.RB4 = 0; // motores 2
+            
+            led4 = 0;
+            led5 = 0;
+            led6 = 1;
+            led7 = 0;
         break;
         
         
@@ -147,6 +176,11 @@ void Direction(int dir)
     
             PORTBbits.RB3 = 0; // motores 2
             PORTBbits.RB4 = 1; // motores 2
+            
+            led4 = 0;
+            led5 = 0;
+            led6 = 0;
+            led7 = 1;
         break;
         
         
@@ -156,6 +190,11 @@ void Direction(int dir)
     
             PORTBbits.RB3 = 0; // motores 2
             PORTBbits.RB4 = 1; // motores 2
+            
+            led4 = 1;
+            led5 = 0;
+            led6 = 0;
+            led7 = 0;
         break;
         
         
@@ -165,6 +204,11 @@ void Direction(int dir)
     
             PORTBbits.RB3 = 1; // motores 2
             PORTBbits.RB4 = 0; // motores 2
+            
+            led4 = 0;
+            led5 = 1;
+            led6 = 0;
+            led7 = 0;
         break;
     }
 }
@@ -184,14 +228,23 @@ void setup()    // Configura as Interrupções, pinos de entrada e saída, timer...
     INTCONbits.TMR0IF = 0;          //clear interrupt flag
     INTCONbits.GIE = 1;   
     
+    TRISD7 = 0; // RD7 to RD0 set to output for led.
+    TRISD6 = 0;
+    TRISD5 = 0;
+    TRISD4 = 0;
+    TRISD3 = 0;
+    TRISD2 = 0;
+    TRISD1 = 0;
+    TRISD0 = 0; // END LEDS
+    
     TRISD0 = 0;     // Pino usado para o PWM
     TRISB0 = 0;     // Pino usado para o PWM
     
-    TRISB1 = 0;     // Pino usado para controlar a direção do motor 1
-    TRISB2 = 0;     // Pino usado para controlar a direção do motor 1
+    TRISB1 = 0;     // Pino usado para controlar a direção dos motores 1
+    TRISB2 = 0;     // Pino usado para controlar a direção dos motores 1
     
-    TRISB3 = 0;     // Pino usado para controlar a direção do motor 2
-    TRISB4 = 0;     // Pino usado para controlar a direção do motor 2
+    TRISB3 = 0;     // Pino usado para controlar a direção dos motores 2
+    TRISB4 = 0;     // Pino usado para controlar a direção dos motores 2
 }
 
 int main(int argc, char** argv)
@@ -201,12 +254,26 @@ int main(int argc, char** argv)
     while(1)
     {
         Direction(frente);  // Seleciona a direção dos motores
+        SetPWM(1,1);        // Liga PWM na velocidade 3
+        delayX(150);        // Delay 3s
+        
+        SetPWM(0,3);        // Desliga PWM
+        delayX(50);         // Delay 1sn
+        
+        Direction(tras);  // Seleciona a direção dos motores
         SetPWM(1,3);        // Liga PWM na velocidade 3
         delayX(150);        // Delay 3s
         
         SetPWM(0,3);        // Desliga PWM
-        delayX(50);         // Delay 1s
+        delayX(50);         // Delay 1sn
     
+        Direction(esquerda); // Seleciona a direção dos motores
+        SetPWM(1,1);        // Liga PWM na velocidade 3
+        delayX(100);        // Delay 2s
+        
+        SetPWM(0,3);        // Desliga PWM
+        delayX(50);         // Delay 1s
+        
         Direction(direita); // Seleciona a direção dos motores
         SetPWM(1,3);        // Liga PWM na velocidade 3
         delayX(100);        // Delay 2s
@@ -230,11 +297,14 @@ void interrupt tc_int(void){
         if(count == on)     
         {
             PORTBbits.RB0 = 1;  
+            led3 = 1;
+            
         }
         
         if(count == 20)
         {
             PORTBbits.RB0 = 0;
+            led3 = 0;
             count = 0;
         }
         
