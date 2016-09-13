@@ -85,107 +85,378 @@
 #define led6 LATD6
 #define led7 LATD7
 
-/*
- * 
- */
+#define motores1a RC1
+#define motores1b RC2
+
+#define motores2a RC4
+#define motores2b RC5
+
+#define pwm RC7
+
+#define bt_velo PORTCbits.RC6
+
+enum Direcao{ frente, tras, esquerda, direita };
+
+/* Variaveis referentes ao PWM */
+int off_duty = 1;   // Tempo de off duty do per�odo
+int max_cicle = 20; // Tempo m�ximo do per�odo
+int count = 0;      // Contador de ciclo para o pwm
+
+/* Variaveis de Controle  */
+int modo = 0;       // Controla o modo em que esta se movimentando
+int velocidade = 0; // Controla a velocidade em que esta se movimentando
+int direcao = 0;    // Controla a dire��o do modo
+int running = 0;    // Flag para ver se o robo est� executando algum modo
+
+void setup()    // Configura as Interrup�oes, pinos de entrada/saida, timer...
+{
+    // timer configuration
+    T0CONbits.TMR0ON = 0;           // disable Timer0
+    T0CONbits.T0CS = 0;             // Timer increments on instruction clock
+    T0CONbits.PSA = 0;              // Prescaler enable
+    T0CONbits.T0PS0 = 0;            // Prescaler Configuration
+    T0CONbits.T0PS1 = 0;            // Prescaler Configuration
+    T0CONbits.T0PS2 = 0;            // Prescaler Configuration
+    T0CONbits.T08BIT = 1;           // Timer de 8 (1) bits ou 16 bits (0)
+    T0CONbits.T0SE = 0;             //   
+    
+    // Timer Interruptions cofiguration
+    INTCONbits.TMR0IE = 1;          // Enable interrupt on TMR0 overflow
+    INTCONbits.TMR0IF = 0;          // clear interrupt flag
+    INTCONbits.GIE = 1;             // global interrupt enable bit
+    
+    /*global interrupt enable*/
+    INTCONbits.GIE = 1;       // enable all interrupts
+    RCONbits.IPEN = 1;        // enable interrupt priority
+    
+    
+    INTCONbits.INT0IE = 1;    // enable int0 
+    INTCON2bits.INTEDG0 = 0;  // falling edge trigger the int0
+    INTCONbits.INT0IF = 0;    // clear interrupt flag 
+    
+    INTCON3bits.INT1IE = 1;    // enable int1 
+    INTCON2bits.INTEDG1 = 0;  // falling edge trigger the int1
+    INTCON3bits.INT1IF = 0;    // clear interrupt flag 
+    
+    INTCON3bits.INT2IE = 1;    // enable int2 
+    INTCON2bits.INTEDG2 = 0;  // falling edge trigger the int2
+    INTCON3bits.INT2IF = 0;    // clear interrupt flag 
+    
+	/* RD0 to RD7 set to output for led */
+    TRISD0 = 0; // led indicadora de velocidade juntamente com led1 representando os valores binarios 01 ou 10 ou 11 (velocidades 1, 2 e 3)
+	TRISD1 = 0; // led indicadora de velocidade juntamente com led0 representando os valores binarios 01 ou 10 ou 11 (velocidades 1, 2 e 3)
+    
+    TRISD2 = 0; // led indicadora da potencia do PWM
+    
+    TRISD3 = 0; // led sem uso
+    
+    TRISD4 = 0; // led indicadora do modo curva para esquerda
+    TRISD5 = 0; // led indicadora do modo curva para direita
+    
+    TRISD6 = 0; // led indicadora do modo andar para frente
+    TRISD7 = 0; // led indicadora do modo andar para tras
+    /* END LEDS */
+    
+    TRISC6 = 1; // input botao velocidade
+    
+    TRISB0 = 1; // input botao modo
+    
+    TRISB1 = 1; // input botao direcao
+    TRISB2 = 1; // input botao start
+    
+    TRISC7 = 0; // Saida do PWM
+    
+    /* Motores 1 */
+    TRISC1 = 0; // lado 'a' dos motores
+    TRISC2 = 0; // lado 'b' dos motores
+    /* END Motores 1 */
+    
+    /* Motores 2 */
+    TRISC4 = 0; // lado 'a' dos motores
+    TRISC5 = 0; // lado 'b' dos motores
+    /* END Motores 2 */
+}
+
+void attLeds(){
+    if(velocidade == 0){
+        led0 = 1;
+        led1 = 0;
+    }
+    else if(velocidade == 1){
+        led0 = 0;
+        led1 = 1;
+    }
+    else if(velocidade == 2){
+        led0 = 1;
+        led1 = 1;
+    }
+    
+    if(running){
+        led2 = 1;
+    }
+    else{
+        led2 = 0;
+    }
+    
+    led4 = direcao;
+    
+    if(modo == 0){
+        led6 = 1;
+        led7 = 0;
+    }
+    else if(modo == 1){
+        led6 = 0;
+        led7 = 1;
+    }
+    else if(modo == 2){
+        led6 = 1;
+        led7 = 1;
+    }
+}
+
+// @Param n: Tempo de delay
 void delayX(int n)
 {
     for(int i = 0; i < n; i++)
         __delay_ms(1);
 }
 
-int off_duty = 1;
-int velocidade = 0;
-int max_cicle = 20;
+// @Param status: Define se o pwm vai estar ligado ou desligado.
+// @Param velocidade: Define em que velocidade (1, 2 ou 3) o PWM será setado.
+void SetPWM(int status, int veloc)
+{
+    if(status == 1)
+    {
+        T0CONbits.TMR0ON = 1;   // enable Timer0
+    
+        switch(veloc)
+        {
+            case 0:
+                off_duty = 15; // velocidade 1 tem o off duty de 15 e on duty de 5
+            break;
+        
+            case 1:
+                off_duty = 8; // velocidade 2 tem o off duty de 8 e on duty de 12
+            break;
+        
+            case 2:
+                off_duty = 1; // velocidade 3 tem o off duty de 1 e on duty de 19
+            break;
+            
+            default:
+                off_duty = 1; // velocidade 3 tem o off duty de 1 e on duty de 19
+            break;
+        }
+    }
+    else
+    {
+        pwm = 0; // zera pino PWM
+        T0CONbits.TMR0ON = 0; // disable Timer0
+        INTCONbits.TMR0IF = 0; // clear the interrupt flag 
+    }
+}
+
+// @Param dir: Define a direção em que os motores giram. Frente (0), tras(1), esquerda(2) e direita(3).
+void Direction(int dir)
+{
+    switch(dir)
+    {
+        case frente:
+            motores1a = 1;
+            motores1b = 0;
+    
+            motores2a = 1;
+            motores2b = 0;
+        break;
+        
+        
+        case tras:
+            motores1a = 0;
+            motores1b = 1;
+    
+            motores2a = 0;
+            motores2b = 1;
+        break;
+        
+        
+        case esquerda:
+            motores1a = 1;
+            motores1b = 0;
+    
+            motores2a = 0;
+            motores2b = 1;
+        break;
+        
+        
+        case direita:
+            motores1a = 0;
+            motores1b = 1;
+    
+            motores2a = 1;
+            motores2b = 0;
+        break;
+    }
+}
+
+// @Param M : Modo que vai ser executado (1, 2, ou 3)
+// @Param dir : Direcao em que irá se movimentar (modo 1: 0 frente, 1 tras; modo 2/3: 0 direita, 1 esquerda)
+void ativaModo(int Modo, int dir)   // Função responsavel por gerar o comportamento de cada modo
+{
+    switch(Modo)
+    {
+        case 0:
+            if(dir == 0)
+            {
+                Direction(frente);      // Configura motores para frente
+                SetPWM(1,velocidade);   // Liga PWM na velocidade escolhida no main
+                delayX(100);            // Espera um tempo com o PWM ligado
+                SetPWM(0,velocidade);   // Desliga o PWM
+            }
+            else
+            {
+                Direction(tras);        // Configura motores para tras
+                SetPWM(1,velocidade);   // Liga PWM na velocidade escolhida no main
+                delayX(100);            // Espera um tempo com o PWM ligado
+                SetPWM(0,velocidade);   // Desliga o PWM
+            }
+        break;
+        
+        case 1:
+            if(dir == 0)        // dir = 0 : Quadrado virando a direita
+            {
+                for(int i = 0; i < 4; i++)      // Repete os passos abaixo para formar o quadrado
+                {
+                    Direction(frente);          // Configura motores para frente
+                    SetPWM(1,velocidade);       // Liga PWM na velocidade escolhida no main
+                    delayX(100);                // Espera um tempo com o PWM ligado
+                    
+                    SetPWM(0,velocidade);       // Desliga o PWM
+                    delayX(10);                 // Espera um tempo com o PWM desligado
+                    
+                    Direction(direita);         // Configura motores para a direita
+                    SetPWM(1,velocidade);       // Liga PWM na velocidade escolhida no main
+                    delayX(50);                 // Espera um tempo com o PWM ligado
+                    
+                    SetPWM(0,velocidade);       // Desliga o PWM
+                    delayX(10);                 // Espera um tempo com o PWM desligado
+                }
+            }
+            else                // dir != 0 : Quadrado virando a esquerda
+            {
+                for(int i = 0; i < 4; i++)
+                {
+                    Direction(frente);          // Configura motores para frente
+                    SetPWM(1,velocidade);       // Liga PWM na velocidade escolhida no main
+                    delayX(100);                // Espera um tempo com o PWM ligado
+                    
+                    SetPWM(0,velocidade);       // Desliga o PWM
+                    delayX(10);                 // Espera um tempo com o PWM desligado
+                    
+                    Direction(esquerda);        // Configura motores para a esquerda
+                    SetPWM(1,velocidade);       // Liga PWM na velocidade escolhida no main
+                    delayX(50);                 // Espera um tempo com o PWM ligado
+                    
+                    SetPWM(0,velocidade);       // Desliga o PWM
+                    delayX(10);                 // Espera um tempo com o PWM desligado
+                }
+            }
+        break;
+        
+        case 2:
+            if(dir == 0)        // dir = 0 : Girar em torno do proprio eixo para a direita
+            {
+                Direction(direita);             // Configura motores para a direita
+                SetPWM(1,velocidade);           // Configura motores para a esquerda
+                delayX(200);                    // Espera um tempo com o PWM ligado
+                SetPWM(0,velocidade);           // Desliga o PWM
+            }
+            else                // dir != 0 : Girar em torno do proprio eixo para a esquerda
+            {
+                Direction(esquerda);            // Configura motores para a esquerda
+                SetPWM(1,velocidade);           // Configura motores para a esquerda
+                delayX(200);                    // Espera um tempo com o PWM ligado
+                SetPWM(0,velocidade);           // Desliga o PWM
+            }
+        break;
+    }
+}
 
 int main(int argc, char** argv)
-{
-    // timer configuration
-    T0CONbits.TMR0ON = 1;
-    T0CONbits.T0CS = 0;               // Timer increments on instruction clock
-    T0CONbits.PSA = 0;               // Prescale enable
-    
-    T0CONbits.T0PS0 = 0;
-    T0CONbits.T0PS1 = 0;
-    T0CONbits.T0PS2 = 0;
-    
-    T0CONbits.T08BIT = 1;
-    T0CONbits.T0SE = 0;
-    
-    INTCONbits.TMR0IE = 1;               // Enable interrupt on TMR0 overflow
- 
-    INTCONbits.TMR0IF = 0;              //clear interrupt flag
-    INTCONbits.GIE = 1;   
-    
-    TRISD7 = 0; // RD7 to RD0 set to output for led.
-    TRISD6 = 0;
-    TRISD5 = 0;
-    TRISD4 = 0;
-    TRISD3 = 0;
-    TRISD2 = 0;
-    TRISD1 = 0;
-    TRISD0 = 0; // END LEDS
-    
-    TRISC5 = 1; // input velocidade
-    
-    TRISC7 = 0; // Sa�da do PWM
-    
-    TRISB1 = 0; // motores 1
-    TRISB2 = 0; // motores 1
-    
-    TRISB3 = 0; // motores 2
-    TRISB4 = 0; // motores 2
-    
-    PORTBbits.RB1 = 1; // motores 1
-    PORTBbits.RB2 = 0; // motores 1
-    
-    PORTBbits.RB3 = 0; // motores 2
-    PORTBbits.RB4 = 1; // motores 2
-    
-    while(1){
-        if(PORTCbits.RC5){ // POR QUE ELE ENTRA AQUI SEMPRE INDEPENDENTE DO QUE ESTIVER NA PORTA?????
+{    
+    setup();
+    attLeds();
+            
+    while(1)
+	{
+        if(bt_velo == 1)          // Pino do botao que controla a velocidade
+        {
+            delayX(20); 
+            
             velocidade++;
             velocidade = velocidade%3;
-            if(velocidade == 0){
-                off_duty = 1;
-            }
-            else if(velocidade == 1){
-                off_duty = 7;
-            }
-            else if(velocidade == 2){
-                off_duty = 15;
-            }
-            delayX(10);
         }
+        if(running){
+            ativaModo(modo, direcao);
+            running = 0;
+        }
+        attLeds();
     }
 
     return (EXIT_SUCCESS);
 }
 
-int count = 0;
-
-
-void interrupt tc_int(void){
+void interrupt tc_int(void)
+{
     
     /* timer interrupt */
  
     if(INTCONbits.TMR0IF && INTCONbits.TMR0IE) // if timer flag is set & interrupt enabled
     {                                     
         INTCONbits.TMR0IF = 0; // clear the interrupt flag 
-        
-        if(count == off_duty)
-        {
-            RC7 = 1;
-            led4 = 1; // toggle a bit to say we're alive
+        if(running){
+            if(count == off_duty)
+            {
+                pwm = 1;
+                led2 = 1; // toggle a bit to say we're alive
+            }
+
+            if(count == max_cicle)
+            {
+                pwm = 0;
+                led2 = 0; // toggle a bit to say we're alive
+            }
+
+            count = count%max_cicle;
+            count++;
+        }
+    }
+    
+    if(INTCONbits.INT0F)        // Interrupção0 entrada RB0
+    {
+        if(!running){
+            modo++;
+            modo = modo%3;
         }
         
-        if(count == max_cicle)
-        {
-            RC7 = 0;
-            led4 = 0; // toggle a bit to say we're alive
+        INTCONbits.INT0F = 0;   // Limpa flag da Interrupção0
+    }
+    
+    
+    if(INTCON3bits.INT1F)       // Interrupção1 entrada RB1
+    {
+        if(!running){
+            direcao = !direcao;     // Inverte a direção
+        }
+//        
+        INTCON3bits.INT1F = 0;  // Limpa flag da Interrupção1
+    }
+    
+    if(INTCON3bits.INT2F)       // Interrupção2 entrada RB2
+    {
+        if(!running){
+            running = 1; // Ativa a flag running  
         }
         
-        count = count%max_cicle;
-        count++;
+        INTCON3bits.INT2F = 0;   // Limpa flag da Interrupção2
     }
 }
