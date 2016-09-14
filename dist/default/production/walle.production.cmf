@@ -11,6 +11,11 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
+$/tmp/xcX6MtCzS.obj
+idloc IDLOC 0 200000 200000 8 1
+reset_vec CODE 0 0 0 4 1
+end_init CODE 0 136 136 4 1
+config CONFIG 0 300000 300000 E 1
 $dist/default/production/walle.production.obj
 cinit CODE 0 6C0 6C0 3A 1
 text0 CODE 0 556 556 62 1
@@ -28,11 +33,6 @@ temp COMRAM 1 38 38 1 1
 intcode CODE 0 8 8 12E 1
 dataCOMRAM COMRAM 1 34 34 4 1
 bssCOMRAM COMRAM 1 2A 2A A 1
-$/tmp/xcX5flVi2.obj
-idloc IDLOC 0 200000 200000 8 1
-reset_vec CODE 0 0 0 4 1
-end_init CODE 0 136 136 4 1
-config CONFIG 0 300000 300000 E 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -320,36 +320,36 @@ FA intcode CODE >462:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
 5AA text0 CODE >400:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
 5B2 text0 CODE >402:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
 5B6 text0 CODE >389:/media/rodrigo/Dados/Documents/Prog/walle/PWMcomTimerV3.c
-6C0 cinit CODE >612:/tmp/xcX5XkuKr
-6C0 cinit CODE >614:/tmp/xcX5XkuKr
-6C0 cinit CODE >617:/tmp/xcX5XkuKr
-6C0 cinit CODE >656:/tmp/xcX5XkuKr
-6C2 cinit CODE >657:/tmp/xcX5XkuKr
-6C4 cinit CODE >658:/tmp/xcX5XkuKr
-6C6 cinit CODE >659:/tmp/xcX5XkuKr
-6C8 cinit CODE >660:/tmp/xcX5XkuKr
-6CA cinit CODE >661:/tmp/xcX5XkuKr
-6CC cinit CODE >662:/tmp/xcX5XkuKr
-6D0 cinit CODE >663:/tmp/xcX5XkuKr
-6D4 cinit CODE >664:/tmp/xcX5XkuKr
-6D4 cinit CODE >665:/tmp/xcX5XkuKr
-6D6 cinit CODE >666:/tmp/xcX5XkuKr
-6DA cinit CODE >667:/tmp/xcX5XkuKr
-6DC cinit CODE >668:/tmp/xcX5XkuKr
-6DE cinit CODE >669:/tmp/xcX5XkuKr
-6E0 cinit CODE >673:/tmp/xcX5XkuKr
-6E4 cinit CODE >674:/tmp/xcX5XkuKr
-6E6 cinit CODE >675:/tmp/xcX5XkuKr
-6E6 cinit CODE >676:/tmp/xcX5XkuKr
-6E8 cinit CODE >677:/tmp/xcX5XkuKr
-6EA cinit CODE >678:/tmp/xcX5XkuKr
-6EC cinit CODE >684:/tmp/xcX5XkuKr
-6EC cinit CODE >686:/tmp/xcX5XkuKr
-6EE cinit CODE >687:/tmp/xcX5XkuKr
-6F0 cinit CODE >689:/tmp/xcX5XkuKr
-6F2 cinit CODE >690:/tmp/xcX5XkuKr
-6F4 cinit CODE >691:/tmp/xcX5XkuKr
-6F6 cinit CODE >692:/tmp/xcX5XkuKr
+6C0 cinit CODE >612:/tmp/xcX4urT3g
+6C0 cinit CODE >614:/tmp/xcX4urT3g
+6C0 cinit CODE >617:/tmp/xcX4urT3g
+6C0 cinit CODE >656:/tmp/xcX4urT3g
+6C2 cinit CODE >657:/tmp/xcX4urT3g
+6C4 cinit CODE >658:/tmp/xcX4urT3g
+6C6 cinit CODE >659:/tmp/xcX4urT3g
+6C8 cinit CODE >660:/tmp/xcX4urT3g
+6CA cinit CODE >661:/tmp/xcX4urT3g
+6CC cinit CODE >662:/tmp/xcX4urT3g
+6D0 cinit CODE >663:/tmp/xcX4urT3g
+6D4 cinit CODE >664:/tmp/xcX4urT3g
+6D4 cinit CODE >665:/tmp/xcX4urT3g
+6D6 cinit CODE >666:/tmp/xcX4urT3g
+6DA cinit CODE >667:/tmp/xcX4urT3g
+6DC cinit CODE >668:/tmp/xcX4urT3g
+6DE cinit CODE >669:/tmp/xcX4urT3g
+6E0 cinit CODE >673:/tmp/xcX4urT3g
+6E4 cinit CODE >674:/tmp/xcX4urT3g
+6E6 cinit CODE >675:/tmp/xcX4urT3g
+6E6 cinit CODE >676:/tmp/xcX4urT3g
+6E8 cinit CODE >677:/tmp/xcX4urT3g
+6EA cinit CODE >678:/tmp/xcX4urT3g
+6EC cinit CODE >684:/tmp/xcX4urT3g
+6EC cinit CODE >686:/tmp/xcX4urT3g
+6EE cinit CODE >687:/tmp/xcX4urT3g
+6F0 cinit CODE >689:/tmp/xcX4urT3g
+6F2 cinit CODE >690:/tmp/xcX4urT3g
+6F4 cinit CODE >691:/tmp/xcX4urT3g
+6F6 cinit CODE >692:/tmp/xcX4urT3g
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -368,15 +368,15 @@ __Hspace_1 39 0 ABS 0 - dist/default/production/walle.production.obj
 __Hspace_2 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production/walle.production.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcX5flVi2.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcX6MtCzS.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/walle.production.obj
 __end_of_attLeds 556 0 CODE 0 text2 dist/default/production/walle.production.obj
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production/walle.production.obj
-___sp 0 0 STACK 2 stack /tmp/xcX5flVi2.obj
+___sp 0 0 STACK 2 stack /tmp/xcX6MtCzS.obj
 _main 556 0 CODE 0 text0 dist/default/production/walle.production.obj
 _modo 2E 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
 btemp 38 0 COMRAM 1 temp dist/default/production/walle.production.obj
-start 136 0 CODE 0 init /tmp/xcX5flVi2.obj
+start 136 0 CODE 0 init /tmp/xcX6MtCzS.obj
 __size_of___awmod 0 0 ABS 0 - dist/default/production/walle.production.obj
 __size_of_main 0 0 ABS 0 - dist/default/production/walle.production.obj
 __CFG_WDTEN$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
@@ -388,11 +388,11 @@ _T0CONbits FD5 0 ABS 0 - dist/default/production/walle.production.obj
 ativaModo@Modo 1B 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/walle.production.obj
 SetPWM@veloc 17 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
-__accesstop 60 0 ABS 0 - /tmp/xcX5flVi2.obj
-intlevel0 0 0 CODE 0 text /tmp/xcX5flVi2.obj
-intlevel1 0 0 CODE 0 text /tmp/xcX5flVi2.obj
-intlevel2 0 0 CODE 0 text /tmp/xcX5flVi2.obj
-intlevel3 0 0 CODE 0 text /tmp/xcX5flVi2.obj
+__accesstop 60 0 ABS 0 - /tmp/xcX6MtCzS.obj
+intlevel0 0 0 CODE 0 text /tmp/xcX6MtCzS.obj
+intlevel1 0 0 CODE 0 text /tmp/xcX6MtCzS.obj
+intlevel2 0 0 CODE 0 text /tmp/xcX6MtCzS.obj
+intlevel3 0 0 CODE 0 text /tmp/xcX6MtCzS.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/walle.production.obj
 SetPWM@status 15 0 COMRAM 1 cstackCOMRAM dist/default/production/walle.production.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/walle.production.obj
@@ -407,8 +407,8 @@ __Hifardata 0 0 CODE 0 ifardata dist/default/production/walle.production.obj
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production/walle.production.obj
 __pidataCOMRAM 730 0 CODE 0 idataCOMRAM dist/default/production/walle.production.obj
 __CFG_FOSC$INTIO67 0 0 ABS 0 - dist/default/production/walle.production.obj
-___inthi_sp 0 0 STACK 2 stack /tmp/xcX5flVi2.obj
-___intlo_sp 0 0 STACK 2 stack /tmp/xcX5flVi2.obj
+___inthi_sp 0 0 STACK 2 stack /tmp/xcX6MtCzS.obj
+___intlo_sp 0 0 STACK 2 stack /tmp/xcX6MtCzS.obj
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/production/walle.production.obj
 _velocidade 32 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
 _direcao 2C 0 COMRAM 1 bssCOMRAM dist/default/production/walle.production.obj
@@ -478,7 +478,7 @@ __end_of_tc_int 136 0 CODE 0 intcode dist/default/production/walle.production.ob
 _attLeds 4EA 0 CODE 0 text2 dist/default/production/walle.production.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production/walle.production.obj
 __Hbigram 0 0 ABS 0 bigram dist/default/production/walle.production.obj
-__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcX5flVi2.obj
+__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcX6MtCzS.obj
 __Hcomram 0 0 ABS 0 comram dist/default/production/walle.production.obj
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production/walle.production.obj
 __CFG_LPT1OSC$OFF 0 0 ABS 0 - dist/default/production/walle.production.obj
@@ -565,8 +565,8 @@ __Lconfig 300000 0 CONFIG 0 config dist/default/production/walle.production.obj
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production/walle.production.obj
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production/walle.production.obj
 _tc_int 8 0 CODE 0 intcode dist/default/production/walle.production.obj
-stackhi 5FF 0 ABS 0 - /tmp/xcX5flVi2.obj
-stacklo 60 0 ABS 0 - /tmp/xcX5flVi2.obj
+stackhi 5FF 0 ABS 0 - /tmp/xcX6MtCzS.obj
+stacklo 60 0 ABS 0 - /tmp/xcX6MtCzS.obj
 __Lintcode 8 0 CODE 0 intcode dist/default/production/walle.production.obj
 __Lintret 0 0 ABS 0 intret dist/default/production/walle.production.obj
 __Lirdata 0 0 CODE 0 irdata dist/default/production/walle.production.obj
@@ -605,7 +605,7 @@ __ptext7 40A 0 CODE 0 text7 dist/default/production/walle.production.obj
 __ptext9 47A 0 CODE 0 text9 dist/default/production/walle.production.obj
 __Lstruct 0 0 COMRAM 1 struct dist/default/production/walle.production.obj
 _Direction 61A 0 CODE 0 text6 dist/default/production/walle.production.obj
-__ramtop 600 0 RAM 0 ramtop /tmp/xcX5flVi2.obj
+__ramtop 600 0 RAM 0 ramtop /tmp/xcX6MtCzS.obj
 __Lpowerup 136 0 CODE 0 powerup dist/default/production/walle.production.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/walle.production.obj
 _max_cicle 34 0 COMRAM 1 dataCOMRAM dist/default/production/walle.production.obj

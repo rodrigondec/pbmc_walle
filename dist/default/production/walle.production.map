@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/opt/microchip/xc8/v1.38/dat/en_msgs.txt -cs \
   -h+dist/default/production/walle.production.sym \
   --cmf=dist/default/production/walle.production.cmf -z -Q18F45K20 \
-  -o/tmp/xcXXQh1xi -Mdist/default/production/walle.production.map -E1 \
+  -o/tmp/xcX2kEnU7 -Mdist/default/production/walle.production.map -E1 \
   -ver=XC8 -ASTACK=060h-05ffh -pstack=STACK -ACODE=00h-07FFFh \
   -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
   -AMEDIUMCONST=0600h-07FFFh -ACOMRAM=01h-05Fh -AABS1=00h-05FFh \
@@ -21,7 +21,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcX5flVi2.obj dist/default/production/walle.production.obj 
+  /tmp/xcX6MtCzS.obj dist/default/production/walle.production.obj 
 
 Object code version is 3.11
 
@@ -33,7 +33,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcX5flVi2.obj
+/tmp/xcX6MtCzS.obj
                 end_init                            136      136        4        4       0
                 reset_vec                             0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
